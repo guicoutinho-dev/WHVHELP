@@ -13,6 +13,10 @@ const {
   formatScopeNote,
   jobMarkup,
   employerMarkup,
+  evaluateJobForProfile,
+  buildApplicationPitch,
+  applyProfileRulesToJobs,
+  DEFAULT_PROFILE,
   escapeHtml,
   CATEGORIES
 } = require("./app");
@@ -173,4 +177,46 @@ test("employerMarkup exibe selo 88 dias, telefone e omite botão de site quando 
   });
   const htmlNoSite = employerMarkup(withoutSite);
   assert.equal(htmlNoSite.includes("Site oficial ↗"), false);
+});
+
+test("applyProfileRulesToJobs avalia vagas contra o perfil aprovado e eligibleForBatch permite reavaliar vagas antes bloqueadas", () => {
+  const sampleJobs = [
+    toViewJob(contractData.jobs[0]),
+    {
+      ...toViewJob(contractData.jobs[1]),
+      pay: null
+    }
+  ];
+  const strictProfile = {
+    ...DEFAULT_PROFILE,
+    fullName: "Ana Costa",
+    visaSubclass: "462",
+    minHourlyWage: 29,
+    allowMissingSalary: false,
+    requireRegional88: true,
+    allowedCategories: ["Fruit Picking"],
+    rulesApproved: true
+  };
+
+  const records = applyProfileRulesToJobs(sampleJobs, strictProfile, "2026-11-17T23:00:00.000Z");
+  assert.equal(records.length, 2);
+  assert.equal(records[0].status, "Preparada");
+  assert.equal(sampleJobs[0].status, "Preparada");
+  assert.ok(records[0].pitch.includes("Ana Costa"));
+  assert.equal(records[1].status.startsWith("Não enviada"), true);
+  assert.equal(sampleJobs[1].status.startsWith("Não enviada"), true);
+
+  const chosen = new Set([sampleJobs[0].id, sampleJobs[1].id]);
+  const eligible = eligibleForBatch(sampleJobs, chosen);
+  assert.deepEqual(eligible.map(j => j.id), [sampleJobs[1].id]);
+});
+
+test("jobMarkup mantém botão de reavaliação visível quando status é Não enviada", () => {
+  const blockedJob = {
+    ...toViewJob(contractData.jobs[0]),
+    status: "Não enviada · regra"
+  };
+  const html = jobMarkup(blockedJob);
+  assert.ok(html.includes("Não enviada · regra"));
+  assert.ok(html.includes(`data-apply="${blockedJob.id}"`));
 });

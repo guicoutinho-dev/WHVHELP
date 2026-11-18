@@ -159,6 +159,17 @@ Google Maps (fazendas/empregadores) compõe a **Fase 1.5**, gerando a saída sep
 - **Estrutura de cada item em `employers`:**
   `{ id, name, category, address, location: { city, state, postcode }, phone, website, googleMapsUrl, rating, reviewCount, regionalWork: { "417", "462" } }`.
 
+### Fase 2 — Perfil WHV, Motor de Regras de Autonomia e Aba Candidaturas (Local-First)
+
+- **Domínio puro (`ingest/src/domain/application-rules.js`):**
+  - `evaluateJobForProfile(job, profile)` avalia os dados já presentes no contrato (`category`, `pay`, `regionalWork`) contra o perfil e as regras aprovadas pelo usuário, sem reclassificar a vaga nem recalcular o selo dos 88 dias.
+  - Retorna `{ status: "Preparada" | "Não enviada · regra" | "Não enviada · dado insuficiente", reason: string, pitch: string | null }`.
+  - `buildApplicationPitch(job, profile)` monta a apresentação curta do candidato com nome, visto (`462`/`417`), disponibilidade e resumo de experiência.
+- **Persistência Local (`app.js`):**
+  - `localStorage["helpwhv_profile_v1"]`: perfil e regras aprovadas (`fullName`, `visaSubclass`, `availableFrom`, `experienceSummary`, `minHourlyWage`, `allowMissingSalary`, `requireRegional88`, `allowedCategories`, `rulesApproved`).
+  - `localStorage["helpwhv_applications_v1"]`: histórico de candidaturas avaliadas/preparadas/confirmadas como enviadas.
+- **Verdade do produto:** o status só passa de `Preparada` para `Enviada` quando o usuário confirma o envio realizado no anúncio externo.
+
 ## 8. Decisões
 
 | # | Decisão | Status |
