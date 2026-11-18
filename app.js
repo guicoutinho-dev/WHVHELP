@@ -20,7 +20,7 @@ const EMPLOYMENT_LABELS = Object.freeze({
   contract: "Contrato"
 });
 
-const OFFICIAL_88_URLS = Object.freeze({
+const OFFICIAL_REGIONAL_URLS = Object.freeze({
   "417": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/specified-work",
   "462": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/specified-462-work"
 });
@@ -235,7 +235,7 @@ function evaluateJobForProfile(job, profile = DEFAULT_PROFILE) {
       return {
         allowed: false,
         status: "Não enviada · regra",
-        reason: `Vaga não elegível para os 88 dias do visto ${subclass}.`,
+        reason: `Vaga não elegível para trabalho regional do visto ${subclass}.`,
         pitch: null
       };
     }
@@ -243,7 +243,7 @@ function evaluateJobForProfile(job, profile = DEFAULT_PROFILE) {
       return {
         allowed: false,
         status: "Não enviada · dado insuficiente",
-        reason: `A vaga não informa postcode suficiente para confirmar os 88 dias (${subclass}).`,
+        reason: `A vaga não informa postcode suficiente para confirmar elegibilidade regional (${subclass}).`,
         pitch: null
       };
     }
@@ -411,13 +411,16 @@ function saveSubclass(subclass) {
   }
 }
 
+const PAGE_SIZE = 24;
+let currentPage = 1;
+
 let filters = {
   query: "",
   location: "",
   salary: 0,
   categories: [],
   stayTypes: [],
-  onlyRegional88: false,
+  onlyRegional: false,
   visaSubclass: readSavedSubclass(),
   sort: "recent"
 };
@@ -425,6 +428,43 @@ let filters = {
 const icon = (name, className = "icon") =>
   `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-${name}"></use></svg>`;
 const plural = count => (count === 1 ? "vaga" : "vagas");
+
+function paginate(items, page, pageSize) {
+  const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+  const safePage = Math.max(1, Math.min(page, totalPages));
+  const start = (safePage - 1) * pageSize;
+  return {
+    slice: items.slice(start, start + pageSize),
+    page: safePage,
+    totalPages,
+    totalItems: items.length
+  };
+}
+
+function paginationMarkup(page, totalPages, totalItems, label) {
+  if (totalPages <= 1) return "";
+  const maxVisible = 5;
+  let startPage = Math.max(1, page - Math.floor(maxVisible / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+  if (endPage - startPage < maxVisible - 1) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+  const buttons = [];
+  buttons.push(`<button type="button" class="page-btn" data-page="${page - 1}" ${page <= 1 ? "disabled" : ""} aria-label="Página anterior">←</button>`);
+  if (startPage > 1) {
+    buttons.push(`<button type="button" class="page-btn" data-page="1">1</button>`);
+    if (startPage > 2) buttons.push(`<span class="page-ellipsis">…</span>`);
+  }
+  for (let i = startPage; i <= endPage; i++) {
+    buttons.push(`<button type="button" class="page-btn${i === page ? " is-active" : ""}" data-page="${i}">${i}</button>`);
+  }
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) buttons.push(`<span class="page-ellipsis">…</span>`);
+    buttons.push(`<button type="button" class="page-btn" data-page="${totalPages}">${totalPages}</button>`);
+  }
+  buttons.push(`<button type="button" class="page-btn" data-page="${page + 1}" ${page >= totalPages ? "disabled" : ""} aria-label="Próxima página">→</button>`);
+  return `<nav class="pagination" aria-label="Paginação de ${label}"><span class="page-info">Página ${page} de ${totalPages} (${totalItems} ${label})</span><div class="page-buttons">${buttons.join("")}</div></nav>`;
+}
 
 function hourlyValue(job) {
   if (!job?.pay || job.pay.period !== "hour") return null;
@@ -481,7 +521,7 @@ function filterJobs(list, criteria = {}) {
   const query = (criteria.query || "").trim().toLocaleLowerCase("pt-BR");
   const minSalary = Number(criteria.salary || 0);
   const activeCategories = Array.isArray(criteria.categories) ? criteria.categories : [];
-  const onlyRegional = Boolean(criteria.onlyRegional88);
+  const onlyRegional = Boolean(criteria.onlyRegional ?? criteria.onlyRegional88);
   const subclass = criteria.visaSubclass === "417" ? "417" : "462";
 
   const matched = list.filter(job => {
@@ -516,7 +556,7 @@ function filterJobs(list, criteria = {}) {
 function filterEmployers(list, criteria = {}) {
   const query = (criteria.query || "").trim().toLocaleLowerCase("pt-BR");
   const activeCategories = Array.isArray(criteria.categories) ? criteria.categories : [];
-  const onlyRegional = Boolean(criteria.onlyRegional88);
+  const onlyRegional = Boolean(criteria.onlyRegional ?? criteria.onlyRegional88);
   const subclass = criteria.visaSubclass === "417" ? "417" : "462";
 
   return list.filter(emp => {
@@ -532,7 +572,7 @@ function filterEmployers(list, criteria = {}) {
 function filterStays(list, criteria = {}) {
   const query = (criteria.query || "").trim().toLocaleLowerCase("pt-BR");
   const activeTypes = Array.isArray(criteria.stayTypes) ? criteria.stayTypes : [];
-  const onlyRegional = Boolean(criteria.onlyRegional88);
+  const onlyRegional = Boolean(criteria.onlyRegional ?? criteria.onlyRegional88);
 
   return list.filter(stay => {
     const searchable = `${stay.name} ${stay.city} ${stay.state} ${stay.postcode || ""} ${stay.stayType} ${stay.address || ""}`.toLocaleLowerCase("pt-BR");
@@ -572,6 +612,8 @@ function symbols() {
     <symbol id="icon-send" viewBox="0 0 24 24"><path d="m21 3-8.4 18-2.3-7.3L3 11.4 21 3Z"/><path d="m10.3 13.7 6.5-6.5"/></symbol>
     <symbol id="icon-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="8" cy="8" r="1.5"/></symbol>
     <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.1 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0 1 22 16.9Z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.4 3-5.1 7-5.1s6.4 1.7 7 5.1"/><circle cx="12" cy="12" r="10"/></symbol>
   </svg>`;
 }
@@ -587,7 +629,7 @@ function jobMarkup(job) {
   const open = openJobId === job.id;
   const subclass = filters.visaSubclass === "417" ? "417" : "462";
   const isRegionalLikely = job.regionalWork?.[subclass] === "likely";
-  const officialUrl = OFFICIAL_88_URLS[subclass];
+  const officialUrl = OFFICIAL_REGIONAL_URLS[subclass];
   const locationText = [job.city, job.state, job.postcode].filter(Boolean).join(", ");
 
   const safeId = escapeHtml(job.id);
@@ -616,7 +658,7 @@ function jobMarkup(job) {
         <span>${icon("calendar")}${safePosted}</span>
       </p>
       <div class="job-badges">
-        ${isRegionalLikely ? `<a class="badge-88" href="${officialUrl}" target="_blank" rel="noopener noreferrer" title="Estimativa por categoria e postcode para visto ${subclass}. Confira a regra oficial.">88 dias (${subclass}) · estimativa</a>` : ""}
+        ${isRegionalLikely ? `<a class="badge-regional" href="${officialUrl}" target="_blank" rel="noopener noreferrer" title="Estimativa por categoria e postcode para visto ${subclass}. Confira a regra oficial.">Regional (${subclass}) · estimativa</a>` : ""}
         ${job.status && job.status.startsWith("Não enviada") ? `<span class="row-status is-blocked">${escapeHtml(job.status)}</span>` : ""}
         <a class="source-link" href="${safeSourceUrl}" target="_blank" rel="noopener noreferrer">Ver em ${safeSourceName} ↗</a>
       </div>
@@ -630,7 +672,7 @@ function jobMarkup(job) {
 function employerMarkup(emp) {
   const subclass = filters.visaSubclass === "417" ? "417" : "462";
   const isRegionalLikely = emp.regionalWork?.[subclass] === "likely";
-  const officialUrl = OFFICIAL_88_URLS[subclass];
+  const officialUrl = OFFICIAL_REGIONAL_URLS[subclass];
   const locationText = [emp.city, emp.state, emp.postcode].filter(Boolean).join(", ");
   const safeName = escapeHtml(emp.name);
   const safeAddress = escapeHtml(emp.address || locationText);
@@ -651,12 +693,12 @@ function employerMarkup(emp) {
         <span>${icon("work")}${safeCategory}</span>
         ${emp.phone ? `<span>${icon("phone")}${safePhone}</span>` : ""}
       </p>
-      <div class="job-badges">
-        ${isRegionalLikely ? `<a class="badge-88" href="${officialUrl}" target="_blank" rel="noopener noreferrer" title="Estimativa por categoria e postcode para visto ${subclass}. Confira a regra oficial.">88 dias (${subclass}) · estimativa</a>` : ""}
-        ${emp.website ? `<a class="source-link" href="${escapeHtml(emp.website)}" target="_blank" rel="noopener noreferrer">Site oficial ↗</a>` : ""}
-        ${emp.phone ? `<a class="source-link" href="${safeTelHref}">Ligar (${safePhone})</a>` : ""}
-        <a class="source-link" href="${safeMapsUrl}" target="_blank" rel="noopener noreferrer">Ver no Google Maps ↗</a>
-      </div>
+      ${isRegionalLikely ? `<div class="job-badges"><a class="badge-regional" href="${officialUrl}" target="_blank" rel="noopener noreferrer" title="Estimativa por categoria e postcode para visto ${subclass}. Confira a regra oficial.">Regional (${subclass}) · estimativa</a></div>` : ""}
+    </div>
+    <div class="row-links">
+      ${emp.website ? `<a class="source-link" href="${escapeHtml(emp.website)}" target="_blank" rel="noopener noreferrer">Site oficial ↗</a>` : ""}
+      ${emp.phone ? `<a class="source-link" href="${safeTelHref}">Ligar (${safePhone})</a>` : ""}
+      <a class="source-link" href="${safeMapsUrl}" target="_blank" rel="noopener noreferrer">Ver no Google Maps ↗</a>
     </div>
   </article>`;
 }
@@ -680,14 +722,14 @@ function stayMarkup(stay) {
       <p class="job-meta">
         <span>${icon("pin")}${safeAddress}</span>
         <span>${icon("tag")}${safeType}</span>
-        ${stay.phone ? `<span>📞 ${safePhone}</span>` : ""}
+        ${stay.phone ? `<span>${icon("phone")}${safePhone}</span>` : ""}
       </p>
-      <div class="job-badges">
-        ${stay.inRegionalZone ? `<span class="badge-88">Zona regional 88d</span>` : ""}
-        ${stay.website ? `<a class="source-link" href="${escapeHtml(stay.website)}" target="_blank" rel="noopener noreferrer">Site / Reserva ↗</a>` : ""}
-        ${stay.phone ? `<a class="source-link" href="${safeTelHref}">Ligar (${safePhone})</a>` : ""}
-        <a class="source-link" href="${safeMapsUrl}" target="_blank" rel="noopener noreferrer">Ver no Google Maps ↗</a>
-      </div>
+      ${stay.inRegionalZone ? `<div class="job-badges"><span class="badge-regional">Zona regional</span></div>` : ""}
+    </div>
+    <div class="row-links">
+      ${stay.website ? `<a class="source-link" href="${escapeHtml(stay.website)}" target="_blank" rel="noopener noreferrer">Site / Reserva ↗</a>` : ""}
+      ${stay.phone ? `<a class="source-link" href="${safeTelHref}">Ligar (${safePhone})</a>` : ""}
+      <a class="source-link" href="${safeMapsUrl}" target="_blank" rel="noopener noreferrer">Ver no Google Maps ↗</a>
     </div>
   </article>`;
 }
@@ -709,17 +751,19 @@ function summaryMarkup() {
 
 function categoryChipsMarkup() {
   if (view === "accommodation") {
+    const activeStayCount = filters.stayTypes.length;
     return `<div class="whv-controls" aria-label="Filtros de hospedagem WHV">
       <div class="category-chips" role="group" aria-label="Tipo de hospedagem WHV">
         ${STAY_TYPES.map(st => {
           const active = filters.stayTypes.includes(st);
           return `<button type="button" class="category-chip${active ? " is-active" : ""}" data-stay-type="${st}" aria-pressed="${active}">${st}</button>`;
         }).join("")}
+        ${activeStayCount > 0 ? `<button type="button" class="category-chip category-clear" id="clear-categories">Limpar tipos (${activeStayCount})</button>` : ""}
       </div>
       <div class="regional-toolbar">
-        <label class="regional-toggle">
-          <input type="checkbox" id="only-regional" ${filters.onlyRegional88 ? "checked" : ""}>
-          <span>Apenas hospedagens em zona regional 88 dias</span>
+        <label class="regional-toggle${filters.onlyRegional ? " is-active" : ""}">
+          <input type="checkbox" id="only-regional" ${filters.onlyRegional ? "checked" : ""}>
+          <span>Apenas hospedagens em zona regional</span>
         </label>
       </div>
     </div>`;
@@ -734,15 +778,16 @@ function categoryChipsMarkup() {
       ${activeCount > 0 ? `<button type="button" class="category-chip category-clear" id="clear-categories">Limpar categorias (${activeCount})</button>` : ""}
     </div>
     <div class="regional-toolbar">
-      <label class="subclass-select">Visto:
-        <select id="visa-subclass" aria-label="Subclass do visto WHV">
-          <option value="462" ${filters.visaSubclass === "462" ? "selected" : ""}>Subclass 462 (Work and Holiday)</option>
-          <option value="417" ${filters.visaSubclass === "417" ? "selected" : ""}>Subclass 417 (Working Holiday)</option>
-        </select>
-      </label>
-      <label class="regional-toggle">
-        <input type="checkbox" id="only-regional" ${filters.onlyRegional88 ? "checked" : ""}>
-        <span>Apenas elegíveis 88 dias (estimativa)</span>
+      <div class="subclass-segmented" role="group" aria-label="Subclass do visto WHV">
+        <span class="toolbar-label">Visto WHV</span>
+        <div class="segmented-track">
+          <button type="button" class="segmented-btn${filters.visaSubclass === "462" ? " is-active" : ""}" data-subclass="462" aria-pressed="${filters.visaSubclass === "462"}">Subclass 462 · Work &amp; Holiday</button>
+          <button type="button" class="segmented-btn${filters.visaSubclass === "417" ? " is-active" : ""}" data-subclass="417" aria-pressed="${filters.visaSubclass === "417"}">Subclass 417 · Working Holiday</button>
+        </div>
+      </div>
+      <label class="regional-toggle${filters.onlyRegional ? " is-active" : ""}">
+        <input type="checkbox" id="only-regional" ${filters.onlyRegional ? "checked" : ""}>
+        <span>Apenas elegíveis trabalho regional (estimativa)</span>
       </label>
     </div>
   </div>`;
@@ -756,7 +801,7 @@ function profileModalMarkup() {
         <h2 id="profile-modal-title">PERFIL WHV E REGRAS DA IA</h2>
         <button type="button" class="text-action-btn" id="close-profile-modal">Fechar</button>
       </div>
-      <p class="profile-modal-sub">Defina seu perfil e aprove as regras que a IA deve conferir antes de preparar qualquer candidatura.</p>
+      <p class="profile-modal-sub">${escapeHtml(bindTrailingWords("Defina seu perfil e aprove as regras que a IA deve conferir antes de preparar qualquer candidatura."))}</p>
       <div class="profile-grid">
         <label class="profile-field"><span>Seu nome</span><input type="text" id="prof-name" value="${escapeHtml(userProfile.fullName)}" placeholder="Ex.: Lucas Silva"></label>
         <label class="profile-field"><span>Visto WHV</span><select id="prof-subclass"><option value="462" ${userProfile.visaSubclass === "462" ? "selected" : ""}>Subclass 462</option><option value="417" ${userProfile.visaSubclass === "417" ? "selected" : ""}>Subclass 417</option></select></label>
@@ -766,7 +811,7 @@ function profileModalMarkup() {
       <label class="profile-field"><span>Resumo de experiência / CV curto</span><textarea id="prof-exp" rows="3" placeholder="Ex.: Experiência em café/hospitality, colheita e trabalho em equipe.">${escapeHtml(userProfile.experienceSummary)}</textarea></label>
       <div class="profile-checks">
         <label class="regional-toggle"><input type="checkbox" id="prof-allow-missing-pay" ${userProfile.allowMissingSalary ? "checked" : ""}><span>Permitir vagas que não informam salário no anúncio</span></label>
-        <label class="regional-toggle"><input type="checkbox" id="prof-require-88" ${userProfile.requireRegional88 ? "checked" : ""}><span>Exigir que a vaga conte para os 88 dias (estimativa)</span></label>
+        <label class="regional-toggle"><input type="checkbox" id="prof-require-regional" ${userProfile.requireRegional88 ? "checked" : ""}><span>Exigir que a vaga conte para trabalho regional (estimativa)</span></label>
         <label class="regional-toggle"><input type="checkbox" id="prof-approved" ${userProfile.rulesApproved ? "checked" : ""}><span><strong>Aprovo estas regras de autonomia para avaliar minhas vagas</strong></span></label>
       </div>
       <div class="profile-modal-actions">
@@ -796,14 +841,14 @@ function applicationsViewMarkup() {
   });
 
   return `<section class="applications-dashboard" aria-label="Painel de candidaturas">
-    <div class="whv-controls">
+    <div class="whv-controls applications-toolbar">
       <div class="category-chips" role="group" aria-label="Filtrar candidaturas por estado">
         <button type="button" class="category-chip${appStatusFilter === "all" ? " is-active" : ""}" data-app-filter="all">Todas (${applications.length})</button>
         <button type="button" class="category-chip${appStatusFilter === "prepared" ? " is-active" : ""}" data-app-filter="prepared">Preparadas (${applications.filter(a => a.status === "Preparada").length})</button>
         <button type="button" class="category-chip${appStatusFilter === "sent" ? " is-active" : ""}" data-app-filter="sent">Enviadas (${applications.filter(a => a.status === "Enviada").length})</button>
         <button type="button" class="category-chip${appStatusFilter === "blocked" ? " is-active" : ""}" data-app-filter="blocked">Não enviadas (${applications.filter(a => a.status.startsWith("Não enviada")).length})</button>
-        <button type="button" class="text-action-btn" id="edit-rules-btn">Ajustar regras da IA</button>
       </div>
+      <button type="button" class="text-action-btn" id="edit-rules-btn">Ajustar regras da IA</button>
     </div>
     <div class="job-list">
       ${filtered.map(app => `
@@ -814,14 +859,14 @@ function applicationsViewMarkup() {
               <span class="job-employer">${escapeHtml(app.employer)} · ${escapeHtml(app.city)}</span>
               <span class="row-status${app.status.startsWith("Não enviada") ? " is-blocked" : ""}">${escapeHtml(app.status)}</span>
             </div>
-            <p class="job-summary">${escapeHtml(app.reason)}</p>
-            ${app.pitch ? `<div class="pitch-box">${escapeHtml(app.pitch)}</div>` : ""}
-            <div class="job-badges">
-              ${app.pitch ? `<button type="button" class="source-link" data-copy-pitch="${escapeHtml(app.jobId)}">Copiar apresentação</button>` : ""}
-              ${app.pitch ? `<a class="source-link" href="${escapeHtml(buildMailtoHref(app))}">Preparar e-mail ✉️</a>` : ""}
-              <a class="source-link" href="${escapeHtml(app.sourceUrl)}" target="_blank" rel="noopener noreferrer">Abrir anúncio em ${escapeHtml(app.sourceName)} ↗</a>
-              ${app.status === "Preparada" ? `<button type="button" class="badge-88" data-confirm-sent="${escapeHtml(app.jobId)}">Confirmar que enviei ✓</button>` : ""}
-            </div>
+            <p class="job-summary">${escapeHtml(bindTrailingWords(app.reason))}</p>
+            ${app.pitch ? `<p class="pitch-box">${escapeHtml(bindTrailingWords(app.pitch))}</p>` : ""}
+          </div>
+          <div class="row-links">
+            ${app.pitch ? `<button type="button" class="source-link" data-copy-pitch="${escapeHtml(app.jobId)}">Copiar apresentação</button>` : ""}
+            ${app.pitch ? `<a class="source-link" href="${escapeHtml(buildMailtoHref(app))}">Preparar e-mail</a>` : ""}
+            <a class="source-link" href="${escapeHtml(app.sourceUrl)}" target="_blank" rel="noopener noreferrer">Abrir anúncio em ${escapeHtml(app.sourceName)} ↗</a>
+            ${app.status === "Preparada" ? `<button type="button" class="badge-regional" data-confirm-sent="${escapeHtml(app.jobId)}">Confirmar que enviei</button>` : ""}
           </div>
         </article>
       `).join("")}
@@ -834,19 +879,23 @@ function shellMarkup() {
   const cities = distinctCities(activeSourceList);
   const updatedLabel = generatedAt ? `Atualizado em ${formatShortDate(generatedAt)}` : "Vagas WHV · Austrália";
   const pauseLabel = paused ? "Retomar IA" : "Pausar IA";
+  const isDirectory = view === "employers" || view === "accommodation";
+  const searchBtnLabel = view === "employers" ? "Buscar empregadores" : view === "accommodation" ? "Buscar hospedagens" : "Buscar vagas";
 
   return `${symbols()}
     <header class="topbar">
       <a class="brand" href="#vagas" aria-label="HelpWHV, ir para vagas"><span class="brand-sign" aria-hidden="true"><img src="assets/icons/kangaroo.svg" alt="" width="48" height="48"></span><span class="brand-name">HelpWHV</span></a>
-      <nav class="primary-nav" aria-label="Navegação principal"><button class="nav-item${view === "jobs" ? " is-current" : ""}" data-view="jobs" type="button" ${view === "jobs" ? 'aria-current="page"' : ""}>${icon("search")}Vagas</button><button class="nav-item${view === "employers" ? " is-current" : ""}" data-view="employers" type="button" ${view === "employers" ? 'aria-current="page"' : ""}>${icon("pin")}Empregadores 88d</button><button class="nav-item${view === "accommodation" ? " is-current" : ""}" data-view="accommodation" type="button" ${view === "accommodation" ? 'aria-current="page"' : ""}>${icon("tag")}Hospedagem</button><button class="nav-item${view === "applications" ? " is-current" : ""}" data-view="applications" type="button" ${view === "applications" ? 'aria-current="page"' : ""}>${icon("work")}Candidaturas</button></nav>
-      <div class="topbar-actions"><span class="agent-state${paused ? " is-paused" : ""}" role="status"><span class="status-dot" aria-hidden="true"></span>${paused ? "Prévia pausada" : "IA em prévia"}</span><button class="pause-button${paused ? " is-paused" : ""}" id="pause-agent" type="button" aria-label="${pauseLabel}" aria-pressed="${paused}"><span class="pause-mark" aria-hidden="true"></span><span>${pauseLabel}</span></button><button class="profile-button" id="profile-button" type="button" aria-label="Perfil e regras">${icon("user")}</button></div>
+      <nav class="primary-nav" aria-label="Navegação principal"><button class="nav-item${view === "jobs" ? " is-current" : ""}" data-view="jobs" type="button" ${view === "jobs" ? 'aria-current="page"' : ""}>${icon("search")}Vagas</button><button class="nav-item${view === "employers" ? " is-current" : ""}" data-view="employers" type="button" ${view === "employers" ? 'aria-current="page"' : ""}>${icon("pin")}Empregadores</button><button class="nav-item${view === "accommodation" ? " is-current" : ""}" data-view="accommodation" type="button" ${view === "accommodation" ? 'aria-current="page"' : ""}>${icon("tag")}Hospedagem</button><button class="nav-item${view === "applications" ? " is-current" : ""}" data-view="applications" type="button" ${view === "applications" ? 'aria-current="page"' : ""}>${icon("work")}Candidaturas</button></nav>
+      <div class="topbar-actions"><button class="pause-button${paused ? " is-paused" : ""}" id="pause-agent" type="button" aria-label="${pauseLabel}" aria-pressed="${paused}"><span class="pause-mark" aria-hidden="true"></span><span>${pauseLabel}</span></button><button class="profile-button" id="profile-button" type="button" aria-label="Perfil e regras">${icon("user")}</button></div>
     </header>
-    <section class="intro" aria-labelledby="page-title"><span class="preview-tag">${updatedLabel}</span><h1 id="page-title" tabindex="-1">VAGAS DISPONÍVEIS</h1><p>Encontre vagas WHV na Austrália, filtre pelos 88 dias e acesse o anúncio original.</p><svg class="route-path" viewBox="0 0 510 80" preserveAspectRatio="none" aria-hidden="true"><path d="M4 55C55 63 70 44 120 42s87 34 144 18S325 7 369 13s77 35 137 25"/></svg><span class="route-pin" aria-hidden="true">${icon("pin")}</span><div class="road-sign" aria-hidden="true"><span>AUSTRALIA</span><i></i></div><img class="roadside-scrub" src="assets/plates/roadside-scrub.png" alt="" loading="lazy"></section>
+    <section class="intro" aria-labelledby="page-title"><h1 id="page-title" tabindex="-1">VAGAS DISPONÍVEIS</h1><p>Encontre vagas WHV na Austrália, filtre por trabalho regional e acesse o anúncio original.</p><svg class="route-path" viewBox="0 0 510 80" preserveAspectRatio="none" aria-hidden="true"><path d="M4 55C55 63 70 44 120 42s87 34 144 18S325 7 369 13s77 35 137 25"/></svg><span class="route-pin" aria-hidden="true">${icon("pin")}</span><div class="road-sign" aria-hidden="true"><span>AUSTRALIA</span><i></i></div><img class="roadside-scrub" src="assets/plates/roadside-scrub.png" alt="" loading="lazy"></section>
     <main class="main-layout" id="vagas">
       <section class="jobs-area" aria-label="Busca e resultados de vagas">
-        <form class="filterbar" id="search-form" role="search"><label class="search-field">${icon("search")}<span class="visually-hidden">Cargo ou palavra-chave</span><input id="query" type="search" placeholder="Cargo, empregador ou palavra-chave" autocomplete="off"></label><label class="filter-select">${icon("pin")}<span><strong>Local</strong><select id="location" aria-label="Local"><option value="">Todas as cidades</option>${cities.map(city => `<option value="${city}" ${filters.location === city ? "selected" : ""}>${city}</option>`).join("")}</select></span></label><label class="filter-select">${icon("coins")}<span><strong>Salário (A$/h)</strong><select id="salary" aria-label="Salário mínimo"><option value="0">Qualquer valor</option><option value="28">A partir de A$ 28</option><option value="30">A partir de A$ 30</option><option value="35">A partir de A$ 35</option></select></span></label><button class="search-button" type="submit">${icon("search")}Buscar vagas</button></form>
-        ${categoryChipsMarkup()}
-        <div class="result-tools"><div class="result-Tools-left"><strong id="result-count"></strong><button type="button" class="text-action-btn" id="toggle-select-visible">Selecionar visíveis</button></div><label class="sort-control">Ordenar por: <select id="sort" aria-label="Ordenar vagas"><option value="recent">Mais recentes</option><option value="salary">Maior salário</option><option value="title">Cargo A–Z</option></select></label></div>
+        <div class="filter-panel">
+          <form class="filterbar${isDirectory ? " is-directory" : ""}" id="search-form" role="search"><label class="search-field">${icon("search")}<span class="visually-hidden">Cargo ou palavra-chave</span><input id="query" type="search" placeholder="Cargo, empregador ou palavra-chave" autocomplete="off"></label><label class="filter-select">${icon("pin")}<span><strong>Local</strong><select id="location" aria-label="Local"><option value="">Todas as cidades</option>${cities.map(city => `<option value="${city}" ${filters.location === city ? "selected" : ""}>${city}</option>`).join("")}</select></span></label><label class="filter-select" ${isDirectory ? "hidden" : ""}>${icon("coins")}<span><strong>Salário (A$/h)</strong><select id="salary" aria-label="Salário mínimo"><option value="0">Qualquer valor</option><option value="28">A partir de A$ 28</option><option value="30">A partir de A$ 30</option><option value="35">A partir de A$ 35</option></select></span></label><button class="search-button" type="submit">${icon("search")}${searchBtnLabel}</button></form>
+          ${categoryChipsMarkup()}
+        </div>
+        <div class="result-tools"><div class="result-Tools-left"><strong id="result-count"></strong><span class="preview-tag">${updatedLabel}</span><button type="button" class="text-action-btn" id="toggle-select-visible">Selecionar visíveis</button></div><label class="sort-control" ${isDirectory ? "hidden" : ""}><span>Ordenar por:</span><span class="sort-select-wrap"><select id="sort" aria-label="Ordenar vagas"><option value="recent">Mais recentes</option><option value="salary">Maior salário</option><option value="title">Cargo A–Z</option></select></span></label></div>
         <div class="job-list" id="job-list" aria-live="polite"></div>
       </section>
       <aside class="selection-tray" id="lote" aria-labelledby="tray-title"><div class="tray-header"><h2 id="tray-title"><span id="selected-count">0</span> <span id="selected-label">VAGAS SELECIONADAS</span></h2><button type="button" class="text-action-btn" id="clear-selection" hidden>Limpar</button></div><p class="tray-subtitle">Ação em lote (somente nestas vagas)</p><div class="selection-summary" id="selection-summary"></div><fieldset class="mode-fieldset"><legend>Modo de envio</legend><label class="mode-choice${mode === "now" ? " is-active" : ""}"><input type="radio" name="mode" value="now" ${mode === "now" ? "checked" : ""}><span><strong>Enviar agora</strong><small>Na prévia, a IA prepararia candidaturas para <span class="mode-count">0</span> <span class="mode-label">vagas disponíveis</span>.</small></span></label><label class="mode-choice${mode === "auto" ? " is-active" : ""}"><input type="radio" name="mode" value="auto" ${mode === "auto" ? "checked" : ""}><span><strong>Automático</strong><small>Na prévia, a IA acompanharia novas vagas selecionadas até você pausar.</small></span></label></fieldset><button class="bulk-button" id="bulk-apply" type="button">${icon("send")}PEDIR À IA PARA CANDIDATAR</button><p class="scope-note" id="scope-note"></p></aside>
@@ -883,29 +932,38 @@ function observeSelectionTray() {
   trayObserver.observe(trayEl);
 }
 
+function resetPageAndUpdate() {
+  currentPage = 1;
+  updateResults();
+}
+
 function updateResults() {
   const listEl = document.getElementById("job-list");
   if (!listEl) return;
 
   if (view === "accommodation") {
     const visibleStays = filterStays(stays, filters);
-    listEl.innerHTML = visibleStays.length
-      ? visibleStays.map(stayMarkup).join("")
+    const paged = paginate(visibleStays, currentPage, PAGE_SIZE);
+    listEl.innerHTML = paged.slice.length
+      ? paged.slice.map(stayMarkup).join("") + paginationMarkup(paged.page, paged.totalPages, paged.totalItems, "hospedagens")
       : `<div class="empty-results"><h2>Nenhuma hospedagem encontrada</h2><p>Tente outra cidade ou limpe os filtros.</p><button id="clear-filters" type="button">Limpar filtros</button></div>`;
     document.getElementById("result-count").textContent = `${visibleStays.length} ${visibleStays.length === 1 ? "hospedagem encontrada" : "hospedagens encontradas"}`;
     const toggleBtn = document.getElementById("toggle-select-visible");
     if (toggleBtn) toggleBtn.hidden = true;
+    currentPage = paged.page;
     return;
   }
 
   if (view === "employers") {
     const visibleEmp = filterEmployers(employers, filters);
-    listEl.innerHTML = visibleEmp.length
-      ? visibleEmp.map(employerMarkup).join("")
+    const paged = paginate(visibleEmp, currentPage, PAGE_SIZE);
+    listEl.innerHTML = paged.slice.length
+      ? paged.slice.map(employerMarkup).join("") + paginationMarkup(paged.page, paged.totalPages, paged.totalItems, "empregadores")
       : `<div class="empty-results"><h2>Nenhum empregador encontrado</h2><p>Tente outra palavra ou limpe os filtros.</p><button id="clear-filters" type="button">Limpar filtros</button></div>`;
     document.getElementById("result-count").textContent = `${visibleEmp.length} ${visibleEmp.length === 1 ? "empregador encontrado" : "empregadores encontrados"}`;
     const toggleBtn = document.getElementById("toggle-select-visible");
     if (toggleBtn) toggleBtn.hidden = true;
+    currentPage = paged.page;
     return;
   }
 
@@ -926,10 +984,12 @@ function updateResults() {
   }
 
   const visible = filterJobs(jobs, filters);
-  listEl.innerHTML = visible.length
-    ? visible.map(jobMarkup).join("")
+  const paged = paginate(visible, currentPage, PAGE_SIZE);
+  listEl.innerHTML = paged.slice.length
+    ? paged.slice.map(jobMarkup).join("") + paginationMarkup(paged.page, paged.totalPages, paged.totalItems, plural(paged.totalItems))
     : `<div class="empty-results"><h2>Nenhuma vaga encontrada</h2><p>Tente outra palavra ou limpe os filtros.</p><button id="clear-filters" type="button">Limpar filtros</button></div>`;
   document.getElementById("result-count").textContent = `${visible.length} ${plural(visible.length)} ${visible.length === 1 ? "encontrada" : "encontradas"}`;
+  currentPage = paged.page;
 
   const toggleBtn = document.getElementById("toggle-select-visible");
   if (toggleBtn) {
@@ -1020,8 +1080,8 @@ function render() {
     document.getElementById("query").value = filters.query;
     updateResults();
   } else if (view === "employers") {
-    document.title = "Empregadores 88d · HelpWHV";
-    document.getElementById("page-title").textContent = "EMPREGADORES 88 DIAS";
+    document.title = "Empregadores Regionais · HelpWHV";
+    document.getElementById("page-title").textContent = "EMPREGADORES REGIONAIS";
     document.querySelector(".intro p").textContent = "Diretório de fazendas, packhouses e resorts regionais no Google Maps para contato direto (não confirma vaga aberta no momento).";
     document.querySelector(".main-layout").classList.add("applications-view");
     document.querySelector(".selection-tray").hidden = true;
@@ -1118,7 +1178,7 @@ if (typeof document !== "undefined") {
         minHourlyWage: Number(document.getElementById("prof-min-wage").value || 0),
         experienceSummary: document.getElementById("prof-exp").value.trim(),
         allowMissingSalary: Boolean(document.getElementById("prof-allow-missing-pay").checked),
-        requireRegional88: Boolean(document.getElementById("prof-require-88").checked),
+        requireRegional88: Boolean(document.getElementById("prof-require-regional").checked),
         rulesApproved: Boolean(document.getElementById("prof-approved").checked)
       };
       filters.visaSubclass = userProfile.visaSubclass;
@@ -1140,12 +1200,12 @@ if (typeof document !== "undefined") {
     filters.query = document.getElementById("query").value;
     filters.location = document.getElementById("location").value;
     filters.salary = Number(document.getElementById("salary").value);
-    updateResults();
+    resetPageAndUpdate();
   });
   document.addEventListener("input", event => {
     if (event.target.id === "query") {
       filters.query = event.target.value;
-      updateResults();
+      resetPageAndUpdate();
     }
   });
   document.addEventListener("keydown", event => {
@@ -1181,18 +1241,19 @@ if (typeof document !== "undefined") {
       document.querySelectorAll(".mode-choice").forEach(choice => choice.classList.toggle("is-active", choice.querySelector("input").checked));
     } else if (target.id === "sort") {
       filters.sort = target.value;
-      updateResults();
+      resetPageAndUpdate();
     } else if (target.id === "location" || target.id === "salary") {
       filters.location = document.getElementById("location").value;
       filters.salary = Number(document.getElementById("salary").value);
-      updateResults();
+      resetPageAndUpdate();
     } else if (target.id === "visa-subclass") {
       filters.visaSubclass = target.value === "417" ? "417" : "462";
       saveSubclass(filters.visaSubclass);
-      updateResults();
+      resetPageAndUpdate();
     } else if (target.id === "only-regional") {
-      filters.onlyRegional88 = Boolean(target.checked);
-      updateResults();
+      filters.onlyRegional = Boolean(target.checked);
+      target.closest(".regional-toggle")?.classList.toggle("is-active", filters.onlyRegional);
+      resetPageAndUpdate();
     }
   });
   document.addEventListener("click", event => {
@@ -1213,8 +1274,27 @@ if (typeof document !== "undefined") {
       loadContractJobs();
       return;
     }
+    if (button.dataset.subclass) {
+      filters.visaSubclass = button.dataset.subclass === "417" ? "417" : "462";
+      saveSubclass(filters.visaSubclass);
+      document.querySelectorAll("[data-subclass]").forEach(btn => {
+        const active = btn.dataset.subclass === filters.visaSubclass;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-pressed", String(active));
+      });
+      resetPageAndUpdate();
+      return;
+    }
+    if (button.dataset.page) {
+      currentPage = Number(button.dataset.page);
+      updateResults();
+      listEl = document.getElementById("job-list");
+      if (listEl) listEl.scrollIntoView({ behavior: "instant", block: "start" });
+      return;
+    }
     if (button.id === "clear-categories") {
       filters.categories = [];
+      filters.stayTypes = [];
       render();
       document.querySelector(".category-chip")?.focus();
       return;
@@ -1304,16 +1384,16 @@ if (typeof document !== "undefined") {
       return;
     }
     if (button.id === "clear-filters") {
-      filters = { ...filters, query: "", location: "", salary: 0, categories: [], stayTypes: [], onlyRegional88: false, sort: "recent" };
+      filters = { ...filters, query: "", location: "", salary: 0, categories: [], stayTypes: [], onlyRegional: false, sort: "recent" };
       render();
     }
     if (button.dataset.apply) {
       openJobId = openJobId === button.dataset.apply ? "" : button.dataset.apply;
       updateResults();
-      const menu = openJobId && document.getElementById(`options-${openJobId}`);
+      const menu = openJobId ? document.getElementById(`options-${openJobId}`) : null;
       const target = menu ? menu.firstElementChild : document.querySelector(`[data-apply="${button.dataset.apply}"]`);
       target?.focus({ preventScroll: true });
-      menu?.lastElementChild.scrollIntoView({ block: "center", behavior: "instant" });
+      menu?.lastElementChild?.scrollIntoView({ block: "center", behavior: "instant" });
     }
     if (button.dataset.applyNow) {
       const targetId = button.dataset.applyNow;
@@ -1356,6 +1436,7 @@ if (typeof document !== "undefined") {
     }
     if (button.dataset.view) {
       view = button.dataset.view;
+      currentPage = 1;
       const activeList = view === "employers" ? employers : view === "accommodation" ? stays : jobs;
       const availableCities = distinctCities(activeList);
       if (filters.location && !availableCities.includes(filters.location)) {

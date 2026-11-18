@@ -63,17 +63,17 @@ test("toViewJob mapeia registro do contrato sem inventar salário ou local ausen
   assert.equal(missing.city, "Não informada");
 });
 
-test("filterJobs filtra por categorias WHV, salário (incluindo pay null quando salary=0), 88 dias e ordena sem mutar a lista", () => {
+test("filterJobs filtra por categorias WHV, salário (incluindo pay null quando salary=0), trabalho regional e ordena sem mutar a lista", () => {
   const viewJobs = contractData.jobs.map(toViewJob);
   const originalIds = viewJobs.map(j => j.id);
 
-  const allWithZeroSalary = filterJobs(viewJobs, { query: "", location: "", salary: 0, categories: [], onlyRegional88: false, visaSubclass: "462", sort: "recent" });
+  const allWithZeroSalary = filterJobs(viewJobs, { query: "", location: "", salary: 0, categories: [], onlyRegional: false, visaSubclass: "462", sort: "recent" });
   assert.equal(allWithZeroSalary.length, viewJobs.length);
 
-  const min30 = filterJobs(viewJobs, { query: "", location: "", salary: 30, categories: [], onlyRegional88: false, visaSubclass: "462", sort: "salary" });
+  const min30 = filterJobs(viewJobs, { query: "", location: "", salary: 30, categories: [], onlyRegional: false, visaSubclass: "462", sort: "salary" });
   assert.ok(min30.every(j => j.pay && j.pay.period === "hour" && (j.pay.max ?? j.pay.min) >= 30));
 
-  const fruitAndFarm = filterJobs(viewJobs, { query: "", location: "", salary: 0, categories: ["Fruit Picking", "Farm"], onlyRegional88: true, visaSubclass: "462", sort: "recent" });
+  const fruitAndFarm = filterJobs(viewJobs, { query: "", location: "", salary: 0, categories: ["Fruit Picking", "Farm"], onlyRegional: true, visaSubclass: "462", sort: "recent" });
   assert.ok(fruitAndFarm.length > 0);
   assert.ok(fruitAndFarm.every(j => ["Fruit Picking", "Farm"].includes(j.category) && j.regionalWork["462"] === "likely"));
   assert.deepEqual(viewJobs.map(j => j.id), originalIds);
@@ -145,7 +145,7 @@ test("toViewEmployer mapeia empregador do contrato, sanitiza URLs javascript: e 
   assert.equal(unsafe.googleMapsUrl, "#");
 });
 
-test("filterEmployers filtra por busca, cidade, categorias WHV e 88 dias sem mutar a lista", () => {
+test("filterEmployers filtra por busca, cidade, categorias WHV e trabalho regional sem mutar a lista", () => {
   const viewEmployers = employersData.employers.map(toViewEmployer);
   const originalIds = viewEmployers.map(e => e.id);
 
@@ -153,7 +153,7 @@ test("filterEmployers filtra por busca, cidade, categorias WHV e 88 dias sem mut
     query: "",
     location: "",
     categories: ["Fruit Picking", "Farm"],
-    onlyRegional88: true,
+    onlyRegional: true,
     visaSubclass: "462"
   });
   assert.ok(fruitAndFarm.length > 0);
@@ -163,7 +163,7 @@ test("filterEmployers filtra por busca, cidade, categorias WHV e 88 dias sem mut
     query: "citrus",
     location: "Mildura",
     categories: [],
-    onlyRegional88: false,
+    onlyRegional: false,
     visaSubclass: "462"
   });
   assert.ok(byMildura.length >= 1);
@@ -171,11 +171,11 @@ test("filterEmployers filtra por busca, cidade, categorias WHV e 88 dias sem mut
   assert.deepEqual(viewEmployers.map(e => e.id), originalIds);
 });
 
-test("employerMarkup exibe selo 88 dias, telefone e omite botão de site quando website é null", () => {
+test("employerMarkup exibe selo regional, telefone e omite botão de site quando website é null", () => {
   const withSite = toViewEmployer(employersData.employers[0]);
   const htmlWithSite = employerMarkup(withSite);
   assert.ok(htmlWithSite.includes("Site oficial ↗"));
-  assert.ok(htmlWithSite.includes("88 dias (462) · estimativa"));
+  assert.ok(htmlWithSite.includes("Regional (462) · estimativa"));
 
   const withoutSite = toViewEmployer({
     ...employersData.employers[0],
@@ -244,13 +244,13 @@ test("toViewStay, filterStays e stayMarkup mapeiam, filtram e renderizam hospeda
     query: "",
     location: "",
     stayTypes: ["Working Hostel"],
-    onlyRegional88: true
+    onlyRegional: true
   });
   assert.ok(workingHostels.length > 0);
   assert.ok(workingHostels.every(s => s.stayType === "Working Hostel" && s.inRegionalZone === true));
 
   const html = stayMarkup(workingHostels[0]);
-  assert.ok(html.includes("Zona regional 88d"));
+  assert.ok(html.includes("Zona regional"));
   assert.ok(html.includes("Working Hostel"));
 });
 
