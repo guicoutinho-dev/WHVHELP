@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-17",
+  "officialUrls": {
+    "417": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/specified-work",
+    "462": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/specified-462-work"
+  },
+  "subclasses": {
+    "417": {
+      "Farm": "regionalAustralia",
+      "Fruit Picking": "regionalAustralia",
+      "Construction": "regionalAustralia",
+      "Hospitality": "northernOrRemoteAustralia",
+      "Childcare": "none",
+      "Cleaning": "none",
+      "Driving": "none",
+      "Sales": "none",
+      "Trades": "none",
+      "Warehouse": "none",
+      "Other": "none"
+    },
+    "462": {
+      "Farm": "regionalAustralia",
+      "Fruit Picking": "regionalAustralia",
+      "Construction": "regionalAustralia",
+      "Hospitality": "northernOrRemoteAustralia",
+      "Childcare": "none",
+      "Cleaning": "none",
+      "Driving": "none",
+      "Sales": "none",
+      "Trades": "none",
+      "Warehouse": "none",
+      "Other": "none"
+    }
+  }
+}

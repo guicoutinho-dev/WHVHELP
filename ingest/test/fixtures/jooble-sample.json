@@ -1,0 +1,65 @@
+{
+  "jobs": [
+    {
+      "id": "jb-9001",
+      "title": "Early Childhood Childcare Assistant",
+      "snippet": "Support room leaders with play-based learning activities, outdoor supervision and meal times in community daycare centre.",
+      "updated": "2026-11-16T06:00:00Z",
+      "link": "https://au.jooble.org/desc/jb-9001",
+      "salary": "",
+      "type": "Part-time",
+      "company": "Little Gumtrees Early Learning",
+      "location": "Sydney, NSW",
+      "postcode": "2000"
+    },
+    {
+      "id": "jb-9002",
+      "title": "MR Delivery Driver — Regional Produce",
+      "snippet": "Multi-drop refrigerated truck route delivering fresh produce between regional depots and grocers. Valid MR licence required.",
+      "updated": "2026-11-15T14:00:00Z",
+      "link": "https://au.jooble.org/desc/jb-9002",
+      "salary": "33.50",
+      " salaryPeriod": "hour",
+      "type": "Casual",
+      "company": "Outback Freight Links",
+      "location": "Brisbane, QLD",
+      "postcode": "4000"
+    },
+    {
+      "id": "jb-9003",
+      "title": "Retail Sales Assistant — Outdoor Gear",
+      "snippet": "Customer service, point-of-sale operation and stock replenishment for busy camping and travel store.",
+      "updated": "2026-11-14T09:00:00Z",
+      "link": "https://au.jooble.org/desc/jb-9003",
+      "salary": "28.80",
+      "type": "Casual",
+      "company": "Red Centre Outfitters",
+      "location": "Perth, WA",
+      "postcode": "6000"
+    },
+    {
+      "id": "jb-9004",
+      "title": "Trade Qualified Carpenter — Commercial Fitout",
+      "snippet": "Framing, cladding and timber deck installation across coastal commercial projects. Own hand tools and White Card.",
+      "updated": "2026-11-13T18:00:00Z",
+      "link": "https://au.jooble.org/desc/jb-9004",
+      "salary": "42.00",
+      "type": "Contract",
+      "company": "Tasman Timberworks",
+      "location": "Hobart, TAS",
+      "postcode": "7000"
+    },
+    {
+      "id": "jb-9005",
+      "title": "Event Ticketing & Gate Operations Coordinator",
+      "snippet": "Wristband scanning, queue coordination and information booth support for summer festival season.",
+      "updated": "2026-11-12T12:00:00Z",
+      "link": "https://au.jooble.org/desc/jb-9005",
+      "salary": "30.00",
+      "type": "Casual",
+      "company": "Harbour Live Events",
+      "location": "Gold Coast, QLD",
+      "postcode": "4217"
+    }
+  ]
+}

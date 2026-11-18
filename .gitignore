@@ -1,0 +1,9 @@
+node_modules/
+.superpowers/
+.impeccable/build/
+.impeccable/review/
+.impeccable/hook.cache.json
+sites/
+*.tmp
+.env
+.env.*

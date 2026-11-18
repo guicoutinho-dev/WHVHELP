@@ -1,0 +1,69 @@
+name: Ingest WHV Jobs & Publish to Pages
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-jobs-ingest"
+  cancel-in-progress: false
+
+jobs:
+  ingest-and-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Run unit & contract tests
+        run: npm test
+
+      - name: Download previous jobs.json from GitHub Pages (if deployed)
+        continue-on-error: true
+        env:
+          PREVIOUS_JOBS_URL: ${{ vars.JOBS_JSON_URL || 'https://guicoutinho-dev.github.io/WHVHELP/jobs.json' }}
+        run: |
+          if [ -n "$PREVIOUS_JOBS_URL" ]; then
+            mkdir -p data
+            curl -fsSL "$PREVIOUS_JOBS_URL" -o data/jobs.json || true
+          fi
+
+      - name: Run ingestion pipeline
+        env:
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: |
+          if [ -n "$ADZUNA_APP_ID" ] || [ -n "$JOOBLE_API_KEY" ] || [ -n "$FIRECRAWL_API_KEY" ]; then
+            npm run ingest
+          else
+            echo "No API secrets configured yet; generating initial seed jobs.json"
+            npm run ingest:seed
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload data artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "data"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

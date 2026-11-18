@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T23:11:27Z",
+  "title": "Design System: HelpWHV",
+  "extensions": {
+    "colorMeta": {
+      "petrol": {
+        "role": "primary",
+        "displayName": "Petrol",
+        "canonical": "#0a4747",
+        "tonalRamp": [
+          "#092426",
+          "#0a3435",
+          "#0a4747",
+          "#236466",
+          "#568786",
+          "#91b1ae",
+          "#c8d9d5",
+          "#edf3f0"
+        ]
+      },
+      "rust": {
+        "role": "secondary",
+        "displayName": "Rust",
+        "canonical": "#b63b18",
+        "tonalRamp": [
+          "#351c16",
+          "#63271a",
+          "#8e3219",
+          "#b63b18",
+          "#d3633e",
+          "#e79b7f",
+          "#f2cbbb",
+          "#faeee8"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Mineral Ground",
+        "canonical": "#eaf3f0",
+        "tonalRamp": [
+          "#1b302e",
+          "#35504c",
+          "#55716b",
+          "#7e9b92",
+          "#a9c1b8",
+          "#c9dfd4",
+          "#eaf3f0",
+          "#f7faf8"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#122c33",
+        "tonalRamp": [
+          "#0d1b20",
+          "#122c33",
+          "#294750",
+          "#4d6970",
+          "#779096",
+          "#a7b9bc",
+          "#d6e0df",
+          "#f0f5f3"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Work White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#202826",
+          "#3b4844",
+          "#5f6d67",
+          "#89968f",
+          "#b2bcb5",
+          "#d9dfd9",
+          "#f1f3f0",
+          "#ffffff"
+        ]
+      },
+      "selected-mint": {
+        "role": "neutral",
+        "displayName": "Selected Mint",
+        "canonical": "#e8f4ed",
+        "tonalRamp": [
+          "#173029",
+          "#315348",
+          "#537968",
+          "#79a18a",
+          "#a7c7b2",
+          "#cee2d4",
+          "#e8f4ed",
+          "#f6faf7"
+        ]
+      },
+      "summary-mint": {
+        "role": "neutral",
+        "displayName": "Summary Mint",
+        "canonical": "#edf5f1",
+        "tonalRamp": [
+          "#1a3029",
+          "#355248",
+          "#56776a",
+          "#80a18d",
+          "#abc8b8",
+          "#d1e3d8",
+          "#edf5f1",
+          "#f8fbf9"
+        ]
+      },
+      "focus-gold": {
+        "role": "tertiary",
+        "displayName": "Focus Gold",
+        "canonical": "#f4ad22",
+        "tonalRamp": [
+          "#342813",
+          "#674619",
+          "#9a671b",
+          "#c88a1d",
+          "#f4ad22",
+          "#f8ca67",
+          "#fbe3ae",
+          "#fdf5df"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Desktop page heading; scales down on mobile."
+      },
+      "title": {
+        "displayName": "Vacancy Title",
+        "purpose": "Job title inside each result row."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Condensed search and application commands."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Form values and explanatory copy."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Location, pay, type, and date in compact rows."
+      }
+    },
+    "shadows": [
+      {
+        "name": "mobile-batch-dock",
+        "value": "0 -5px 18px #0003",
+        "purpose": "Separate the fixed mobile batch action from scrolling vacancies."
+      },
+      {
+        "name": "notice",
+        "value": "0 8px 24px #0003",
+        "purpose": "Keep transient status feedback distinct from the page."
+      }
+    ],
+    "motion": [
+      {
+        "name": "automatic-switch",
+        "value": "transform .2s ease-out",
+        "purpose": "Slide the switch thumb when automatic application changes state; disabled for reduced motion."
+      },
+      {
+        "name": "page-scroll",
+        "value": "scroll-behavior: smooth",
+        "purpose": "Move to the batch tray from the mobile dock; disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-workspace",
+        "value": "1200px"
+      },
+      {
+        "name": "stacked-workspace",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "600px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Current Navigation Item",
+      "kind": "nav",
+      "description": "Khand navigation on petrol with a pale current-state outline.",
+      "html": "<nav class=\"ds-nav\"><button class=\"ds-nav-item ds-current\" type=\"button\" aria-current=\"page\">Vagas</button></nav>",
+      "css": ".ds-nav { display: inline-flex; padding: 10px; background: linear-gradient(110deg, #0b5152, #0a4142); } .ds-nav-item { display: inline-flex; align-items: center; padding: 9px 17px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: #f2f7f5; font: 700 25px/1 Khand, sans-serif; cursor: pointer; } .ds-nav-item.ds-current { background: #ffffff18; border-color: #e0f1ef; } .ds-nav-item:hover { background: #ffffff24; } .ds-nav-item:focus-visible { outline: 3px solid #f4ad22; outline-offset: 3px; }"
+    },
+    {
+      "name": "Search Button",
+      "kind": "button",
+      "refersTo": "button-search",
+      "description": "Solid rust command for filtering vacancies.",
+      "html": "<button class=\"ds-search-button\" type=\"button\">Buscar vagas</button>",
+      "css": ".ds-search-button { height: 55px; padding: 0 18px; border: 0; border-radius: 8px; background: var(--rust); color: #fff; font: 700 23px/1 Khand, sans-serif; cursor: pointer; } .ds-search-button:hover { background: #952e14; } .ds-search-button:focus-visible { outline: 3px solid #f4ad22; outline-offset: 3px; }"
+    },
+    {
+      "name": "Vacancy Action",
+      "kind": "button",
+      "refersTo": "button-row",
+      "description": "Outlined rust action that opens immediate and automatic preview choices for one vacancy.",
+      "html": "<button class=\"ds-row-action\" type=\"button\">Candidatar com IA</button>",
+      "css": ".ds-row-action { height: 45px; padding: 0 12px; border: 1.5px solid var(--rust); border-radius: 8px; background: transparent; color: #aa3015; font: 700 22px/1 Khand, sans-serif; cursor: pointer; } .ds-row-action:hover { background: #f8e8e1; } .ds-row-action:focus-visible { outline: 3px solid #f4ad22; outline-offset: 3px; }"
+    },
+    {
+      "name": "Batch Action",
+      "kind": "button",
+      "refersTo": "button-bulk",
+      "description": "Full-width rust action at the end of the selection tray.",
+      "html": "<button class=\"ds-bulk-button\" type=\"button\">Pedir à IA para candidatar</button>",
+      "css": ".ds-bulk-button { min-height: 66px; width: 100%; padding: 0 16px; border: 0; border-radius: 8px; background: var(--rust); color: #fff; font: 700 28px/1 Khand, sans-serif; cursor: pointer; } .ds-bulk-button:hover { background: #952e14; } .ds-bulk-button:focus-visible { outline: 3px solid #f4ad22; outline-offset: 3px; } .ds-bulk-button:disabled { opacity: .58; cursor: not-allowed; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "field-search",
+      "description": "White search control with a cool outline and compact type.",
+      "html": "<label class=\"ds-search-field\"><span class=\"ds-field-label\">Cargo ou palavra-chave</span><input type=\"search\" placeholder=\"Cargo ou palavra-chave\" aria-label=\"Cargo ou palavra-chave\"></label>",
+      "css": ".ds-search-field { display: flex; align-items: center; height: 61px; padding: 0 15px; border: 1.5px solid #b9c3c9; border-radius: 9px; background: #fff; color: var(--ink); } .ds-search-field:focus-within { outline: 3px solid #f4ad22; outline-offset: 3px; } .ds-field-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .ds-search-field input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: 17px 'Segoe UI', Arial, sans-serif; } .ds-search-field input::placeholder { color: #42565e; opacity: 1; }"
+    },
+    {
+      "name": "Preview Tag",
+      "kind": "chip",
+      "description": "Muted mint label identifying the sample-data preview.",
+      "html": "<span class=\"ds-preview-tag\">Prévia · dados fictícios</span>",
+      "css": ".ds-preview-tag { display: inline-flex; align-items: center; min-height: 30px; padding: 0 10px; border-radius: 5px; background: #bfddd4; color: #173b43; font: 15px 'Segoe UI', Arial, sans-serif; }"
+    },
+    {
+      "name": "Selected Vacancy Row",
+      "kind": "card",
+      "refersTo": "job-row-selected",
+      "description": "Compact result row with a mint selection state and individual action.",
+      "html": "<article class=\"ds-job-row\"><input type=\"checkbox\" checked aria-label=\"Selecionar Barista\"><div><h2>Barista</h2><p>Melbourne, VIC · A$ 29,00/h · Tempo parcial</p></div><button type=\"button\">Candidatar com IA</button></article>",
+      "css": ".ds-job-row { display: flex; align-items: center; gap: 16px; min-height: 93px; padding: 8px 20px; background: #e8f4ed; color: var(--ink); font-family: 'Segoe UI', Arial, sans-serif; } .ds-job-row input { width: 25px; height: 25px; accent-color: var(--rust); } .ds-job-row h2 { margin: 0 0 5px; font: 700 27px/.95 Khand, sans-serif; } .ds-job-row p { margin: 0; font-size: 13px; } .ds-job-row button { margin-left: auto; height: 45px; padding: 0 12px; border: 1.5px solid var(--rust); border-radius: 8px; background: transparent; color: #aa3015; font: 700 22px/1 Khand, sans-serif; cursor: pointer; } .ds-job-row button:hover { background: #f8e8e1; } .ds-job-row button:focus-visible, .ds-job-row input:focus-visible { outline: 3px solid #f4ad22; outline-offset: 3px; }"
+    },
+    {
+      "name": "Selected Batch Mode",
+      "kind": "custom",
+      "refersTo": "mode-choice-selected",
+      "description": "Full-row radio choice for the selected application mode.",
+      "html": "<label class=\"ds-mode-choice\"><input type=\"radio\" name=\"ds-mode\" checked><span><strong>Enviar agora</strong><small>Na prévia, a IA prepararia candidaturas para as vagas disponíveis.</small></span></label>",
+      "css": ".ds-mode-choice { display: flex; align-items: flex-start; gap: 15px; min-height: 90px; padding: 14px 13px; border-radius: 10px; background: #e9f3ed; color: var(--ink); font-family: 'Segoe UI', Arial, sans-serif; cursor: pointer; } .ds-mode-choice input { flex: none; width: 25px; height: 25px; margin: 1px 0 0; accent-color: var(--rust); } .ds-mode-choice strong { display: block; margin-bottom: 3px; font-size: 20px; } .ds-mode-choice small { display: block; color: #35454b; font-size: 16px; line-height: 1.2; } .ds-mode-choice input:focus-visible { outline: 3px solid #f4ad22; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Caminhos da Austrália",
+    "overview": "A teal and mineral mint workspace borrows the clarity of a route map and roadside wayfinding without turning the task into scenery. Rust marks a deliberate application action. Khand compresses headings and commands so vacancies, selection, and agent state remain easy to scan.\n\nThe interface is an operating surface: white work areas sit on a pale mint ground, selected records receive a quiet mint fill, and the next action remains visible in the selection tray. A single dashed route trace and the road sign give the current Australian job view its place. They do not become a repeated ornament in each card.",
+    "keyCharacteristics": [
+      "Petrol navigation over a mineral mint ground.",
+      "Rust on application and search actions.",
+      "Condensed Khand headings over compact Segoe UI details.",
+      "One route trace above a dense, operable vacancy list."
+    ],
+    "rules": [
+      {
+        "name": "The Rust Means Action Rule",
+        "body": "Reserve rust for commands and user selections; keep ordinary metadata in ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Use Khand for orientation and commands, and Segoe UI for facts people must compare.",
+        "section": "typography"
+      },
+      {
+        "name": "The List First Rule",
+        "body": "Preserve room for comparing vacancies; keep bulk scope and the next action legible beside or below that list.",
+        "section": "layout"
+      },
+      {
+        "name": "The Tonal Surface Rule",
+        "body": "Use a background change for selection before adding elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep task facts and controls compact enough to compare several vacancies at once.",
+      "**Do** use mint fill to connect a selected row with the batch summary and mode choice.",
+      "**Do** keep a visible action and scope count for the selected group."
+    ],
+    "donts": [
+      "**Don't** repeat the route trace inside every row or panel; one line establishes the place.",
+      "**Don't** use rust as a general background or metadata color; it should signal action and selection.",
+      "**Don't** make every work surface appear raised; the existing hierarchy is primarily tonal."
+    ]
+  }
+}

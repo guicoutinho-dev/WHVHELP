@@ -1,0 +1,101 @@
+{
+  "results": [
+    {
+      "id": "4810201",
+      "title": "Citrus & Table Grape Fruit Picker",
+      "description": "Seasonal harvest crew needed across Mildura orchards. Piece rate and hourly minimum guarantee under Horticulture Award. Outdoor physical work.",
+      "created": "2026-11-16T04:00:00Z",
+      "redirect_url": "https://www.adzuna.com.au/details/4810201",
+      "salary_min": 29.33,
+      "salary_max": 33.5,
+      "contract_time": "full_time",
+      "contract_type": "contract",
+      "company": { "display_name": "Murray Valley Orchards" },
+      "location": {
+        "display_name": "Mildura, Victoria",
+        "area": ["Australia", "Victoria", "Mallee", "Mildura"],
+        "postcode": "3500"
+      }
+    },
+    {
+      "id": "4810202",
+      "title": "Dairy Farm Hand",
+      "description": "Morning and afternoon milking shifts, pasture management, calf feeding and general tractor maintenance in regional Victoria.",
+      "created": "2026-11-16T01:00:00Z",
+      "redirect_url": "https://www.adzuna.com.au/details/4810202",
+      "salary_min": 30.5,
+      "salary_max": 34.0,
+      "contract_time": "full_time",
+      "company": { "display_name": "Goulburn Valley Pastures" },
+      "location": {
+        "display_name": "Shepparton, Victoria",
+        "area": ["Australia", "Victoria", "Shepparton"],
+        "postcode": "3630"
+      }
+    },
+    {
+      "id": "4810203",
+      "title": "Specialty Barista & Cafe All Rounder",
+      "description": "Busy coastal cafe seeking experienced espresso barista for morning shifts. RSA helpful, fast-paced beachfront service.",
+      "created": "2026-11-17T02:30:00Z",
+      "redirect_url": "https://www.adzuna.com.au/details/4810203",
+      "salary_min": 31.25,
+      "salary_max": 34.0,
+      "contract_time": "part_time",
+      "company": { "display_name": "Coral Sea Roasters" },
+      "location": {
+        "display_name": "Cairns, Queensland",
+        "area": ["Australia", "Queensland", "Cairns"],
+        "postcode": "4870"
+      }
+    },
+    {
+      "id": "4810204",
+      "title": "Construction Site General Labourer",
+      "description": "Civil and commercial building site cleanup, material handling and trades assistance. White Card and PPE required.",
+      "created": "2026-11-15T22:00:00Z",
+      "redirect_url": "https://www.adzuna.com.au/details/4810204",
+      "salary_min": 35.0,
+      "salary_max": 39.5,
+      "contract_time": "full_time",
+      "company": { "display_name": "Southern Cross Civil" },
+      "location": {
+        "display_name": "Townsville, Queensland",
+        "area": ["Australia", "Queensland", "Townsville"],
+        "postcode": "4810"
+      }
+    },
+    {
+      "id": "4810205",
+      "title": "Warehouse Pick Packer (LF Forklift)",
+      "description": "Cold storage distribution centre voice picking, RF scanning, pallet wrapping and container unloading.",
+      "created": "2026-11-15T08:00:00Z",
+      "redirect_url": "https://www.adzuna.com.au/details/4810205",
+      "salary_min": 32.0,
+      "salary_max": 35.0,
+      "contract_time": "full_time",
+      "company": { "display_name": "Pacific Cold Logistics" },
+      "location": {
+        "display_name": "Melbourne, Victoria",
+        "area": ["Australia", "Victoria", "Melbourne"],
+        "postcode": "3000"
+      }
+    },
+    {
+      "id": "4810206",
+      "title": "Commercial & Resort Housekeeping Cleaner",
+      "description": "Daily room servicing, linen turnaround and public area cleaning for tropical eco-resort.",
+      "created": "2026-11-14T10:00:00Z",
+      "redirect_url": "https://www.adzuna.com.au/details/4810206",
+      "salary_min": 29.0,
+      "salary_max": 31.5,
+      "contract_time": "part_time",
+      "company": { "display_name": "Mindil Beach Stays" },
+      "location": {
+        "display_name": "Darwin, Northern Territory",
+        "area": ["Australia", "Northern Territory", "Darwin"],
+        "postcode": "0800"
+      }
+    }
+  ]
+}

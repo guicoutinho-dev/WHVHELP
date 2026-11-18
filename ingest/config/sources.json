@@ -1,0 +1,31 @@
+{
+  "queries": [
+    "fruit picker",
+    "farm hand",
+    "barista",
+    "kitchen hand",
+    "cleaner",
+    "warehouse pick packer",
+    "construction labourer",
+    "electrician carpenter",
+    "childcare educator",
+    "delivery driver",
+    "retail sales assistant"
+  ],
+  "forbiddenHosts": [
+    "facebook.com",
+    "gumtree.com.au",
+    "seek.com.au",
+    "indeed.com",
+    "linkedin.com"
+  ],
+  "publicPages": [
+    {
+      "id": "sunraysia-harvest-board",
+      "name": "Sunraysia Harvest Noticeboard",
+      "url": "https://jobs.sunraysiaharvest.example.au/openings",
+      "robotsAllowed": true,
+      "termsCheckedAt": "2026-11-17"
+    }
+  ]
+}

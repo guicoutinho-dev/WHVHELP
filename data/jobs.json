@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-18T00:53:36.821Z",
+  "sources": [
+    {
+      "id": "adzuna",
+      "ok": true,
+      "fetched": 6,
+      "kept": 6,
+      "error": null
+    },
+    {
+      "id": "jooble",
+      "ok": true,
+      "fetched": 5,
+      "kept": 5,
+      "error": null
+    },
+    {
+      "id": "public-pages",
+      "ok": true,
+      "fetched": 2,
+      "kept": 2,
+      "error": null
+    }
+  ],
+  "jobs": [
+    {
+      "id": "adzuna:4810201",
+      "title": "Citrus & Table Grape Fruit Picker",
+      "category": "Fruit Picking",
+      "employmentType": "full_time",
+      "employer": "Murray Valley Orchards",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "pay": {
+        "min": 29.33,
+        "max": 33.5,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-16T04:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "likely",
+        "462": "likely"
+      },
+      "summary": "Seasonal harvest crew needed across Mildura orchards. Piece rate and hourly minimum guarantee under Horticulture Award. Outdoor physical work.",
+      "source": {
+        "id": "adzuna",
+        "name": "Adzuna",
+        "url": "https://www.adzuna.com.au/details/4810201"
+      }
+    },
+    {
+      "id": "adzuna:4810202",
+      "title": "Dairy Farm Hand",
+      "category": "Farm",
+      "employmentType": "full_time",
+      "employer": "Goulburn Valley Pastures",
+      "location": {
+        "city": "Shepparton",
+        "state": "VIC",
+        "postcode": "3630"
+      },
+      "pay": {
+        "min": 30.5,
+        "max": 34,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-16T01:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "likely",
+        "462": "likely"
+      },
+      "summary": "Morning and afternoon milking shifts, pasture management, calf feeding and general tractor maintenance in regional Victoria.",
+      "source": {
+        "id": "adzuna",
+        "name": "Adzuna",
+        "url": "https://www.adzuna.com.au/details/4810202"
+      }
+    },
+    {
+      "id": "adzuna:4810203",
+      "title": "Specialty Barista & Cafe All Rounder",
+      "category": "Hospitality",
+      "employmentType": "part_time",
+      "employer": "Coral Sea Roasters",
+      "location": {
+        "city": "Cairns",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "pay": {
+        "min": 31.25,
+        "max": 34,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-17T02:30:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "likely",
+        "462": "likely"
+      },
+      "summary": "Busy coastal cafe seeking experienced espresso barista for morning shifts. RSA helpful, fast-paced beachfront service.",
+      "source": {
+        "id": "adzuna",
+        "name": "Adzuna",
+        "url": "https://www.adzuna.com.au/details/4810203"
+      }
+    },
+    {
+      "id": "adzuna:4810204",
+      "title": "Construction Site General Labourer",
+      "category": "Construction",
+      "employmentType": "full_time",
+      "employer": "Southern Cross Civil",
+      "location": {
+        "city": "Townsville",
+        "state": "QLD",
+        "postcode": "4810"
+      },
+      "pay": {
+        "min": 35,
+        "max": 39.5,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-15T22:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "likely",
+        "462": "likely"
+      },
+      "summary": "Civil and commercial building site cleanup, material handling and trades assistance. White Card and PPE required.",
+      "source": {
+        "id": "adzuna",
+        "name": "Adzuna",
+        "url": "https://www.adzuna.com.au/details/4810204"
+      }
+    },
+    {
+      "id": "adzuna:4810205",
+      "title": "Warehouse Pick Packer (LF Forklift)",
+      "category": "Warehouse",
+      "employmentType": "full_time",
+      "employer": "Pacific Cold Logistics",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "pay": {
+        "min": 32,
+        "max": 35,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-15T08:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Cold storage distribution centre voice picking, RF scanning, pallet wrapping and container unloading.",
+      "source": {
+        "id": "adzuna",
+        "name": "Adzuna",
+        "url": "https://www.adzuna.com.au/details/4810205"
+      }
+    },
+    {
+      "id": "adzuna:4810206",
+      "title": "Commercial & Resort Housekeeping Cleaner",
+      "category": "Cleaning",
+      "employmentType": "part_time",
+      "employer": "Mindil Beach Stays",
+      "location": {
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "pay": {
+        "min": 29,
+        "max": 31.5,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-14T10:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Daily room servicing, linen turnaround and public area cleaning for tropical eco-resort.",
+      "source": {
+        "id": "adzuna",
+        "name": "Adzuna",
+        "url": "https://www.adzuna.com.au/details/4810206"
+      }
+    },
+    {
+      "id": "jooble:jb-9001",
+      "title": "Early Childhood Childcare Assistant",
+      "category": "Childcare",
+      "employmentType": "part_time",
+      "employer": "Little Gumtrees Early Learning",
+      "location": {
+        "city": "Sydney",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "pay": null,
+      "postedAt": "2026-11-16T06:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Support room leaders with play-based learning activities, outdoor supervision and meal times in community daycare centre.",
+      "source": {
+        "id": "jooble",
+        "name": "Jooble",
+        "url": "https://au.jooble.org/desc/jb-9001"
+      }
+    },
+    {
+      "id": "jooble:jb-9002",
+      "title": "MR Delivery Driver — Regional Produce",
+      "category": "Driving",
+      "employmentType": "casual",
+      "employer": "Outback Freight Links",
+      "location": {
+        "city": "Brisbane",
+        "state": "QLD",
+        "postcode": "4000"
+      },
+      "pay": {
+        "min": 33.5,
+        "max": null,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-15T14:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Multi-drop refrigerated truck route delivering fresh produce between regional depots and grocers. Valid MR licence required.",
+      "source": {
+        "id": "jooble",
+        "name": "Jooble",
+        "url": "https://au.jooble.org/desc/jb-9002"
+      }
+    },
+    {
+      "id": "jooble:jb-9003",
+      "title": "Retail Sales Assistant — Outdoor Gear",
+      "category": "Sales",
+      "employmentType": "casual",
+      "employer": "Red Centre Outfitters",
+      "location": {
+        "city": "Perth",
+        "state": "WA",
+        "postcode": "6000"
+      },
+      "pay": {
+        "min": 28.8,
+        "max": null,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-14T09:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Customer service, point-of-sale operation and stock replenishment for busy camping and travel store.",
+      "source": {
+        "id": "jooble",
+        "name": "Jooble",
+        "url": "https://au.jooble.org/desc/jb-9003"
+      }
+    },
+    {
+      "id": "jooble:jb-9004",
+      "title": "Trade Qualified Carpenter — Commercial Fitout",
+      "category": "Trades",
+      "employmentType": "contract",
+      "employer": "Tasman Timberworks",
+      "location": {
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000"
+      },
+      "pay": {
+        "min": 42,
+        "max": null,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-13T18:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Framing, cladding and timber deck installation across coastal commercial projects. Own hand tools and White Card.",
+      "source": {
+        "id": "jooble",
+        "name": "Jooble",
+        "url": "https://au.jooble.org/desc/jb-9004"
+      }
+    },
+    {
+      "id": "jooble:jb-9005",
+      "title": "Event Ticketing & Gate Operations Coordinator",
+      "category": "Other",
+      "employmentType": "casual",
+      "employer": "Harbour Live Events",
+      "location": {
+        "city": "Gold Coast",
+        "state": "QLD",
+        "postcode": "4217"
+      },
+      "pay": {
+        "min": 30,
+        "max": null,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-12T12:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "unlikely",
+        "462": "unlikely"
+      },
+      "summary": "Wristband scanning, queue coordination and information booth support for summer festival season.",
+      "source": {
+        "id": "jooble",
+        "name": "Jooble",
+        "url": "https://au.jooble.org/desc/jb-9005"
+      }
+    },
+    {
+      "id": "sunraysia-harvest-board:sh-301",
+      "title": "Blueberry & Raspberry Harvest Picker",
+      "category": "Fruit Picking",
+      "employmentType": "seasonal",
+      "employer": "Coffs Coast Berry Co-op",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "pay": {
+        "min": 29.33,
+        "max": 35,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-17T01:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "likely",
+        "462": "likely"
+      },
+      "summary": "Immediate start for summer berry harvest in regional NSW (postcode 2450). Counts toward 88-day specified WHV work.",
+      "source": {
+        "id": "sunraysia-harvest-board",
+        "name": "Sunraysia Harvest Noticeboard",
+        "url": "https://jobs.sunraysiaharvest.example.au/openings/sh-301"
+      }
+    },
+    {
+      "id": "sunraysia-harvest-board:sh-302",
+      "title": "Outback Roadhouse Kitchen Hand & All Rounder",
+      "category": "Hospitality",
+      "employmentType": "casual",
+      "employer": "Kimberley Waypoint Lodge",
+      "location": {
+        "city": "Broome",
+        "state": "WA",
+        "postcode": "6725"
+      },
+      "pay": {
+        "min": 30,
+        "max": 32.5,
+        "period": "hour",
+        "currency": "AUD"
+      },
+      "postedAt": "2026-11-16T08:00:00.000Z",
+      "firstSeenAt": "2026-11-18T00:53:36.821Z",
+      "regionalWork": {
+        "417": "likely",
+        "462": "likely"
+      },
+      "summary": "Northern Australia remote hospitality role in Broome WA (6725). Food prep, dishwashing and counter service.",
+      "source": {
+        "id": "sunraysia-harvest-board",
+        "name": "Sunraysia Harvest Noticeboard",
+        "url": "https://jobs.sunraysiaharvest.example.au/openings/sh-302"
+      }
+    }
+  ]
+}

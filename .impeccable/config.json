@@ -1,0 +1,63 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-11-17T23:11:22.480Z",
+        "reason": "Agent: flagged borders draw the chevron, pause icon, and road-sign arrow; no card side accent"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/wayfinding-revision.html"
+        ],
+        "createdAt": "2026-11-17T23:12:44.363Z",
+        "reason": "Agent: unselected exploration mock; user approved Busca e lote first viewport as visual authority"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/ai-case-file.html"
+        ],
+        "createdAt": "2026-11-17T23:12:45.251Z",
+        "reason": "Agent: unselected exploration mock; user approved Busca e lote first viewport as visual authority"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/ai-work-desk.html"
+        ],
+        "createdAt": "2026-11-17T23:12:46.146Z",
+        "reason": "Agent: unselected exploration mock; user approved Busca e lote first viewport as visual authority"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/ai-attention-inbox.html"
+        ],
+        "createdAt": "2026-11-17T23:12:47.008Z",
+        "reason": "Agent: unselected exploration mock; user approved Busca e lote first viewport as visual authority"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/wayfinding-revision.html"
+        ],
+        "createdAt": "2026-11-17T23:13:01.245Z",
+        "reason": "Agent: historical unselected mock; approved HelpWHV screen uses mineral mint, not cream"
+      }
+    ]
+  }
+}

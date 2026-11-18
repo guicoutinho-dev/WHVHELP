@@ -1,0 +1,34 @@
+{
+  "openings": [
+    {
+      "id": "sh-301",
+      "title": "Blueberry & Raspberry Harvest Picker",
+      "employer": "Coffs Coast Berry Co-op",
+      "city": "Coffs Harbour",
+      "state": "NSW",
+      "postcode": "2450",
+      "payMin": 29.33,
+      "payMax": 35.0,
+      "payPeriod": "hour",
+      "employmentType": "seasonal",
+      "postedAt": "2026-11-17T01:00:00Z",
+      "url": "https://jobs.sunraysiaharvest.example.au/openings/sh-301",
+      "description": "Immediate start for summer berry harvest in regional NSW (postcode 2450). Counts toward 88-day specified WHV work."
+    },
+    {
+      "id": "sh-302",
+      "title": "Outback Roadhouse Kitchen Hand & All Rounder",
+      "employer": "Kimberley Waypoint Lodge",
+      "city": "Broome",
+      "state": "WA",
+      "postcode": "6725",
+      "payMin": 30.0,
+      "payMax": 32.5,
+      "payPeriod": "hour",
+      "employmentType": "casual",
+      "postedAt": "2026-11-16T08:00:00Z",
+      "url": "https://jobs.sunraysiaharvest.example.au/openings/sh-302",
+      "description": "Northern Australia remote hospitality role in Broome WA (6725). Food prep, dishwashing and counter service."
+    }
+  ]
+}
