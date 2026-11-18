@@ -3,6 +3,11 @@ const { classifyJob } = require("./domain/classify");
 const { assessRegionalWork } = require("./domain/regional88");
 const { dedupeJobs } = require("./domain/dedupe");
 const { validateJob, isExpired } = require("./domain/job");
+const {
+  normalizeRawEmployer,
+  dedupeEmployers,
+  validateEmployer
+} = require("./domain/employer");
 
 function shouldAbortRegression(previousCount, nextCount) {
   if (typeof previousCount !== "number" || previousCount < 10) return false;
@@ -79,7 +84,59 @@ async function runPipeline({
   };
 }
 
+async function runEmployersPipeline({
+  sources = [],
+  now,
+  rulesConfig,
+  postcodesConfig
+}) {
+  const sourceReports = [];
+  const collected = [];
+
+  for (const source of sources) {
+    try {
+      const rawItems = await source.fetchEmployers();
+      const fetchedCount = Array.isArray(rawItems) ? rawItems.length : 0;
+      let keptCount = 0;
+
+      for (const raw of rawItems || []) {
+        const employer = normalizeRawEmployer(raw, rulesConfig, postcodesConfig);
+        if (validateEmployer(employer).valid) {
+          collected.push(employer);
+          keptCount += 1;
+        }
+      }
+
+      sourceReports.push({
+        id: source.id,
+        ok: true,
+        fetched: fetchedCount,
+        kept: keptCount,
+        error: null
+      });
+    } catch (err) {
+      sourceReports.push({
+        id: source.id,
+        ok: false,
+        fetched: 0,
+        kept: 0,
+        error: err && err.message ? err.message : String(err)
+      });
+    }
+  }
+
+  const employers = dedupeEmployers(collected);
+
+  return {
+    schemaVersion: 1,
+    generatedAt: now,
+    sources: sourceReports,
+    employers
+  };
+}
+
 module.exports = {
   runPipeline,
+  runEmployersPipeline,
   shouldAbortRegression
 };

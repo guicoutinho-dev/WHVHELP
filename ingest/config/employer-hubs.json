@@ -1,0 +1,60 @@
+{
+  "hubs": [
+    {
+      "id": "mildura-vic",
+      "name": "Mildura & Sunraysia, VIC",
+      "geo": "-34.1855,142.1625",
+      "radius": 25000,
+      "queries": ["citrus orchard", "table grape vineyard", "fruit packing shed"]
+    },
+    {
+      "id": "shepparton-vic",
+      "name": "Shepparton & Goulburn Valley, VIC",
+      "geo": "-36.3833,145.4000",
+      "queries": ["apple pear orchard", "dairy farm", "fruit packhouse"],
+      "radius": 25000
+    },
+    {
+      "id": "coffs-harbour-nsw",
+      "name": "Coffs Harbour & Woolgoolga, NSW",
+      "geo": "-30.2963,153.1157",
+      "radius": 20000,
+      "queries": ["blueberry farm", "berry orchard"]
+    },
+    {
+      "id": "bundaberg-qld",
+      "name": "Bundaberg & Childers, QLD",
+      "geo": "-24.8661,152.3489",
+      "radius": 25000,
+      "queries": ["macadamia avocado farm", "vegetable farm", "working hostel"]
+    },
+    {
+      "id": "cairns-mareeba-qld",
+      "name": "Cairns & Mareeba Tablelands, QLD",
+      "geo": "-16.9203,145.7710",
+      "radius": 30000,
+      "queries": ["mango banana farm", "island eco resort", "backpackers hostel"]
+    },
+    {
+      "id": "darwin-nt",
+      "name": "Darwin & Top End, NT",
+      "geo": "-12.4634,130.8456",
+      "radius": 20000,
+      "queries": ["mango farm", "resort hotel", "civil construction company"]
+    },
+    {
+      "id": "margaret-river-wa",
+      "name": "Margaret River, WA",
+      "geo": "-33.9536,115.0739",
+      "radius": 20000,
+      "queries": ["vineyard winery", "dairy farm"]
+    },
+    {
+      "id": "broome-wa",
+      "name": "Broome & Kimberley, WA",
+      "geo": "-17.9614,122.2359",
+      "radius": 20000,
+      "queries": ["beach resort hotel", "pearl farm hospitality"]
+    }
+  ]
+}

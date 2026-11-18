@@ -147,7 +147,17 @@ Regras do contrato:
 | Páginas públicas | Firecrawl, somente URLs em `config/sources.json` com `robots` e termos verificados (`termsCheckedAt`) | `FIRECRAWL_API_KEY` |
 
 Fontes proibidas: Facebook, Gumtree, Seek, Indeed, LinkedIn.  
-Google Maps (fazendas/empregadores) fica para uma etapa posterior, como saída separada (`employers.json`), pois não são vagas.
+Google Maps (fazendas/empregadores) compõe a **Fase 1.5**, gerando a saída separada `data/employers.json` (`schemaVersion: 1`), pois empresas cadastradas no Maps são alvos para contato direto (*cold outreach*) e não vagas abertas confirmadas.
+
+### Fase 1.5 — Contrato `data/employers.json` (schemaVersion 1)
+
+- **Novos arquivos:**
+  - `ingest/config/employer-hubs.json`: polos regionais WHV na Austrália (`lat,lon`, `radius`, `queries`).
+  - `ingest/src/domain/employer.js`: normalização de endereço australiano (`city`, `state`, `postcode`), classificação WHV (`classifyJob`), elegibilidade 88 dias (`assessRegionalWork`), deduplicação por `nome + postcode` e validação.
+  - `ingest/src/sources/gmaps-employers.js`: adaptador para a saída JSON do `google-maps-scraper.exe -fast-mode -json`.
+  - `data/employers.json`: contrato lido pela aba **"Empregadores 88d"** (`data-view="employers"`) em `app.js`.
+- **Estrutura de cada item em `employers`:**
+  `{ id, name, category, address, location: { city, state, postcode }, phone, website, googleMapsUrl, rating, reviewCount, regionalWork: { "417", "462" } }`.
 
 ## 8. Decisões
 

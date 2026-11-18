@@ -58,6 +58,7 @@ jobs:
             echo "No API secrets configured yet; generating initial seed jobs.json"
             npm run ingest:seed
           fi
+          npm run ingest:employers
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

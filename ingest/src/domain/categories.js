@@ -43,6 +43,8 @@ const CATEGORY_MATCH_ORDER = Object.freeze([
       "mango pick",
       "avocado pick",
       "orchard picker",
+      "orchard",
+      "vineyard",
       "harvest picker",
       "pruning",
       "vineyard hand"

@@ -17,27 +17,56 @@ typography:
     fontWeight: 700
     lineHeight: 0.95
     letterSpacing: "-0.025em"
+  brand:
+    fontFamily: "Khand, sans-serif"
+    fontSize: "53px"
+    fontWeight: 700
+    lineHeight: 0.9
+  section:
+    fontFamily: "Khand, sans-serif"
+    fontSize: "36px"
+    fontWeight: 700
+    lineHeight: 1
   title:
     fontFamily: "Khand, sans-serif"
     fontSize: "27px"
     fontWeight: 700
-    lineHeight: 0.95
+    lineHeight: 1.05
   action:
     fontFamily: "Khand, sans-serif"
     fontSize: "23px"
     fontWeight: 700
     lineHeight: 1
+  lead:
+    fontFamily: "Segoe UI, Arial, sans-serif"
+    fontSize: "20px"
+    lineHeight: 1.4
+  subheading:
+    fontFamily: "Segoe UI, Arial, sans-serif"
+    fontSize: "18px"
+    lineHeight: 1.35
   body:
     fontFamily: "Segoe UI, Arial, sans-serif"
     fontSize: "16px"
+    lineHeight: 1.4
+  detail:
+    fontFamily: "Segoe UI, Arial, sans-serif"
+    fontSize: "14px"
+    lineHeight: 1.45
   metadata:
     fontFamily: "Segoe UI, Arial, sans-serif"
     fontSize: "13px"
-    lineHeight: 1.15
+    lineHeight: 1.35
+  badge:
+    fontFamily: "Segoe UI, Arial, sans-serif"
+    fontSize: "12px"
+    lineHeight: 1.25
 rounded:
   action: "8px"
   choice: "10px"
+  inset: "12px"
   panel: "14px"
+  pill: "999px"
 components:
   button-search:
     backgroundColor: "{colors.rust}"

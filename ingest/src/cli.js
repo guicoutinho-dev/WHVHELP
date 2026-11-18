@@ -1,12 +1,16 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const os = require("node:os");
+const { execFileSync } = require("node:child_process");
 const sourcesConfig = require("../config/sources.json");
+const employerHubsConfig = require("../config/employer-hubs.json");
 const rulesConfig = require("../config/regional88-rules.json");
 const postcodesConfig = require("../config/postcodes-88.json");
 const { createAdzunaSource } = require("./sources/adzuna");
 const { createJoobleSource } = require("./sources/jooble");
 const { createPublicPagesSource } = require("./sources/public-pages");
-const { runPipeline, shouldAbortRegression } = require("./pipeline");
+const { createGmapsEmployersSource } = require("./sources/gmaps-employers");
+const { runPipeline, runEmployersPipeline, shouldAbortRegression } = require("./pipeline");
 
 function buildSeedSources() {
   const adzunaFixture = require("../test/fixtures/adzuna-sample.json");
@@ -113,6 +117,12 @@ function syncDistDirectory(cwd) {
     fs.mkdirSync(distDataDir, { recursive: true });
     fs.copyFileSync(jobsSrc, path.join(distDataDir, "jobs.json"));
   }
+  const empSrc = path.join(cwd, "data", "employers.json");
+  if (fs.existsSync(empSrc)) {
+    const distDataDir = path.join(distDir, "data");
+    fs.mkdirSync(distDataDir, { recursive: true });
+    fs.copyFileSync(empSrc, path.join(distDataDir, "employers.json"));
+  }
   return { synced: true, distDir };
 }
 
@@ -127,9 +137,72 @@ async function runCli({
     return syncDistDirectory(cwd);
   }
 
+  const isSeed = argv.includes("--seed");
+  const isEmployers = argv.includes("--employers");
+
+  if (isEmployers) {
+    const outputPath = path.join(cwd, "data", "employers.json");
+    const gmapsFixture = require("../test/fixtures/gmaps-employers-sample.json");
+    const defaultBin = path.join(
+      os.homedir(),
+      ".gemini",
+      "config",
+      "skills",
+      "google-maps-scraper",
+      "bin",
+      "google-maps-scraper.exe"
+    );
+    const binPath = env.GMAPS_SCRAPER_BIN || defaultBin;
+
+    const empSource = createGmapsEmployersSource({
+      hubs: employerHubsConfig.hubs,
+      runScraper: async hubs => {
+        if (isSeed || !fs.existsSync(binPath)) {
+          return gmapsFixture;
+        }
+        const aggregated = [];
+        const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "helpwhv-gmaps-"));
+        for (const hub of hubs) {
+          const inputPath = path.join(tmpDir, `${hub.id}-queries.txt`);
+          const resPath = path.join(tmpDir, `${hub.id}-results.json`);
+          fs.writeFileSync(inputPath, (hub.queries || []).join("\n") + "\n", "utf8");
+          execFileSync(
+            binPath,
+            [
+              "-input", inputPath,
+              "-results", resPath,
+              "-json",
+              "-fast-mode",
+              "-geo", hub.geo,
+              "-radius", String(hub.radius || 20000),
+              "-depth", "1",
+              "-lang", "en"
+            ],
+            { stdio: "ignore", timeout: 120000 }
+          );
+          if (fs.existsSync(resPath)) {
+            const rawText = fs.readFileSync(resPath, "utf8").trim();
+            if (rawText) {
+              const parsed = JSON.parse(rawText);
+              if (Array.isArray(parsed)) aggregated.push(...parsed);
+            }
+          }
+        }
+        return aggregated.length > 0 ? aggregated : gmapsFixture;
+      }
+    });
+    const payload = await runEmployersPipeline({
+      sources: [empSource],
+      now,
+      rulesConfig,
+      postcodesConfig
+    });
+    writeJsonAtomic(outputPath, payload);
+    return { wrote: true, outputPath, payload };
+  }
+
   const outputPath = path.join(cwd, "data", "jobs.json");
   const previous = readPreviousFile(outputPath);
-  const isSeed = argv.includes("--seed");
   const sources = isSeed ? buildSeedSources() : buildLiveSources(env, fetchImpl);
 
   const payload = await runPipeline({
