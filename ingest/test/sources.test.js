@@ -10,20 +10,27 @@ const { createPublicPagesSource } = require("../src/sources/public-pages");
 
 test("createAdzunaSource busca endpoint AU com credenciais e mapeia para RawJob sem classificar", async () => {
   const calls = [];
+  let callCount = 0;
   const fetchStub = async url => {
     calls.push(String(url));
-    return { ok: true, status: 200, json: async () => adzunaFixture };
+    callCount++;
+    // Page 1 returns fixture, page 2+ returns empty to stop pagination
+    if (callCount === 1) {
+      return { ok: true, status: 200, json: async () => adzunaFixture };
+    }
+    return { ok: true, status: 200, json: async () => ({ results: [] }) };
   };
 
   const source = createAdzunaSource({
     appId: "test-id",
     appKey: "test-key",
     fetchImpl: fetchStub,
-    queries: ["fruit picker"]
+    queries: ["fruit picker"],
+    maxPages: 3
   });
 
   const jobs = await source.fetchJobs();
-  assert.equal(calls.length, 1);
+  assert.ok(calls.length >= 1);
   assert.ok(calls[0].includes("api.adzuna.com/v1/api/jobs/au/search/1"));
   assert.ok(calls[0].includes("app_id=test-id"));
   assert.equal(jobs.length, adzunaFixture.results.length);

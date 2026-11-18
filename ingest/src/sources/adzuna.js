@@ -54,28 +54,32 @@ function mapAdzunaItemToRawJob(item) {
   };
 }
 
-function createAdzunaSource({ appId, appKey, fetchImpl = globalThis.fetch, queries = ["whv"] }) {
+function createAdzunaSource({ appId, appKey, fetchImpl = globalThis.fetch, queries = ["whv"], maxPages = 3 }) {
   return {
     id: "adzuna",
     name: "Adzuna",
     async fetchJobs() {
       const collected = [];
       for (const query of queries) {
-        const params = new URLSearchParams({
-          app_id: appId,
-          app_key: appKey,
-          what: query,
-          results_per_page: "50"
-        });
-        const url = `https://api.adzuna.com/v1/api/jobs/au/search/1?${params.toString()}`;
-        const response = await fetchImpl(url);
-        if (!response.ok) {
-          throw new Error(`Adzuna HTTP ${response.status}`);
-        }
-        const data = await response.json();
-        const results = Array.isArray(data?.results) ? data.results : [];
-        for (const item of results) {
-          collected.push(mapAdzunaItemToRawJob(item));
+        for (let page = 1; page <= maxPages; page++) {
+          const params = new URLSearchParams({
+            app_id: appId,
+            app_key: appKey,
+            what: query,
+            results_per_page: "50"
+          });
+          const url = `https://api.adzuna.com/v1/api/jobs/au/search/${page}?${params.toString()}`;
+          const response = await fetchImpl(url);
+          if (!response.ok) {
+            if (response.status === 404 || response.status === 422) break;
+            throw new Error(`Adzuna HTTP ${response.status}`);
+          }
+          const data = await response.json();
+          const results = Array.isArray(data?.results) ? data.results : [];
+          if (results.length === 0) break;
+          for (const item of results) {
+            collected.push(mapAdzunaItemToRawJob(item));
+          }
         }
       }
       return collected;
