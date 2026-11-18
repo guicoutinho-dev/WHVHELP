@@ -5,10 +5,54 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "") || "place";
 }
 
+function parseGmapsScraperOutput(rawText) {
+  if (typeof rawText !== "string" || !rawText.trim()) return [];
+  const trimmed = rawText.trim();
+  const collected = [];
+
+  const pushValid = item => {
+    if (item && typeof item === "object" && (item.title || item.name)) {
+      collected.push(item);
+    }
+  };
+
+  try {
+    const whole = JSON.parse(trimmed);
+    if (Array.isArray(whole)) {
+      for (const el of whole) {
+        if (Array.isArray(el)) el.forEach(pushValid);
+        else pushValid(el);
+      }
+      return collected;
+    }
+  } catch {
+    // NDJSON fallback below
+  }
+
+  for (const line of trimmed.split(/\r?\n/)) {
+    const cleanLine = line.trim();
+    if (!cleanLine || cleanLine === "null") continue;
+    try {
+      const parsed = JSON.parse(cleanLine);
+      if (Array.isArray(parsed)) {
+        parsed.forEach(pushValid);
+      } else {
+        pushValid(parsed);
+      }
+    } catch {
+      // ignore non-JSON log lines
+    }
+  }
+
+  return collected;
+}
+
 function mapGmapsPlaceToRawEmployer(place, index = 0) {
   const externalId =
     place?.place_id ||
+    place?.data_id ||
     place?.cid ||
+    place?.input_id ||
     `${slugify(place?.title || place?.name)}-${index}`;
 
   return {
@@ -42,5 +86,6 @@ function createGmapsEmployersSource({ hubs = [], runScraper }) {
 
 module.exports = {
   createGmapsEmployersSource,
-  mapGmapsPlaceToRawEmployer
+  mapGmapsPlaceToRawEmployer,
+  parseGmapsScraperOutput
 };

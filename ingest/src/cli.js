@@ -4,12 +4,13 @@ const os = require("node:os");
 const { execFileSync } = require("node:child_process");
 const sourcesConfig = require("../config/sources.json");
 const employerHubsConfig = require("../config/employer-hubs.json");
+const accommodationHubsConfig = require("../config/accommodation-hubs.json");
 const rulesConfig = require("../config/regional88-rules.json");
 const postcodesConfig = require("../config/postcodes-88.json");
 const { createAdzunaSource } = require("./sources/adzuna");
 const { createJoobleSource } = require("./sources/jooble");
 const { createPublicPagesSource } = require("./sources/public-pages");
-const { createGmapsEmployersSource } = require("./sources/gmaps-employers");
+const { createGmapsEmployersSource, parseGmapsScraperOutput } = require("./sources/gmaps-employers");
 const { createGmapsAccommodationSource } = require("./sources/gmaps-accommodation");
 const {
   runPipeline,
@@ -138,6 +139,40 @@ function syncDistDirectory(cwd) {
   return { synced: true, distDir };
 }
 
+function executeGmapsHubs(hubs, binPath, fallbackFixture) {
+  const aggregated = [...fallbackFixture];
+  if (!fs.existsSync(binPath)) return aggregated;
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "helpwhv-gmaps-"));
+  for (const hub of hubs || []) {
+    const inputPath = path.join(tmpDir, `${hub.id}-queries.txt`);
+    const resPath = path.join(tmpDir, `${hub.id}-results.json`);
+    fs.writeFileSync(inputPath, (hub.queries || []).join("\n") + "\n", { encoding: "utf8" });
+    try {
+      execFileSync(
+        binPath,
+        [
+          "-input", inputPath,
+          "-results", resPath,
+          "-json",
+          "-fast-mode",
+          "-geo", hub.geo,
+          "-radius", String(hub.radius || 20000),
+          "-depth", "1",
+          "-lang", "en"
+        ],
+        { stdio: "ignore", timeout: 60000 }
+      );
+      if (fs.existsSync(resPath)) {
+        const rawText = fs.readFileSync(resPath, "utf8");
+        aggregated.push(...parseGmapsScraperOutput(rawText));
+      }
+    } catch {
+      // keep results from other hubs + seed baseline
+    }
+  }
+  return aggregated;
+}
+
 async function runCli({
   argv = process.argv.slice(2),
   env = process.env,
@@ -152,12 +187,23 @@ async function runCli({
   const isSeed = argv.includes("--seed");
   const isEmployers = argv.includes("--employers");
   const isAccommodation = argv.includes("--accommodation");
+  const defaultBin = path.join(
+    os.homedir(),
+    ".gemini",
+    "config",
+    "skills",
+    "google-maps-scraper",
+    "bin",
+    "google-maps-scraper.exe"
+  );
+  const binPath = env.GMAPS_SCRAPER_BIN || defaultBin;
 
   if (isAccommodation) {
     const outputPath = path.join(cwd, "data", "accommodation.json");
     const accFixture = require("../test/fixtures/gmaps-accommodation-sample.json");
     const accSource = createGmapsAccommodationSource({
-      runScraper: async () => accFixture
+      hubs: accommodationHubsConfig.hubs,
+      runScraper: async hubs => (isSeed ? accFixture : executeGmapsHubs(hubs, binPath, accFixture))
     });
     const payload = await runAccommodationPipeline({
       sources: [accSource],
@@ -171,53 +217,9 @@ async function runCli({
   if (isEmployers) {
     const outputPath = path.join(cwd, "data", "employers.json");
     const gmapsFixture = require("../test/fixtures/gmaps-employers-sample.json");
-    const defaultBin = path.join(
-      os.homedir(),
-      ".gemini",
-      "config",
-      "skills",
-      "google-maps-scraper",
-      "bin",
-      "google-maps-scraper.exe"
-    );
-    const binPath = env.GMAPS_SCRAPER_BIN || defaultBin;
-
     const empSource = createGmapsEmployersSource({
       hubs: employerHubsConfig.hubs,
-      runScraper: async hubs => {
-        if (isSeed || !fs.existsSync(binPath)) {
-          return gmapsFixture;
-        }
-        const aggregated = [];
-        const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "helpwhv-gmaps-"));
-        for (const hub of hubs) {
-          const inputPath = path.join(tmpDir, `${hub.id}-queries.txt`);
-          const resPath = path.join(tmpDir, `${hub.id}-results.json`);
-          fs.writeFileSync(inputPath, (hub.queries || []).join("\n") + "\n", "utf8");
-          execFileSync(
-            binPath,
-            [
-              "-input", inputPath,
-              "-results", resPath,
-              "-json",
-              "-fast-mode",
-              "-geo", hub.geo,
-              "-radius", String(hub.radius || 20000),
-              "-depth", "1",
-              "-lang", "en"
-            ],
-            { stdio: "ignore", timeout: 120000 }
-          );
-          if (fs.existsSync(resPath)) {
-            const rawText = fs.readFileSync(resPath, "utf8").trim();
-            if (rawText) {
-              const parsed = JSON.parse(rawText);
-              if (Array.isArray(parsed)) aggregated.push(...parsed);
-            }
-          }
-        }
-        return aggregated.length > 0 ? aggregated : gmapsFixture;
-      }
+      runScraper: async hubs => (isSeed ? gmapsFixture : executeGmapsHubs(hubs, binPath, gmapsFixture))
     });
     const payload = await runEmployersPipeline({
       sources: [empSource],

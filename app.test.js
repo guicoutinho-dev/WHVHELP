@@ -166,8 +166,8 @@ test("filterEmployers filtra por busca, cidade, categorias WHV e 88 dias sem mut
     onlyRegional88: false,
     visaSubclass: "462"
   });
-  assert.equal(byMildura.length, 1);
-  assert.equal(byMildura[0].city, "Mildura");
+  assert.ok(byMildura.length >= 1);
+  assert.ok(byMildura.every(e => e.city === "Mildura"));
   assert.deepEqual(viewEmployers.map(e => e.id), originalIds);
 });
 

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T02:09:15.993Z",
+  "generatedAt": "2026-11-18T02:17:59.825Z",
   "sources": [
     {
       "id": "gmaps-accommodation",
       "ok": true,
-      "fetched": 9,
-      "kept": 9,
+      "fetched": 149,
+      "kept": 149,
       "error": null
     }
   ],
@@ -162,6 +162,2182 @@
       "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Flinders%20Lane%20Backpackers%20Melbourne%20250%20Flinders%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
       "rating": 4.4,
       "reviewCount": 540,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ac303223750e26b:0x586952911de094c2",
+      "name": "Discovery Parks - Mildura, Buronga Riverside",
+      "stayType": "Caravan & Cabin Park",
+      "address": "71A Caravan Park Rd, Buronga NSW 2739, Australia",
+      "location": {
+        "city": "Buronga",
+        "state": "NSW",
+        "postcode": "2739"
+      },
+      "phone": "+61350233040",
+      "website": "https://www.discoveryholidayparks.com.au/caravan-parks/victoria/mallee/mildura-buronga-riverside?utm_source=google&utm_medium=organic&utm_campaign=gmb&utm_term=visit-website&utm_content=DHP-NSW-Mildura-Buronga-Riverside",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Discovery%20Parks%20-%20Mildura%2C%20Buronga%20Riverside%2071A%20Caravan%20Park%20Rd%2C%20Buronga%20NSW%202739%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 851,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac303027c91f59f:0x4770030fcb5279d0",
+      "name": "Mildura River End Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "30-40 Cureton Ave E, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61431837114",
+      "website": "https://riverendholidaypark.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mildura%20River%20End%20Holiday%20Park%2030-40%20Cureton%20Ave%20E%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.8,
+      "reviewCount": 175,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3034958882f29:0xad499d20a6a6742e",
+      "name": "The Palms Caravan Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "7 Cureton Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61350231774",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Palms%20Caravan%20Park%207%20Cureton%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 156,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac30466c49d8a95:0x6bcd7da030adae8d",
+      "name": "Calder Tourist Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "775 Fifteenth St, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61350231310",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Calder%20Tourist%20Park%20775%20Fifteenth%20St%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 73,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac30468cc000001:0xbe0e674da304d4dd",
+      "name": "Big4 Mildura Deakin Caravan Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "478 Deakin Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": null,
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Big4%20Mildura%20Deakin%20Caravan%20Park%20478%20Deakin%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 43,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3046f2daab91d:0xd4713820c81f3d15",
+      "name": "BIG4 Mildura Getaway Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "478 Deakin Ave, Mildura VIC 3502, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3502"
+      },
+      "phone": "+61350230486",
+      "website": "https://www.big4mildura.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=BIG4%20Mildura%20Getaway%20Holiday%20Park%20478%20Deakin%20Ave%2C%20Mildura%20VIC%203502%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 492,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac302e3779a0167:0x1ba1d73c311efc57",
+      "name": "Apex RiverBeach Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "435 Cureton Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61350236879",
+      "website": "https://www.apexriverbeach.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Apex%20RiverBeach%20Holiday%20Park%20435%20Cureton%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 694,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac30466d68e7ce7:0xef9d4f9ec0220146",
+      "name": "All Seasons Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "818 Fifteenth St, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61350233375",
+      "website": "http://www.allseasonsholidaypark.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=All%20Seasons%20Holiday%20Park%20818%20Fifteenth%20St%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 691,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac303ebe19d38cf:0xd1c4767809bec7dd",
+      "name": "NRMA Mildura Riverside Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "199/205 Flora Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61350212299",
+      "website": "https://www.nrmaparksandresorts.com.au/mildura-riverside/?utm_medium=organic&utm_source=googlebusiness&utm_campaign=nrma-googlebusiness&utm_content=mildura&utm_term=plcid_10789553540984586836",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=NRMA%20Mildura%20Riverside%20Holiday%20Park%20199%2F205%20Flora%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 731,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac304f499555555:0x81f652d3d9b0bcc4",
+      "name": "Grapevine Tourist Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "Fifteenth St, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": null,
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Grapevine%20Tourist%20Park%20Fifteenth%20St%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": null,
+      "reviewCount": 0,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac31d2109e936b7:0x5848dc7ee034855f",
+      "name": "Rivergardens Holiday Park on the Murray",
+      "stayType": "Caravan & Cabin Park",
+      "address": "Cnr Stuart Highway &, Punt Rd, Gol Gol NSW 2738, Australia",
+      "location": {
+        "city": "Gol Gol",
+        "state": "NSW",
+        "postcode": "2738"
+      },
+      "phone": "+61350248541",
+      "website": "http://www.rivergardensholidaypark.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Rivergardens%20Holiday%20Park%20on%20the%20Murray%20Cnr%20Stuart%20Highway%20%26%2C%20Punt%20Rd%2C%20Gol%20Gol%20NSW%202738%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 397,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac306704bdc75fb:0x24d813d115bb1757",
+      "name": "Sunraysia Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "498 Sturt Hwy, Mildura VIC 3501, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3501"
+      },
+      "phone": "+61350231914",
+      "website": "http://sunraysiaholidaypark.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunraysia%20Holiday%20Park%20498%20Sturt%20Hwy%2C%20Mildura%20VIC%203501%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 50,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3067283ffffff:0xf5fa1f2720f2c325",
+      "name": "Sun Siesta Village Caravan Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "471 Sturt Hwy, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61350231185",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sun%20Siesta%20Village%20Caravan%20Park%20471%20Sturt%20Hwy%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 49,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3036b0cd8fbe3:0xa79174e1e7a23ba4",
+      "name": "Astra Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "35 Lemon Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61497109777",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Astra%20Backpackers%2035%20Lemon%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 3.1,
+      "reviewCount": 7,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3036b138d179d:0x3895199618fdba23",
+      "name": "Stopover",
+      "stayType": "Backpacker Hostel",
+      "address": "29 Lemon Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61418147363",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Stopover%2029%20Lemon%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 30,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac303700988e437:0xfd9723b62c09bd0a",
+      "name": "Mildura International Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "5 Cedar Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61408210132",
+      "website": "http://www.mildurabackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mildura%20International%20Backpackers%205%20Cedar%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 26,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3030dc0a667f7:0x346f64d233de6f22",
+      "name": "Working Hostels Mildura",
+      "stayType": "Working Hostel",
+      "address": "27 Chaffey Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61447967537",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Working%20Hostels%20Mildura%2027%20Chaffey%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": null,
+      "reviewCount": 0,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3036baa23937f:0x8e73ad32bed45797",
+      "name": "Sunraysia Stays",
+      "stayType": "Backpacker Hostel",
+      "address": "230 Deakin Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61390703532",
+      "website": "https://www.sunraysiastays.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunraysia%20Stays%20230%20Deakin%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.9,
+      "reviewCount": 68,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac305b1755ec181:0xef034aca6bd97d15",
+      "name": "320 Deakin Backpacker & Workers Accommodation",
+      "stayType": "Backpacker Hostel",
+      "address": "320 Deakin Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61477777029",
+      "website": "http://320deakinbackpackerandworkersaccommodation.durablesites.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=320%20Deakin%20Backpacker%20%26%20Workers%20Accommodation%20320%20Deakin%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 5,
+      "reviewCount": 31,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac3046f90199dbb:0x9497a18413a04bf5",
+      "name": "Sunraysia Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "441 Deakin Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61477660196",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunraysia%20Backpackers%20441%20Deakin%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.9,
+      "reviewCount": 8,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6ac304511c39d8d7:0xe23829555bdd478",
+      "name": "Benetook Backpackers working hostel",
+      "stayType": "Working Hostel",
+      "address": "711 Benetook Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61408353132",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Benetook%20Backpackers%20working%20hostel%20711%20Benetook%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 18,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb937d264e6a3:0x452f0cec64e1686",
+      "name": "DingoBlue BASE Backpackers Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "2/46 Quay St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61741520100",
+      "website": "http://www.dingobluebackpackers.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=DingoBlue%20BASE%20Backpackers%20Hostel%202%2F46%20Quay%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 2.7,
+      "reviewCount": 78,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb935c3ea7caf:0x2e6b396a741819de",
+      "name": "Grand Bundaberg Hotel & Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "87/89 Bourbong St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61743048510",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Grand%20Bundaberg%20Hotel%20%26%20Hostel%2087%2F89%20Bourbong%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 103,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb9eff963b561:0x322960da06a6eec",
+      "name": "Grosvenor Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "216 Bourbong St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61741515820",
+      "website": "http://www.grosvenorbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Grosvenor%20Backpackers%20216%20Bourbong%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 3.5,
+      "reviewCount": 90,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb94a2d85887f:0xced4489346d2b5fd",
+      "name": "THE HUB BACKPACKERS",
+      "stayType": "Backpacker Hostel",
+      "address": "2 Crofton St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61478166071",
+      "website": "http://thehubbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=THE%20HUB%20BACKPACKERS%202%20Crofton%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 32,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb9496f751189:0x45a90c3265fc30e6",
+      "name": "Bunk Inn Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "25 Barolin St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61483095538",
+      "website": "http://www.bunkinnhostel.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bunk%20Inn%20Hostel%2025%20Barolin%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 166,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb946262f81ab:0xad3a21914ff55dfe",
+      "name": "DingoBlue ONE Backpackers Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "11 Burrum St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61741520100",
+      "website": "http://www.dingobluebackpackers.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=DingoBlue%20ONE%20Backpackers%20Hostel%2011%20Burrum%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 2.2,
+      "reviewCount": 51,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb93bb1278599:0xb64c1e488153b6c9",
+      "name": "Tomato Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "112 George St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61422250985",
+      "website": "http://www.tomatobackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tomato%20Backpackers%20112%20George%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 3.3,
+      "reviewCount": 198,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb93062adcc29:0x2859a14862320988",
+      "name": "North Bundaberg Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "12 Queen St, Bundaberg North QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg North",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61427795276",
+      "website": "http://northbundybackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=North%20Bundaberg%20Backpackers%2012%20Queen%20St%2C%20Bundaberg%20North%20QLD%204670%2C%20Australia",
+      "rating": 3,
+      "reviewCount": 72,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb948753ba3e1:0x2eba4ebc8a768c6",
+      "name": "Federal Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "35 George St, Bundaberg South QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg South",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61741533711",
+      "website": "http://www.federalbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Federal%20Backpackers%2035%20George%20St%2C%20Bundaberg%20South%20QLD%204670%2C%20Australia",
+      "rating": 3.2,
+      "reviewCount": 40,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb9746f25384d:0xe581bacbbe2727d3",
+      "name": "Sunrise Paradise Work & Stay",
+      "stayType": "Backpacker Hostel",
+      "address": "66 Targo St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61478175507",
+      "website": "https://sunriseparadise.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunrise%20Paradise%20Work%20%26%20Stay%2066%20Targo%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 33,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb91f35b513c5:0xaa9bfe1128bc660c",
+      "name": "Shoestrings Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "105 Targo St, Bundaberg South QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg South",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": null,
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shoestrings%20Backpackers%20105%20Targo%20St%2C%20Bundaberg%20South%20QLD%204670%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 2,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6bebb94cf62b571b:0xb3c33dc27b6162a",
+      "name": "Bundaberg Workers & Divers Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "64 Barolin St, Bundaberg South QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg South",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61741516097",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bundaberg%20Workers%20%26%20Divers%20Hostel%2064%20Barolin%20St%2C%20Bundaberg%20South%20QLD%204670%2C%20Australia",
+      "rating": 2.2,
+      "reviewCount": 23,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0dcfd0000001:0xb73ec4897c8168e7",
+      "name": "Reflections Coffs Harbour - Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "123 Pacific Hwy, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266521694",
+      "website": "https://reflectionsholidays.com.au/parks/coffs-harbour/?utm_source=gmb-listing&utm_medium=coffs-harbour&utm_campaign=maps-listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Reflections%20Coffs%20Harbour%20-%20Holiday%20Park%20123%20Pacific%20Hwy%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 617,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c3541b0bb93:0x64e8e6c2a4f0d1dd",
+      "name": "Aqua Villa Holiday Units",
+      "stayType": "Backpacker Hostel",
+      "address": "56 Park Beach Rd, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266523539",
+      "website": "https://aquavilla.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aqua%20Villa%20Holiday%20Units%2056%20Park%20Beach%20Rd%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4.2,
+      "reviewCount": 146,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0db449f208b9:0x7184a15f5b9a0845",
+      "name": "Park Beach Cabins",
+      "stayType": "Caravan & Cabin Park",
+      "address": "14 Fitzgerald St, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266526733",
+      "website": "http://www.parkbeachcabin.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Park%20Beach%20Cabins%2014%20Fitzgerald%20St%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 102,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0db411046575:0x339da0c4068b820d",
+      "name": "BIG4 Park Beach Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "1 Ocean Parade, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266484888",
+      "website": "https://www.coffscoastholidayparks.com.au/big4-park-beach/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=BIG4%20Park%20Beach%20Holiday%20Park%201%20Ocean%20Parade%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 1325,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0db4633de5c1:0xb4a5e4aa6e5f5438",
+      "name": "Surf Beach Motel",
+      "stayType": "Backpacker Hostel",
+      "address": "25 Ocean Parade, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266521872",
+      "website": "https://www.surfbeachmotelcoffs.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Surf%20Beach%20Motel%2025%20Ocean%20Parade%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 433,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c11dfc9f8ce33:0x5862e405650da0b",
+      "name": "Sanctuary Resort & TreeHouse Restaurant",
+      "stayType": "Backpacker Hostel",
+      "address": "250 Pacific Hwy, North Boambee Valley NSW 2450, Australia",
+      "location": {
+        "city": "North Boambee Valley",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266505111",
+      "website": "http://www.sanctuaryresort.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sanctuary%20Resort%20%26%20TreeHouse%20Restaurant%20250%20Pacific%20Hwy%2C%20North%20Boambee%20Valley%20NSW%202450%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 616,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0db96202862b:0xf68a96e3834bd9f4",
+      "name": "Pacific Marina Apartments",
+      "stayType": "Backpacker Hostel",
+      "address": "22 Orlando St, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266517955",
+      "website": "https://pacificmarina.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pacific%20Marina%20Apartments%2022%20Orlando%20St%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 117,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c4b11d9b925:0x5fb1d1523829a0cd",
+      "name": "Park Beach Resort Motel",
+      "stayType": "Backpacker Hostel",
+      "address": "111/113 Park Beach Rd, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266524511",
+      "website": "http://www.parkbeachresort.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Park%20Beach%20Resort%20Motel%20111%2F113%20Park%20Beach%20Rd%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 306,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0dbe8dcc9dfd:0xfa075f065da1e4b5",
+      "name": "The Observatory Self Contained Apartments",
+      "stayType": "Backpacker Hostel",
+      "address": "30/36 Camperdown St, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266500462",
+      "website": "http://theobservatory.com.au/?utm_medium=organic&utm_source=google&utm_campaign=gbp-listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Observatory%20Self%20Contained%20Apartments%2030%2F36%20Camperdown%20St%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 184,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c4b543c0e27:0x2cc91330483177c6",
+      "name": "Park Beach Hotel Motel",
+      "stayType": "Backpacker Hostel",
+      "address": "90 Ocean Parade, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266523833",
+      "website": "http://hoeymoey.com.au/motel-accommodation/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Park%20Beach%20Hotel%20Motel%2090%20Ocean%20Parade%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 2.8,
+      "reviewCount": 76,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c476dcd1edb:0x5ca5c289821e845",
+      "name": "Country Comfort Coffs Harbour",
+      "stayType": "Backpacker Hostel",
+      "address": "353 Pacific Hwy, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266528222",
+      "website": "https://www.countrycomfortcoffsharbour.top/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Country%20Comfort%20Coffs%20Harbour%20353%20Pacific%20Hwy%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 3.4,
+      "reviewCount": 487,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c47bd1a74b3:0x2c608d3b903077be",
+      "name": "Bananacoast Caravan Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "429 Pacific Hwy, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266991442",
+      "website": "https://bananacoastcaravanpark.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bananacoast%20Caravan%20Park%20429%20Pacific%20Hwy%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 383,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c43b93491e3:0x22ce558aa7a20ad2",
+      "name": "BreakFree Aanuka Beach Resort",
+      "stayType": "Backpacker Hostel",
+      "address": "11 Firman Dr, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266527555",
+      "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=B3H8&merchantid=seo-maps-AU-B3H8&sourceid=aw-cen&utm_medium=seo%20maps&utm_source=google%20Maps&utm_campaign=seo%20maps",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=BreakFree%20Aanuka%20Beach%20Resort%2011%20Firman%20Dr%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 3.7,
+      "reviewCount": 1278,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c4031c3bb29:0x941aaa97d63cbdb8",
+      "name": "Pacific Bay Resort",
+      "stayType": "Backpacker Hostel",
+      "address": "Cnr Pacific Hwy and, Bay Dr, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266597000",
+      "website": "http://www.pacificbayresort.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pacific%20Bay%20Resort%20Cnr%20Pacific%20Hwy%20and%2C%20Bay%20Dr%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 1380,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c6a78f1ee11:0x4df74a4802613c24",
+      "name": "Charlesworth Bay Beach Resort",
+      "stayType": "Backpacker Hostel",
+      "address": "2 Resort Dr, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61477779343",
+      "website": "http://www.charlesworthbaybeachresort.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Charlesworth%20Bay%20Beach%20Resort%202%20Resort%20Dr%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 617,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c12c2865aa5:0x28ad9735d84410f2",
+      "name": "Korora Bay Village Resort - Boutique Coffs Harbour Accommodation",
+      "stayType": "Backpacker Hostel",
+      "address": "64 James Small Dr, Korora NSW 2450, Australia",
+      "location": {
+        "city": "Korora",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266536444",
+      "website": "http://www.kororabayvillage.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Korora%20Bay%20Village%20Resort%20-%20Boutique%20Coffs%20Harbour%20Accommodation%2064%20James%20Small%20Dr%2C%20Korora%20NSW%202450%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 202,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c73e88b159d:0xe43191d084db96d8",
+      "name": "Opal Cove Resort - Coffs Coast",
+      "stayType": "Backpacker Hostel",
+      "address": "Opal Blvd, Korora NSW 2450, Australia",
+      "location": {
+        "city": "Korora",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266510510",
+      "website": "http://www.opalcove.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Opal%20Cove%20Resort%20-%20Coffs%20Coast%20Opal%20Blvd%2C%20Korora%20NSW%202450%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 1856,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0b8873a1b651:0x36b257e515dedf6",
+      "name": "Nautilus Beach Resort",
+      "stayType": "Backpacker Hostel",
+      "address": "8 Solitary Iss Wy, Sapphire Beach NSW 2450, Australia",
+      "location": {
+        "city": "Sapphire Beach",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61477779343",
+      "website": "http://www.nautilusresort.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nautilus%20Beach%20Resort%208%20Solitary%20Iss%20Wy%2C%20Sapphire%20Beach%20NSW%202450%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 164,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0b845492a729:0xd8a5da5e64f0608b",
+      "name": "Aqualuna Beach Resort",
+      "stayType": "Backpacker Hostel",
+      "address": "94 Solitary Iss Wy, Sapphire Beach NSW 2450, Australia",
+      "location": {
+        "city": "Sapphire Beach",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61457677885",
+      "website": "http://www.aqualunabeachresort.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aqualuna%20Beach%20Resort%2094%20Solitary%20Iss%20Wy%2C%20Sapphire%20Beach%20NSW%202450%2C%20Australia",
+      "rating": 3.2,
+      "reviewCount": 575,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0b9f0be84dcd:0x4b6c086df1bd5c9b",
+      "name": "Sapphire Beach Holiday Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "48 Split Solitary Rd, Sapphire Beach NSW 2450, Australia",
+      "location": {
+        "city": "Sapphire Beach",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266536212",
+      "website": "https://sapphirebeachholidaypark.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sapphire%20Beach%20Holiday%20Park%2048%20Split%20Solitary%20Rd%2C%20Sapphire%20Beach%20NSW%202450%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 464,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0dd9f4149bc1:0xc996adb22dd36c7c",
+      "name": "Central Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "88 Grafton St, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+611800076445",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Central%20Backpackers%2088%20Grafton%20St%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 2.8,
+      "reviewCount": 52,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0dc062e92a05:0x1c68aeb4ae2d952a",
+      "name": "Aussitel Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "312 Harbour Dr, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266511871",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aussitel%20Backpackers%20312%20Harbour%20Dr%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 215,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0db96fc188d1:0xfabb6fef0d528e64",
+      "name": "Coffs Harbour YHA",
+      "stayType": "Backpacker Hostel",
+      "address": "51 Collingwood St, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266526462",
+      "website": "https://www.yha.com.au/hostels/nsw/mid-north-coast/coffs-harbour/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Coffs%20Harbour%20YHA%2051%20Collingwood%20St%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 161,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0db970e40001:0xb7b81e10b8a5eb06",
+      "name": "Jetty Blue Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "51 Collingwood St, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266526462",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jetty%20Blue%20Backpackers%2051%20Collingwood%20St%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 2.9,
+      "reviewCount": 19,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b9c0c4c9af06337:0xd8d4b8034095a9ea",
+      "name": "Base Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "84 Ocean Parade, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61266523833",
+      "website": "http://www.stayatbase.com/hostels/australia/coffs-harbour/hoey-moey-backpackers",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Base%20Backpackers%2084%20Ocean%20Parade%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 1,
+      "reviewCount": 2,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978673db68c83b5:0xbeea9b8487a38782",
+      "name": "Mumma’s Hostel Cairns",
+      "stayType": "Backpacker Hostel",
+      "address": "140 Grafton St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61744541802",
+      "website": "http://www.mummascairns.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mumma%E2%80%99s%20Hostel%20Cairns%20140%20Grafton%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 528,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978668e177d09d9:0x5769d837ba4b2e27",
+      "name": "Cairns Girls Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "147 Lake St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740512016",
+      "website": "http://www.cairnsgirlshostel.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cairns%20Girls%20Hostel%20147%20Lake%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 17,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697866919f5bb049:0x1e1a9608db4bf5cc",
+      "name": "Mad Monkey Central",
+      "stayType": "Backpacker Hostel",
+      "address": "100-102 Sheridan St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61742319871",
+      "website": "https://www.madmonkey.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mad%20Monkey%20Central%20100-102%20Sheridan%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 953,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978670b69088a8f:0x486297da7cd06c90",
+      "name": "Temple Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "8A Minnie St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61480640285",
+      "website": "https://www.templebackpackers.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=720507690420418225",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Temple%20Backpackers%208A%20Minnie%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": null,
+      "reviewCount": 0,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697866855f84260b:0x2a80e08ebc2cf514",
+      "name": "Mad Monkey Village",
+      "stayType": "Backpacker Hostel",
+      "address": "141 Sheridan St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61742319612",
+      "website": "http://www.madmonkey.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mad%20Monkey%20Village%20141%20Sheridan%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 920,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697866918701d58f:0x42b3021b6be350b7",
+      "name": "Mad Monkey Jungle",
+      "stayType": "Backpacker Hostel",
+      "address": "117 Grafton St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740477200",
+      "website": "http://www.madmonkey.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mad%20Monkey%20Jungle%20117%20Grafton%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 716,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x69786691497c1db9:0x7c486001bc337d22",
+      "name": "YHA Cairns Central",
+      "stayType": "Backpacker Hostel",
+      "address": "20-26 McLeod St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740510772",
+      "website": "https://www.yha.com.au/hostels/qld/cairns-and-far-north-queensland/cairns-backpackers-hostel/?utm_source=google-business&utm_medium=righthandside&utm_campaign=listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=YHA%20Cairns%20Central%2020-26%20McLeod%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.2,
+      "reviewCount": 653,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978669747b69705:0x85c203cd660cbc05",
+      "name": "Gecko's Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "187 Bunda St, Parramatta Park QLD 4870, Australia",
+      "location": {
+        "city": "Parramatta Park",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740311344",
+      "website": "http://www.geckosbackpackers.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gecko's%20Backpackers%20187%20Bunda%20St%2C%20Parramatta%20Park%20QLD%204870%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 141,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697866974fa42cdd:0x7d1e0c119dbf6d27",
+      "name": "Dreamtime Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "4 Terminus St, Parramatta Park QLD 4870, Australia",
+      "location": {
+        "city": "Parramatta Park",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740000467",
+      "website": "http://www.dreamtimehostel.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dreamtime%20Hostel%204%20Terminus%20St%2C%20Parramatta%20Park%20QLD%204870%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 344,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978668ed1e462eb:0x90b95a225946ae37",
+      "name": "Caravella Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "149 Esplanade, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740512431",
+      "website": "http://www.caravella.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Caravella%20Backpackers%20149%20Esplanade%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 384,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978668dbe848407:0x215245a264e77780",
+      "name": "Mad Monkey Waterfront",
+      "stayType": "Backpacker Hostel",
+      "address": "93A Esplanade, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61742290888",
+      "website": "https://www.madmonkey.com.au/locations/australia/cairns/mad-monkey-waterfront/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mad%20Monkey%20Waterfront%2093A%20Esplanade%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 513,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697867fd92f869af:0x852e452d3bb4e896",
+      "name": "The Espy Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "83A Esplanade, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61404354444",
+      "website": "https://hotels.cloudbeds.com/reservation/RMwooN",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Espy%20Hostel%2083A%20Esplanade%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 205,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697867ed9cd89abb:0xe83fa463a565ea0b",
+      "name": "Wanna Stay Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "72-74 Grafton St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61407543020",
+      "website": "http://www.wannastayhostel.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Wanna%20Stay%20Hostel%2072-74%20Grafton%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 128,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x69786712c8c1cc33:0xa7c33c91874f6d08",
+      "name": "Little Drifter Cairns",
+      "stayType": "Backpacker Hostel",
+      "address": "1/7 Shields St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+611800180288",
+      "website": "https://thedrifter.com/cairns/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Little%20Drifter%20Cairns%201%2F7%20Shields%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 739,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x69786699902e50c1:0x67804d1245811cdb",
+      "name": "Cairns City Backpackers Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "274 Draper St, Parramatta Park QLD 4870, Australia",
+      "location": {
+        "city": "Parramatta Park",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740516160",
+      "website": "http://www.cairnscitybackpackers.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cairns%20City%20Backpackers%20Hostel%20274%20Draper%20St%2C%20Parramatta%20Park%20QLD%204870%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 285,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697867adc6fb9611:0x1deebf05872bdf21",
+      "name": "Gilligan's Accommodation",
+      "stayType": "Backpacker Hostel",
+      "address": "57 Grafton St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+611800556995",
+      "website": "http://www.gilligans.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gilligan's%20Accommodation%2057%20Grafton%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 82,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978669743bd8b21:0xa8079f44a13b1f8a",
+      "name": "Travellers Oasis",
+      "stayType": "Backpacker Hostel",
+      "address": "8/10 Scott St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740521377",
+      "website": "https://travellersoasis.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Travellers%20Oasis%208%2F10%20Scott%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 549,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6978668d7639c9ad:0x4083bc63bd3bd050",
+      "name": "Global Backpackers Cairns",
+      "stayType": "Backpacker Hostel",
+      "address": "67 Esplanade, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61740311545",
+      "website": "https://www.globalbackpackers.com.au/cairns/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Global%20Backpackers%20Cairns%2067%20Esplanade%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.2,
+      "reviewCount": 381,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697866843b9022cd:0x2b1ea588ae634cc3",
+      "name": "Castaways Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "207 Sheridan St, Cairns North QLD 4870, Australia",
+      "location": {
+        "city": "Cairns North",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61466272077",
+      "website": "http://www.castawaysbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Castaways%20Backpackers%20207%20Sheridan%20St%2C%20Cairns%20North%20QLD%204870%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 125,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x697867d56f7d2335:0x628d57c88989bd64",
+      "name": "Summer House Cairns",
+      "stayType": "Backpacker Hostel",
+      "address": "341 Lake St, Cairns North QLD 4870, Australia",
+      "location": {
+        "city": "Cairns North",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61742213411",
+      "website": "http://www.staysummerhouse.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Summer%20House%20Cairns%20341%20Lake%20St%2C%20Cairns%20North%20QLD%204870%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 1074,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc09118ceacf7ad:0x1fe609b44585f4bf",
+      "name": "MOM Darwin",
+      "stayType": "Backpacker Hostel",
+      "address": "7/52 Mitchell St, Darwin City NT 0800, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "phone": "+61889892979",
+      "website": "https://momdarwin.net.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=MOM%20Darwin%207%2F52%20Mitchell%20St%2C%20Darwin%20City%20NT%200800%2C%20Australia",
+      "rating": 3.7,
+      "reviewCount": 570,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc0910850ada8c5:0xc7176d5a6aa2bf8",
+      "name": "Chilli's Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "69A Mitchell St, Darwin City NT 0800, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "phone": "+61889419722",
+      "website": "https://chillis-backpackers-hostel.innorthernterritory.com/en/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chilli's%20Backpackers%2069A%20Mitchell%20St%2C%20Darwin%20City%20NT%200800%2C%20Australia",
+      "rating": 3.2,
+      "reviewCount": 93,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc0910850ada8c5:0xbdc8939ae539a2b5",
+      "name": "Youth Shack",
+      "stayType": "Backpacker Hostel",
+      "address": "69 Mitchell St, Darwin City NT 0810, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0810"
+      },
+      "phone": "+61889815221",
+      "website": "https://www.youthshack.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Youth%20Shack%2069%20Mitchell%20St%2C%20Darwin%20City%20NT%200810%2C%20Australia",
+      "rating": 3.2,
+      "reviewCount": 269,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc091a097dff1ff:0x5e323ff6cdb73eb9",
+      "name": "Down Under Hostels on Mitchell",
+      "stayType": "Backpacker Hostel",
+      "address": "88 Mitchell St, Darwin City NT 0800, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "phone": null,
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Down%20Under%20Hostels%20on%20Mitchell%2088%20Mitchell%20St%2C%20Darwin%20City%20NT%200800%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 60,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc09158e87a3231:0xb3ae3342d88d550b",
+      "name": "Darwin Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "88 Mitchell St, Darwin City NT 0800, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "phone": "+61423263114",
+      "website": "http://www.darwinhostel.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Darwin%20Hostel%2088%20Mitchell%20St%2C%20Darwin%20City%20NT%200800%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 136,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc091a022615555:0xaada9228b711cd2f",
+      "name": "The Cozy Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "4 Harriet Pl, Darwin City NT 0800, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "phone": "+61423263114",
+      "website": "http://www.thecozydarwin.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Cozy%20Hostel%204%20Harriet%20Pl%2C%20Darwin%20City%20NT%200800%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 210,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc091a773b14035:0xdc4b02d12b99582a",
+      "name": "YMCA of the Northern Territory - Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "7 Doctors Gully Rd, Larrakeyah NT 0820, Australia",
+      "location": {
+        "city": "Larrakeyah",
+        "state": "NT",
+        "postcode": "0820"
+      },
+      "phone": null,
+      "website": "http://nt.ymca.org.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=YMCA%20of%20the%20Northern%20Territory%20-%20Hostel%207%20Doctors%20Gully%20Rd%2C%20Larrakeyah%20NT%200820%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 23,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc09199724c735f:0xb5e3ecdd54dea520",
+      "name": "Gecko Lodge",
+      "stayType": "Backpacker Hostel",
+      "address": "Mitchell St, Larrakeyah NT 0820, Australia",
+      "location": {
+        "city": "Larrakeyah",
+        "state": "NT",
+        "postcode": "0820"
+      },
+      "phone": "+61889815569",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gecko%20Lodge%20Mitchell%20St%2C%20Larrakeyah%20NT%200820%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 29,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc093114993d1e5:0xc528c3c3f0a95c76",
+      "name": "Aboriginal Hostels Ltd - Nagandji Nagandji-Ba Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "14 Verbena St, Nightcliff NT 0810, Australia",
+      "location": {
+        "city": "Nightcliff",
+        "state": "NT",
+        "postcode": "0810"
+      },
+      "phone": "+61879040240",
+      "website": "https://www.ahl.gov.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aboriginal%20Hostels%20Ltd%20-%20Nagandji%20Nagandji-Ba%20Hostel%2014%20Verbena%20St%2C%20Nightcliff%20NT%200810%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 6,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x2cc0935596a4765d:0x578bb1feeeb5b78",
+      "name": "Aboriginal Hostels Ltd - Daisy Yarmirr Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "37 Glencoe Cres, Tiwi NT 0810, Australia",
+      "location": {
+        "city": "Tiwi",
+        "state": "NT",
+        "postcode": "0810"
+      },
+      "phone": "+61879040210",
+      "website": "https://www.ahl.gov.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aboriginal%20Hostels%20Ltd%20-%20Daisy%20Yarmirr%20Hostel%2037%20Glencoe%20Cres%2C%20Tiwi%20NT%200810%2C%20Australia",
+      "rating": 3.4,
+      "reviewCount": 20,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:0x6b12ae3c04ff022b:0x793a0eb105315339",
+      "name": "Nomads Sydney",
+      "stayType": "Backpacker Hostel",
+      "address": "477 Kent St, Sydney NSW 2000, Australia",
+      "location": {
+        "city": "Sydney",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61292677718",
+      "website": "https://nomadsworld.com/australia/nomads-sydney/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nomads%20Sydney%20477%20Kent%20St%2C%20Sydney%20NSW%202000%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 1509,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae3c4d5321d3:0x4530ef1eb669d1a8",
+      "name": "Summer House Sydney City",
+      "stayType": "Backpacker Hostel",
+      "address": "7 Wilmot St, Sydney NSW 2000, Australia",
+      "location": {
+        "city": "Sydney",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61292677772",
+      "website": "https://staysummerhouse.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Summer%20House%20Sydney%20City%207%20Wilmot%20St%2C%20Sydney%20NSW%202000%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 1071,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12af126173fc8d:0xda847505ae6c23c1",
+      "name": "Pacific House Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "50-58 Sir John Young Cres, Woolloomooloo NSW 2011, Australia",
+      "location": {
+        "city": "Woolloomooloo",
+        "state": "NSW",
+        "postcode": "2011"
+      },
+      "phone": "+61291914912",
+      "website": "http://www.thepacifichouse.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pacific%20House%20Hostel%2050-58%20Sir%20John%20Young%20Cres%2C%20Woolloomooloo%20NSW%202011%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 634,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae43059613ed:0x2a29be34899752c5",
+      "name": "YHA Sydney Harbour - The Rocks",
+      "stayType": "Backpacker Hostel",
+      "address": "110 Cumberland St, The Rocks NSW 2000, Australia",
+      "location": {
+        "city": "The Rocks",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61282720900",
+      "website": "https://www.yha.com.au/hostels/nsw/sydney-surrounds/sydney-harbour/?utm_source=google-business&utm_medium=righthandside&utm_campaign=listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=YHA%20Sydney%20Harbour%20-%20The%20Rocks%20110%20Cumberland%20St%2C%20The%20Rocks%20NSW%202000%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 1641,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae13b9e05041:0x1fb0a664dc3476ec",
+      "name": "Nate's Place Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "141 William St, Darlinghurst NSW 2010, Australia",
+      "location": {
+        "city": "Darlinghurst",
+        "state": "NSW",
+        "postcode": "2010"
+      },
+      "phone": "+61292660021",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nate's%20Place%20Backpackers%20141%20William%20St%2C%20Darlinghurst%20NSW%202010%2C%20Australia",
+      "rating": 4.2,
+      "reviewCount": 601,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12af2a0ad48d39:0xf44f790077ff53a1",
+      "name": "Tequila Sunrise Hostel Sydney",
+      "stayType": "Backpacker Hostel",
+      "address": "611 George St, Haymarket NSW 2000, Australia",
+      "location": {
+        "city": "Haymarket",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61468031915",
+      "website": "https://www.tequilasunrisehostels.com/sydney-central-hostel?utm_source=google&utm_medium=organic&utm_campaign=gbp",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tequila%20Sunrise%20Hostel%20Sydney%20611%20George%20St%2C%20Haymarket%20NSW%202000%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 634,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae232b3d1285:0xaec56a59b63472d9",
+      "name": "Maze Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "417 Pitt St, Haymarket NSW 2000, Australia",
+      "location": {
+        "city": "Haymarket",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61292115115",
+      "website": "http://www.mazebackpackers.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Maze%20Backpackers%20417%20Pitt%20St%2C%20Haymarket%20NSW%202000%2C%20Australia",
+      "rating": 3.5,
+      "reviewCount": 1258,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12af619263bae1:0x6d6fc08c3ba0bb3d",
+      "name": "Azzurro Pod Hotel - Central Sydney",
+      "stayType": "Backpacker Hostel",
+      "address": "90 Wentworth Ave, Surry Hills NSW 2010, Australia",
+      "location": {
+        "city": "Surry Hills",
+        "state": "NSW",
+        "postcode": "2010"
+      },
+      "phone": "+61440133104",
+      "website": "https://www.azzurrohotels.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Azzurro%20Pod%20Hotel%20-%20Central%20Sydney%2090%20Wentworth%20Ave%2C%20Surry%20Hills%20NSW%202010%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 427,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae2295bdf86d:0x7d992e1da7aa7b46",
+      "name": "Big Backpackers Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "212 Elizabeth St, Surry Hills NSW 2010, Australia",
+      "location": {
+        "city": "Surry Hills",
+        "state": "NSW",
+        "postcode": "2010"
+      },
+      "phone": "+61292816030",
+      "website": "https://bighostel.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Big%20Backpackers%20Hostel%20212%20Elizabeth%20St%2C%20Surry%20Hills%20NSW%202010%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 673,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12af0c3382ab6f:0x53799a9b0a44ddef",
+      "name": "Azzurro Pod Hotel - Potts Point",
+      "stayType": "Backpacker Hostel",
+      "address": "141 Victoria St, Potts Point NSW 2011, Australia",
+      "location": {
+        "city": "Potts Point",
+        "state": "NSW",
+        "postcode": "2011"
+      },
+      "phone": "+61440133104",
+      "website": "https://www.azzurrohotels.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Azzurro%20Pod%20Hotel%20-%20Potts%20Point%20141%20Victoria%20St%2C%20Potts%20Point%20NSW%202011%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 330,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12afb36b405a2b:0x6126ed3878822e0a",
+      "name": "Serene Hostels Potts Point",
+      "stayType": "Backpacker Hostel",
+      "address": "144 Victoria St, Potts Point NSW 2011, Australia",
+      "location": {
+        "city": "Potts Point",
+        "state": "NSW",
+        "postcode": "2011"
+      },
+      "phone": "+61285300925",
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Serene%20Hostels%20Potts%20Point%20144%20Victoria%20St%2C%20Potts%20Point%20NSW%202011%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 205,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae0d4e5b8e99:0xd2101dc8b08113f3",
+      "name": "Original Backpackers Hostel Sydney Australia",
+      "stayType": "Backpacker Hostel",
+      "address": "162 Victoria St, Potts Point NSW 2011, Australia",
+      "location": {
+        "city": "Potts Point",
+        "state": "NSW",
+        "postcode": "2011"
+      },
+      "phone": "+61293563232",
+      "website": "https://www.originalbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Original%20Backpackers%20Hostel%20Sydney%20Australia%20162%20Victoria%20St%2C%20Potts%20Point%20NSW%202011%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 547,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12af6176ec2e1d:0x1b337a6f568b893c",
+      "name": "London Gate Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "172-174 Victoria St, Potts Point NSW 2011, Australia",
+      "location": {
+        "city": "Potts Point",
+        "state": "NSW",
+        "postcode": "2011"
+      },
+      "phone": "+61450396988",
+      "website": "https://www.londongate.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=London%20Gate%20Backpackers%20172-174%20Victoria%20St%2C%20Potts%20Point%20NSW%202011%2C%20Australia",
+      "rating": 3.7,
+      "reviewCount": 142,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12afbff300b24b:0x58245f457398f919",
+      "name": "TradeMark Hostel Sydney",
+      "stayType": "Backpacker Hostel",
+      "address": "109 Darlinghurst Rd, Potts Point NSW 2011, Australia",
+      "location": {
+        "city": "Potts Point",
+        "state": "NSW",
+        "postcode": "2011"
+      },
+      "phone": null,
+      "website": null,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=TradeMark%20Hostel%20Sydney%20109%20Darlinghurst%20Rd%2C%20Potts%20Point%20NSW%202011%2C%20Australia",
+      "rating": 3.7,
+      "reviewCount": 243,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae238d82f97b:0x2de899d16c113ad8",
+      "name": "YHA Sydney Central",
+      "stayType": "Backpacker Hostel",
+      "address": "11 Rawson Place Corner of Pitt St and, Rawson Pl, Haymarket NSW 2000, Australia",
+      "location": {
+        "city": "Haymarket",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61292189000",
+      "website": "https://www.yha.com.au/hostels/nsw/sydney-surrounds/sydney-central-backpackers-hostel/?utm_source=google-business&utm_medium=righthandside&utm_campaign=listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=YHA%20Sydney%20Central%2011%20Rawson%20Place%20Corner%20of%20Pitt%20St%20and%2C%20Rawson%20Pl%2C%20Haymarket%20NSW%202000%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 2214,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae23ff58fed7:0x9862120d42917353",
+      "name": "Wake Up! Sydney",
+      "stayType": "Backpacker Hostel",
+      "address": "ATM 7232/509 Pitt St, Haymarket NSW 2000, Australia",
+      "location": {
+        "city": "Haymarket",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61292887888",
+      "website": "http://www.wakeup.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Wake%20Up!%20Sydney%20ATM%207232%2F509%20Pitt%20St%2C%20Haymarket%20NSW%202000%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 3121,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ae29d9a9d3fd:0x5ff4e790f0dcb135",
+      "name": "Mad Monkey Broadway",
+      "stayType": "Backpacker Hostel",
+      "address": "20 City Rd, Chippendale NSW 2008, Australia",
+      "location": {
+        "city": "Chippendale",
+        "state": "NSW",
+        "postcode": "2008"
+      },
+      "phone": "+61287053762",
+      "website": "https://www.madmonkey.com.au/locations/australia/sydney/mad-monkey-broadway",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mad%20Monkey%20Broadway%2020%20City%20Rd%2C%20Chippendale%20NSW%202008%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 925,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12b1df14646513:0xb43f1eaa540fb84f",
+      "name": "Secret Garden Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "243 Cleveland St, Redfern NSW 2016, Australia",
+      "location": {
+        "city": "Redfern",
+        "state": "NSW",
+        "postcode": "2016"
+      },
+      "phone": "+61291894173",
+      "website": "https://secretgardenbackpackers.site/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Secret%20Garden%20Backpackers%20243%20Cleveland%20St%2C%20Redfern%20NSW%202016%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 590,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12b1b67ff816e7:0x1557fc1083f6debf",
+      "name": "Newtown Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "5/11 Egan St, Newtown NSW 2042, Australia",
+      "location": {
+        "city": "Newtown",
+        "state": "NSW",
+        "postcode": "2042"
+      },
+      "phone": "+61295503236",
+      "website": "http://www.newtownbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Newtown%20Backpackers%205%2F11%20Egan%20St%2C%20Newtown%20NSW%202042%2C%20Australia",
+      "rating": 3.3,
+      "reviewCount": 171,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6b12ad9be0f4872f:0xf0deb58b9b2f2ee6",
+      "name": "Bondi Beach Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "35a Hall St, Bondi Beach NSW 2026, Australia",
+      "location": {
+        "city": "Bondi Beach",
+        "state": "NSW",
+        "postcode": "2026"
+      },
+      "phone": "+61293654900",
+      "website": "https://bondibeachbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bondi%20Beach%20Backpackers%2035a%20Hall%20St%2C%20Bondi%20Beach%20NSW%202026%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 3745,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d4a9da36569:0xb313606f8af8a958",
+      "name": "Europa Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "310-314 Queen St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61393272300",
+      "website": "http://www.europamelbourne.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Europa%20Melbourne%20310-314%20Queen%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 3.6,
+      "reviewCount": 740,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad642c977d7cbcb:0x731d751185b0705c",
+      "name": "Exford Hotel",
+      "stayType": "Backpacker Hostel",
+      "address": "199 Russell St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61396632697",
+      "website": "http://www.exfordhotel.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Exford%20Hotel%20199%20Russell%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 1499,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad642b47bacba07:0x81fd93825909016b",
+      "name": "Flinders Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "35 Elizabeth St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61396205100",
+      "website": "https://flindersbackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Flinders%20Backpackers%2035%20Elizabeth%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 3.7,
+      "reviewCount": 824,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad6433eea043f17:0x3e261703b4cba8ca",
+      "name": "Bounce Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "250 Flinders St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61422716090",
+      "website": "https://staybounce.com/locations/melbourne",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bounce%20Melbourne%20250%20Flinders%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 678,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d7722a45585:0x427ce65f481b545c",
+      "name": "Little Drifter Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "167 Franklin St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+611800180288",
+      "website": "https://thedrifter.com/melbourne/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Little%20Drifter%20Melbourne%20167%20Franklin%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 2941,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad642cc235d7407:0xb8b3497f30de602c",
+      "name": "Space Hotel",
+      "stayType": "Backpacker Hostel",
+      "address": "380 Russell St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61396623888",
+      "website": "https://www.spacehotel.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Space%20Hotel%20380%20Russell%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 1682,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d34a463f88d:0x9645cd80e259d8e7",
+      "name": "Elizabeth Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "494 Elizabeth St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61396631685",
+      "website": "https://www.elizabethhostel.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Elizabeth%20Hostel%20494%20Elizabeth%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 2.4,
+      "reviewCount": 467,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d4ea2e756d7:0x36d65dba3cad05d8",
+      "name": "Melbourne City Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "197-199 King St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61396701111",
+      "website": "http://www.melbournecitybackpackers.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne%20City%20Backpackers%20197-199%20King%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 3.8,
+      "reviewCount": 712,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d518a77c9ab:0xd72b3b183d825f90",
+      "name": "YHA Melbourne Central",
+      "stayType": "Backpacker Hostel",
+      "address": "562 Flinders St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61396212523",
+      "website": "https://www.yha.com.au/hostels/vic/melbourne-hostels/melbourne-central-hostel/?utm_source=google-business&utm_medium=righthandside&utm_campaign=listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=YHA%20Melbourne%20Central%20562%20Flinders%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 935,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d4fec8febbf:0x14496728462937f0",
+      "name": "Queen Victoria Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "312 Victoria St, North Melbourne VIC 3051, Australia",
+      "location": {
+        "city": "North Melbourne",
+        "state": "VIC",
+        "postcode": "3051"
+      },
+      "phone": "+61472506174",
+      "website": "https://www.queenvichotel.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Queen%20Victoria%20Hostel%20312%20Victoria%20St%2C%20North%20Melbourne%20VIC%203051%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 171,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad642c517598fc9:0xc465527c7b4e0f88",
+      "name": "The Mansion Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "80 Victoria Parade, East Melbourne VIC 3002, Australia",
+      "location": {
+        "city": "East Melbourne",
+        "state": "VIC",
+        "postcode": "3002"
+      },
+      "phone": "+61396634212",
+      "website": "https://www.themansionmelbourne.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Mansion%20Melbourne%2080%20Victoria%20Parade%2C%20East%20Melbourne%20VIC%203002%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 329,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d50f40d1b61:0x838fbd976d43beb2",
+      "name": "Mad Monkey Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "475 Spencer St, West Melbourne VIC 3003, Australia",
+      "location": {
+        "city": "West Melbourne",
+        "state": "VIC",
+        "postcode": "3003"
+      },
+      "phone": "+61394546848",
+      "website": "https://www.madmonkey.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mad%20Monkey%20Melbourne%20475%20Spencer%20St%2C%20West%20Melbourne%20VIC%203003%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 215,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d7f2b5d6c85:0x5d9b5dc5560e46cd",
+      "name": "Little Drifter North Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "78 Howard St, North Melbourne VIC 3051, Australia",
+      "location": {
+        "city": "North Melbourne",
+        "state": "VIC",
+        "postcode": "3051"
+      },
+      "phone": "+611800180288",
+      "website": "https://thedrifter.com/north-melbourne/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Little%20Drifter%20North%20Melbourne%2078%20Howard%20St%2C%20North%20Melbourne%20VIC%203051%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 1468,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad65d477e88cd71:0x4578a0099557df11",
+      "name": "Bev & Micks Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "575 Spencer St, West Melbourne VIC 3003, Australia",
+      "location": {
+        "city": "West Melbourne",
+        "state": "VIC",
+        "postcode": "3003"
+      },
+      "phone": "+61399399596",
+      "website": "https://www.facebook.com/McMahonshotel/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bev%20%26%20Micks%20Backpackers%20575%20Spencer%20St%2C%20West%20Melbourne%20VIC%203003%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 191,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad642d987cd5407:0x8e6707139b56f2bd",
+      "name": "The Nunnery Accommodation",
+      "stayType": "Backpacker Hostel",
+      "address": "116 Nicholson St, Fitzroy VIC 3065, Australia",
+      "location": {
+        "city": "Fitzroy",
+        "state": "VIC",
+        "postcode": "3065"
+      },
+      "phone": "+611800032635",
+      "website": "http://www.nunnery.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Nunnery%20Accommodation%20116%20Nicholson%20St%2C%20Fitzroy%20VIC%203065%2C%20Australia",
+      "rating": 3.9,
+      "reviewCount": 297,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad6681561b40835:0xd396763756a5cdf0",
+      "name": "Pint on Punt Backpackers St Kilda",
+      "stayType": "Backpacker Hostel",
+      "address": "42 Punt Rd, St Kilda VIC 3181, Australia",
+      "location": {
+        "city": "St Kilda",
+        "state": "VIC",
+        "postcode": "3181"
+      },
+      "phone": "+61395103310",
+      "website": "https://www.pintonpunt.com.au/?utm_source=google&utm_medium=organic&utm_campaign=gbp-listing",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pint%20on%20Punt%20Backpackers%20St%20Kilda%2042%20Punt%20Rd%2C%20St%20Kilda%20VIC%203181%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 479,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad669f8fe9f871d:0x82103b02ba25c558",
+      "name": "St. Kilda Accommodation",
+      "stayType": "Backpacker Hostel",
+      "address": "55B Fitzroy St, St Kilda VIC 3182, Australia",
+      "location": {
+        "city": "St Kilda",
+        "state": "VIC",
+        "postcode": "3182"
+      },
+      "phone": null,
+      "website": "https://accommodationstkilda.com.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=St.%20Kilda%20Accommodation%2055B%20Fitzroy%20St%2C%20St%20Kilda%20VIC%203182%2C%20Australia",
+      "rating": 3.1,
+      "reviewCount": 62,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad6686869bc78f1:0xd8e22a77f0ef688a",
+      "name": "Summer House Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "109 Barkly St, St Kilda VIC 3182, Australia",
+      "location": {
+        "city": "St Kilda",
+        "state": "VIC",
+        "postcode": "3182"
+      },
+      "phone": "+61385088101",
+      "website": "https://www.staysummerhouse.com/melbourne/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Summer%20House%20Melbourne%20109%20Barkly%20St%2C%20St%20Kilda%20VIC%203182%2C%20Australia",
+      "rating": 4.2,
+      "reviewCount": 637,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad668686ba0ea95:0x8210f854bead6ff",
+      "name": "Barkly Backpackers",
+      "stayType": "Backpacker Hostel",
+      "address": "102 Barkly St, St Kilda VIC 3182, Australia",
+      "location": {
+        "city": "St Kilda",
+        "state": "VIC",
+        "postcode": "3182"
+      },
+      "phone": "+61399137286",
+      "website": "http://barklybackpackers.com/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Barkly%20Backpackers%20102%20Barkly%20St%2C%20St%20Kilda%20VIC%203182%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 103,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:0x6ad6686656516ee5:0xfe4fcf6fc2c958b",
+      "name": "Nomads St Kilda",
+      "stayType": "Backpacker Hostel",
+      "address": "17 Carlisle St, St Kilda VIC 3182, Australia",
+      "location": {
+        "city": "St Kilda",
+        "state": "VIC",
+        "postcode": "3182"
+      },
+      "phone": "+61385986200",
+      "website": "https://nomadsworld.com/australia/nomads-st-kilda-melbourne/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nomads%20St%20Kilda%2017%20Carlisle%20St%2C%20St%20Kilda%20VIC%203182%2C%20Australia",
+      "rating": 4,
+      "reviewCount": 859,
       "inRegionalZone": false
     }
   ]

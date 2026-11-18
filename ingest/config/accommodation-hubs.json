@@ -5,49 +5,49 @@
       "name": "Mildura & Sunraysia, VIC",
       "geo": "-34.1855,142.1625",
       "radius": 20000,
-      "queries": ["working hostel", "backpackers hostel", "caravan park"]
+      "queries": ["working hostel in Mildura VIC", "backpackers hostel in Mildura VIC", "holiday park in Mildura VIC"]
     },
     {
       "id": "bundaberg-qld",
       "name": "Bundaberg & Childers, QLD",
       "geo": "-24.8661,152.3489",
       "radius": 20000,
-      "queries": ["working hostel", "backpackers hostel"]
+      "queries": ["working hostel in Bundaberg QLD", "backpackers hostel in Bundaberg QLD"]
     },
     {
       "id": "coffs-harbour-nsw",
       "name": "Coffs Harbour, NSW",
       "geo": "-30.2963,153.1157",
       "radius": 20000,
-      "queries": ["backpackers hostel", "holiday park cabins"]
+      "queries": ["backpackers hostel in Coffs Harbour NSW", "holiday park in Coffs Harbour NSW"]
     },
     {
       "id": "cairns-qld",
       "name": "Cairns & Mareeba, QLD",
       "geo": "-16.9203,145.7710",
       "radius": 20000,
-      "queries": ["backpackers hostel", "working hostel"]
+      "queries": ["backpackers hostel in Cairns QLD"]
     },
     {
       "id": "darwin-nt",
       "name": "Darwin, NT",
       "geo": "-12.4634,130.8456",
       "radius": 15000,
-      "queries": ["backpackers hostel", "tourist park"]
+      "queries": ["backpackers hostel in Darwin NT"]
     },
     {
       "id": "sydney-nsw",
       "name": "Sydney, NSW",
       "geo": "-33.8688,151.2093",
       "radius": 10000,
-      "queries": ["backpackers hostel"]
+      "queries": ["backpackers hostel in Sydney NSW"]
     },
     {
       "id": "melbourne-vic",
       "name": "Melbourne, VIC",
       "geo": "-37.8136,144.9631",
       "radius": 10000,
-      "queries": ["backpackers hostel"]
+      "queries": ["backpackers hostel in Melbourne VIC"]
     }
   ]
 }

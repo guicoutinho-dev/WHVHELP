@@ -6,7 +6,11 @@ const os = require("node:os");
 const gmapsFixture = require("./fixtures/gmaps-employers-sample.json");
 const rulesConfig = require("../config/regional88-rules.json");
 const postcodesConfig = require("../config/postcodes-88.json");
-const { createGmapsEmployersSource, mapGmapsPlaceToRawEmployer } = require("../src/sources/gmaps-employers");
+const {
+  createGmapsEmployersSource,
+  mapGmapsPlaceToRawEmployer,
+  parseGmapsScraperOutput
+} = require("../src/sources/gmaps-employers");
 const { runEmployersPipeline } = require("../src/pipeline");
 const { runCli } = require("../src/cli");
 
@@ -56,4 +60,31 @@ test("runCli --employers --seed grava data/employers.json atomicamente", async (
   const saved = JSON.parse(fs.readFileSync(outPath, "utf8"));
   assert.equal(saved.schemaVersion, 1);
   assert.equal(saved.employers.length, gmapsFixture.length);
+});
+
+test("parseGmapsScraperOutput processa saída NDJSON real do google-maps-scraper -fast-mode e extrai data_id", () => {
+  const ndjson = [
+    "null",
+    JSON.stringify([
+      {
+        data_id: "0x6ac30310c0d418e1:0xdc9ff74042f2",
+        cid: "",
+        title: "AgriSkills Orchard Grove Care",
+        categories: ["Orchard", "Employment consultant"],
+        category: "",
+        address: "71B Orange Ave, Mildura VIC 3500, Australia",
+        web_site: "",
+        phone: "+61386927284",
+        review_count: 5,
+        review_rating: 4.5
+      }
+    ])
+  ].join("\n");
+
+  const places = parseGmapsScraperOutput(ndjson);
+  assert.equal(places.length, 1);
+  const mapped = mapGmapsPlaceToRawEmployer(places[0], 0);
+  assert.equal(mapped.externalId, "0x6ac30310c0d418e1:0xdc9ff74042f2");
+  assert.equal(mapped.title, "AgriSkills Orchard Grove Care");
+  assert.equal(mapped.phone, "+61386927284");
 });
