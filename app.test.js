@@ -187,7 +187,12 @@ test("employerMarkup exibe selo 88 dias, telefone e omite botão de site quando 
 
 test("applyProfileRulesToJobs avalia vagas contra o perfil aprovado e eligibleForBatch permite reavaliar vagas antes bloqueadas", () => {
   const sampleJobs = [
-    toViewJob(contractData.jobs[0]),
+    {
+      ...toViewJob(contractData.jobs[0]),
+      category: "Fruit Picking",
+      pay: { min: 30.5, max: 34, period: "hour", currency: "AUD" },
+      regionalWork: { "417": "likely", "462": "likely" }
+    },
     {
       ...toViewJob(contractData.jobs[1]),
       pay: null

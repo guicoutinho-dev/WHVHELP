@@ -56,3 +56,26 @@ test("dedupeJobs mescla duplicatas mantendo o registro mais completo e preserva 
   assert.equal(deduped[0].firstSeenAt, "2026-11-10T00:00:00.000Z");
   assert.equal(deduped[0].pay.min, 30);
 });
+
+test("assessRegionalWork resolve cidades/estados regionais conhecidos quando a fonte não envia postcode (ex.: Adzuna)", () => {
+  const saFarm = assessRegionalWork(
+    { category: "Farm", location: { city: "Loxton", state: "SA", postcode: null } },
+    rules,
+    postcodes
+  );
+  assert.deepEqual(saFarm, { "417": "likely", "462": "likely" });
+
+  const cairnsHosp = assessRegionalWork(
+    { category: "Hospitality", location: { city: "Cairns Region", state: "QLD", postcode: null } },
+    rules,
+    postcodes
+  );
+  assert.deepEqual(cairnsHosp, { "417": "likely", "462": "likely" });
+
+  const childersFarm = assessRegionalWork(
+    { category: "Farm", location: { city: "Childers", state: "QLD", postcode: null } },
+    rules,
+    postcodes
+  );
+  assert.deepEqual(childersFarm, { "417": "likely", "462": "likely" });
+});

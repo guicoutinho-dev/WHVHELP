@@ -4,6 +4,7 @@
   "private": true,
   "description": "HelpWHV — Working Holiday Visa jobs & accommodation in Australia",
   "scripts": {
+    "start": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.ttf':'font/ttf','.woff2':'font/woff2','.png':'image/png','.svg':'image/svg+xml'};http.createServer((req,res)=>{const u=new URL(req.url,'http://localhost');let f=path.join(process.cwd(),decodeURIComponent(u.pathname==='/'?'/index.html':u.pathname));if(!f.startsWith(process.cwd())){res.writeHead(403);return res.end();}fs.readFile(f,(e,d)=>{if(e){res.writeHead(404);return res.end('Not found');}res.writeHead(200,{'Content-Type':mime[path.extname(f)]||'application/octet-stream'});res.end(d);});}).listen(4173,'127.0.0.1',()=>console.log('HelpWHV rodando em http://localhost:4173'));\"",
     "test": "node --test app.test.js ingest/test/*.test.js",
     "ingest": "node ingest/src/cli.js",
     "ingest:seed": "node ingest/src/cli.js --seed",

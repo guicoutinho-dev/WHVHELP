@@ -4,7 +4,7 @@ const adzunaFixture = require("./fixtures/adzuna-sample.json");
 const joobleFixture = require("./fixtures/jooble-sample.json");
 const publicPageFixture = require("./fixtures/public-page-sample.json");
 const sourcesConfig = require("../config/sources.json");
-const { createAdzunaSource } = require("../src/sources/adzuna");
+const { createAdzunaSource, mapAdzunaItemToRawJob } = require("../src/sources/adzuna");
 const { createJoobleSource } = require("../src/sources/jooble");
 const { createPublicPagesSource } = require("../src/sources/public-pages");
 
@@ -113,4 +113,15 @@ test("createPublicPagesSource rejeita domínios proibidos ou entradas sem robots
   const jobs = await validSource.fetchJobs();
   assert.equal(jobs.length, 2);
   assert.equal(jobs[0].postcode, "2450");
+});
+
+test("mapAdzunaItemToRawJob remove utm_source, app_id e app_key da redirect_url para nunca vazar credenciais no jobs.json", () => {
+  const raw = mapAdzunaItemToRawJob({
+    id: "5968641283",
+    title: "Fruit Picker",
+    redirect_url: "https://www.adzuna.com.au/details/5968641283?utm_medium=api&utm_source=secret123&app_id=secret123&app_key=key456",
+    location: { area: ["Australia", "Victoria", "Mildura"] }
+  });
+  assert.equal(raw.url, "https://www.adzuna.com.au/details/5968641283");
+  assert.equal(raw.url.includes("secret123"), false);
 });

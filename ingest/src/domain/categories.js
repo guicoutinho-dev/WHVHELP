@@ -46,6 +46,9 @@ const CATEGORY_MATCH_ORDER = Object.freeze([
       "orchard",
       "vineyard",
       "harvest picker",
+      "harvest worker",
+      "fruit & vegetable",
+      "fruits and vegetables",
       "pruning",
       "vineyard hand"
     ]
@@ -96,7 +99,9 @@ const CATEGORY_MATCH_ORDER = Object.freeze([
       "grain harvest",
       "shed hand",
       "shearer",
-      "rouseabout"
+      "rouseabout",
+      "glasshouse",
+      "greenhouse"
     ]
   },
   {

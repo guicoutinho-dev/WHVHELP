@@ -20,13 +20,26 @@ function extractCityAndState(locationObj) {
   return { city: city || null, state };
 }
 
+function cleanAdzunaUrl(rawUrl) {
+  if (typeof rawUrl !== "string" || !rawUrl.trim()) return "";
+  try {
+    const parsed = new URL(rawUrl);
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "app_id", "app_key"]) {
+      parsed.searchParams.delete(key);
+    }
+    return parsed.toString();
+  } catch {
+    return rawUrl;
+  }
+}
+
 function mapAdzunaItemToRawJob(item) {
   const { city, state } = extractCityAndState(item.location);
   return {
     externalId: String(item.id ?? ""),
     sourceId: "adzuna",
     sourceName: "Adzuna",
-    url: item.redirect_url || "",
+    url: cleanAdzunaUrl(item.redirect_url || ""),
     title: item.title || "",
     employer: item.company?.display_name || null,
     city,
