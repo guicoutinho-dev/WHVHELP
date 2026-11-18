@@ -2,21 +2,27 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const contractData = require("./data/jobs.json");
 const employersData = require("./data/employers.json");
+const accommodationData = require("./data/accommodation.json");
 const {
   filterJobs,
   filterEmployers,
+  filterStays,
   eligibleForBatch,
   toViewJob,
   toViewEmployer,
+  toViewStay,
   formatPay,
   formatBatchSalary,
   formatScopeNote,
   jobMarkup,
   employerMarkup,
+  stayMarkup,
   evaluateJobForProfile,
   buildApplicationPitch,
+  buildMailtoHref,
   applyProfileRulesToJobs,
   DEFAULT_PROFILE,
+  STAY_TYPES,
   escapeHtml,
   CATEGORIES
 } = require("./app");
@@ -219,4 +225,31 @@ test("jobMarkup mantém botão de reavaliação visível quando status é Não e
   const html = jobMarkup(blockedJob);
   assert.ok(html.includes("Não enviada · regra"));
   assert.ok(html.includes(`data-apply="${blockedJob.id}"`));
+});
+
+test("toViewStay, filterStays e stayMarkup mapeiam, filtram e renderizam hospedagens WHV com selo de zona regional", () => {
+  assert.deepEqual(STAY_TYPES, [
+    "Working Hostel",
+    "Backpacker Hostel",
+    "Caravan & Cabin Park",
+    "Farm Stay"
+  ]);
+  const viewStays = accommodationData.stays.map(toViewStay);
+  const workingHostels = filterStays(viewStays, {
+    query: "",
+    location: "",
+    stayTypes: ["Working Hostel"],
+    onlyRegional88: true
+  });
+  assert.ok(workingHostels.length > 0);
+  assert.ok(workingHostels.every(s => s.stayType === "Working Hostel" && s.inRegionalZone === true));
+
+  const html = stayMarkup(workingHostels[0]);
+  assert.ok(html.includes("Zona regional 88d"));
+  assert.ok(html.includes("Working Hostel"));
+});
+
+test("buildMailtoHref exportado pelo app monta link mailto: seguro", () => {
+  const link = buildMailtoHref({ title: "Barista", employer: "Cafe", pitch: "Olá!" });
+  assert.ok(link.startsWith("mailto:?subject="));
 });

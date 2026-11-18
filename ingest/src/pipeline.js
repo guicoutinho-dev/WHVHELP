@@ -8,6 +8,11 @@ const {
   dedupeEmployers,
   validateEmployer
 } = require("./domain/employer");
+const {
+  normalizeRawAccommodation,
+  dedupeAccommodations,
+  validateAccommodation
+} = require("./domain/accommodation");
 
 function shouldAbortRegression(previousCount, nextCount) {
   if (typeof previousCount !== "number" || previousCount < 10) return false;
@@ -135,8 +140,59 @@ async function runEmployersPipeline({
   };
 }
 
+async function runAccommodationPipeline({
+  sources = [],
+  now,
+  postcodesConfig
+}) {
+  const sourceReports = [];
+  const collected = [];
+
+  for (const source of sources) {
+    try {
+      const rawItems = await source.fetchAccommodations();
+      const fetchedCount = Array.isArray(rawItems) ? rawItems.length : 0;
+      let keptCount = 0;
+
+      for (const raw of rawItems || []) {
+        const stay = normalizeRawAccommodation(raw, postcodesConfig);
+        if (validateAccommodation(stay).valid) {
+          collected.push(stay);
+          keptCount += 1;
+        }
+      }
+
+      sourceReports.push({
+        id: source.id,
+        ok: true,
+        fetched: fetchedCount,
+        kept: keptCount,
+        error: null
+      });
+    } catch (err) {
+      sourceReports.push({
+        id: source.id,
+        ok: false,
+        fetched: 0,
+        kept: 0,
+        error: err && err.message ? err.message : String(err)
+      });
+    }
+  }
+
+  const stays = dedupeAccommodations(collected);
+
+  return {
+    schemaVersion: 1,
+    generatedAt: now,
+    sources: sourceReports,
+    stays
+  };
+}
+
 module.exports = {
   runPipeline,
   runEmployersPipeline,
+  runAccommodationPipeline,
   shouldAbortRegression
 };

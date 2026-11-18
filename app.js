@@ -29,6 +29,15 @@ const PAGES_JOBS_URL = "https://guicoutinho-dev.github.io/WHVHELP/jobs.json";
 const LOCAL_JOBS_URL = "data/jobs.json";
 const PAGES_EMPLOYERS_URL = "https://guicoutinho-dev.github.io/WHVHELP/employers.json";
 const LOCAL_EMPLOYERS_URL = "data/employers.json";
+const PAGES_ACCOMMODATION_URL = "https://guicoutinho-dev.github.io/WHVHELP/accommodation.json";
+const LOCAL_ACCOMMODATION_URL = "data/accommodation.json";
+
+const STAY_TYPES = Object.freeze([
+  "Working Hostel",
+  "Backpacker Hostel",
+  "Caravan & Cabin Park",
+  "Farm Stay"
+]);
 
 function resolveDataUrl(pagesUrl, localUrl, overrideKey) {
   if (typeof window === "undefined") return localUrl;
@@ -43,6 +52,7 @@ function resolveDataUrl(pagesUrl, localUrl, overrideKey) {
 
 const JOBS_URL = resolveDataUrl(PAGES_JOBS_URL, LOCAL_JOBS_URL, "HELPWHV_JOBS_URL");
 const EMPLOYERS_URL = resolveDataUrl(PAGES_EMPLOYERS_URL, LOCAL_EMPLOYERS_URL, "HELPWHV_EMPLOYERS_URL");
+const ACCOMMODATION_URL = resolveDataUrl(PAGES_ACCOMMODATION_URL, LOCAL_ACCOMMODATION_URL, "HELPWHV_ACCOMMODATION_URL");
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -143,8 +153,32 @@ function toViewEmployer(record) {
   };
 }
 
+function toViewStay(record) {
+  const city = record?.location?.city || "Não informada";
+  const state = record?.location?.state || "";
+  const postcode = record?.location?.postcode || null;
+  const rawWebsite = safeExternalUrl(record?.website);
+
+  return {
+    id: String(record?.id || ""),
+    name: record?.name || "Hospedagem sem nome",
+    stayType: STAY_TYPES.includes(record?.stayType) ? record.stayType : "Backpacker Hostel",
+    address: record?.address || [city, state, postcode].filter(Boolean).join(", "),
+    city,
+    state,
+    postcode,
+    phone: typeof record?.phone === "string" && record.phone.trim() ? record.phone.trim() : null,
+    website: rawWebsite === "#" ? null : rawWebsite,
+    googleMapsUrl: safeExternalUrl(record?.googleMapsUrl),
+    rating: typeof record?.rating === "number" ? record.rating : null,
+    reviewCount: typeof record?.reviewCount === "number" ? record.reviewCount : null,
+    inRegionalZone: Boolean(record?.inRegionalZone)
+  };
+}
+
 let jobs = [];
 let employers = [];
+let stays = [];
 let generatedAt = null;
 let loadingState = "ready";
 
@@ -248,6 +282,13 @@ function evaluateJobForProfile(job, profile = DEFAULT_PROFILE) {
   };
 }
 
+function buildMailtoHref({ title, employer, pitch, email = "" } = {}) {
+  const safeRecipient = typeof email === "string" ? email.trim() : "";
+  const subject = `WHV Application — ${title || "Job Opening"}${employer ? ` (${employer})` : ""}`;
+  const body = pitch || "";
+  return `mailto:${encodeURIComponent(safeRecipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 function applyProfileRulesToJobs(targetJobs, profile, nowIso = new Date().toISOString()) {
   const records = [];
   for (const job of targetJobs || []) {
@@ -284,6 +325,12 @@ if (typeof require === "function" && typeof window === "undefined") {
     employers = Array.isArray(empPayload.employers) ? empPayload.employers.map(toViewEmployer) : [];
   } catch {
     employers = [];
+  }
+  try {
+    const accPayload = require("./data/accommodation.json");
+    stays = Array.isArray(accPayload.stays) ? accPayload.stays.map(toViewStay) : [];
+  } catch {
+    stays = [];
   }
 }
 
@@ -369,6 +416,7 @@ let filters = {
   location: "",
   salary: 0,
   categories: [],
+  stayTypes: [],
   onlyRegional88: false,
   visaSubclass: readSavedSubclass(),
   sort: "recent"
@@ -477,6 +525,21 @@ function filterEmployers(list, criteria = {}) {
     if (criteria.location && emp.city !== criteria.location) return false;
     if (activeCategories.length > 0 && !activeCategories.includes(emp.category)) return false;
     if (onlyRegional && emp.regionalWork?.[subclass] !== "likely") return false;
+    return true;
+  });
+}
+
+function filterStays(list, criteria = {}) {
+  const query = (criteria.query || "").trim().toLocaleLowerCase("pt-BR");
+  const activeTypes = Array.isArray(criteria.stayTypes) ? criteria.stayTypes : [];
+  const onlyRegional = Boolean(criteria.onlyRegional88);
+
+  return list.filter(stay => {
+    const searchable = `${stay.name} ${stay.city} ${stay.state} ${stay.postcode || ""} ${stay.stayType} ${stay.address || ""}`.toLocaleLowerCase("pt-BR");
+    if (query && !searchable.includes(query)) return false;
+    if (criteria.location && stay.city !== criteria.location) return false;
+    if (activeTypes.length > 0 && !activeTypes.includes(stay.stayType)) return false;
+    if (onlyRegional && !stay.inRegionalZone) return false;
     return true;
   });
 }
@@ -598,6 +661,37 @@ function employerMarkup(emp) {
   </article>`;
 }
 
+function stayMarkup(stay) {
+  const locationText = [stay.city, stay.state, stay.postcode].filter(Boolean).join(", ");
+  const safeName = escapeHtml(stay.name);
+  const safeAddress = escapeHtml(stay.address || locationText);
+  const safeType = escapeHtml(stay.stayType);
+  const safeMapsUrl = escapeHtml(stay.googleMapsUrl);
+  const safePhone = stay.phone ? escapeHtml(stay.phone) : "";
+  const safeTelHref = stay.phone ? escapeHtml(`tel:${stay.phone.replace(/[^+\d]/g, "")}`) : "";
+  const ratingLabel = stay.rating !== null ? `★ ${stay.rating.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}${stay.reviewCount ? ` (${stay.reviewCount})` : ""}` : "Sem avaliações";
+
+  return `<article class="job-row employer-row stay-row" data-id="${escapeHtml(stay.id)}">
+    <div class="job-copy">
+      <div class="job-header">
+        <h2>${safeName}</h2>
+        <span class="job-employer">${escapeHtml(ratingLabel)}</span>
+      </div>
+      <p class="job-meta">
+        <span>${icon("pin")}${safeAddress}</span>
+        <span>${icon("tag")}${safeType}</span>
+        ${stay.phone ? `<span>📞 ${safePhone}</span>` : ""}
+      </p>
+      <div class="job-badges">
+        ${stay.inRegionalZone ? `<span class="badge-88">Zona regional 88d</span>` : ""}
+        ${stay.website ? `<a class="source-link" href="${escapeHtml(stay.website)}" target="_blank" rel="noopener noreferrer">Site / Reserva ↗</a>` : ""}
+        ${stay.phone ? `<a class="source-link" href="${safeTelHref}">Ligar (${safePhone})</a>` : ""}
+        <a class="source-link" href="${safeMapsUrl}" target="_blank" rel="noopener noreferrer">Ver no Google Maps ↗</a>
+      </div>
+    </div>
+  </article>`;
+}
+
 function summaryMarkup() {
   const chosen = jobs.filter(job => selected.has(job.id));
   if (!chosen.length) {
@@ -614,6 +708,22 @@ function summaryMarkup() {
 }
 
 function categoryChipsMarkup() {
+  if (view === "accommodation") {
+    return `<div class="whv-controls" aria-label="Filtros de hospedagem WHV">
+      <div class="category-chips" role="group" aria-label="Tipo de hospedagem WHV">
+        ${STAY_TYPES.map(st => {
+          const active = filters.stayTypes.includes(st);
+          return `<button type="button" class="category-chip${active ? " is-active" : ""}" data-stay-type="${st}" aria-pressed="${active}">${st}</button>`;
+        }).join("")}
+      </div>
+      <div class="regional-toolbar">
+        <label class="regional-toggle">
+          <input type="checkbox" id="only-regional" ${filters.onlyRegional88 ? "checked" : ""}>
+          <span>Apenas hospedagens em zona regional 88 dias</span>
+        </label>
+      </div>
+    </div>`;
+  }
   const activeCount = filters.categories.length;
   return `<div class="whv-controls" aria-label="Filtros WHV por categoria e visto">
     <div class="category-chips" role="group" aria-label="Job Type (categorias WHV)">
@@ -708,6 +818,7 @@ function applicationsViewMarkup() {
             ${app.pitch ? `<div class="pitch-box">${escapeHtml(app.pitch)}</div>` : ""}
             <div class="job-badges">
               ${app.pitch ? `<button type="button" class="source-link" data-copy-pitch="${escapeHtml(app.jobId)}">Copiar apresentação</button>` : ""}
+              ${app.pitch ? `<a class="source-link" href="${escapeHtml(buildMailtoHref(app))}">Preparar e-mail ✉️</a>` : ""}
               <a class="source-link" href="${escapeHtml(app.sourceUrl)}" target="_blank" rel="noopener noreferrer">Abrir anúncio em ${escapeHtml(app.sourceName)} ↗</a>
               ${app.status === "Preparada" ? `<button type="button" class="badge-88" data-confirm-sent="${escapeHtml(app.jobId)}">Confirmar que enviei ✓</button>` : ""}
             </div>
@@ -719,7 +830,7 @@ function applicationsViewMarkup() {
 }
 
 function shellMarkup() {
-  const activeSourceList = view === "employers" ? employers : jobs;
+  const activeSourceList = view === "employers" ? employers : view === "accommodation" ? stays : jobs;
   const cities = distinctCities(activeSourceList);
   const updatedLabel = generatedAt ? `Atualizado em ${formatShortDate(generatedAt)}` : "Vagas WHV · Austrália";
   const pauseLabel = paused ? "Retomar IA" : "Pausar IA";
@@ -727,7 +838,7 @@ function shellMarkup() {
   return `${symbols()}
     <header class="topbar">
       <a class="brand" href="#vagas" aria-label="HelpWHV, ir para vagas"><span class="brand-sign" aria-hidden="true"><img src="assets/icons/kangaroo.svg" alt="" width="48" height="48"></span><span class="brand-name">HelpWHV</span></a>
-      <nav class="primary-nav" aria-label="Navegação principal"><button class="nav-item${view === "jobs" ? " is-current" : ""}" data-view="jobs" type="button" ${view === "jobs" ? 'aria-current="page"' : ""}>${icon("search")}Vagas</button><button class="nav-item${view === "employers" ? " is-current" : ""}" data-view="employers" type="button" ${view === "employers" ? 'aria-current="page"' : ""}>${icon("pin")}Empregadores 88d</button><button class="nav-item${view === "applications" ? " is-current" : ""}" data-view="applications" type="button" ${view === "applications" ? 'aria-current="page"' : ""}>${icon("work")}Candidaturas</button></nav>
+      <nav class="primary-nav" aria-label="Navegação principal"><button class="nav-item${view === "jobs" ? " is-current" : ""}" data-view="jobs" type="button" ${view === "jobs" ? 'aria-current="page"' : ""}>${icon("search")}Vagas</button><button class="nav-item${view === "employers" ? " is-current" : ""}" data-view="employers" type="button" ${view === "employers" ? 'aria-current="page"' : ""}>${icon("pin")}Empregadores 88d</button><button class="nav-item${view === "accommodation" ? " is-current" : ""}" data-view="accommodation" type="button" ${view === "accommodation" ? 'aria-current="page"' : ""}>${icon("tag")}Hospedagem</button><button class="nav-item${view === "applications" ? " is-current" : ""}" data-view="applications" type="button" ${view === "applications" ? 'aria-current="page"' : ""}>${icon("work")}Candidaturas</button></nav>
       <div class="topbar-actions"><span class="agent-state${paused ? " is-paused" : ""}" role="status"><span class="status-dot" aria-hidden="true"></span>${paused ? "Prévia pausada" : "IA em prévia"}</span><button class="pause-button${paused ? " is-paused" : ""}" id="pause-agent" type="button" aria-label="${pauseLabel}" aria-pressed="${paused}"><span class="pause-mark" aria-hidden="true"></span><span>${pauseLabel}</span></button><button class="profile-button" id="profile-button" type="button" aria-label="Perfil e regras">${icon("user")}</button></div>
     </header>
     <section class="intro" aria-labelledby="page-title"><span class="preview-tag">${updatedLabel}</span><h1 id="page-title" tabindex="-1">VAGAS DISPONÍVEIS</h1><p>Encontre vagas WHV na Austrália, filtre pelos 88 dias e acesse o anúncio original.</p><svg class="route-path" viewBox="0 0 510 80" preserveAspectRatio="none" aria-hidden="true"><path d="M4 55C55 63 70 44 120 42s87 34 144 18S325 7 369 13s77 35 137 25"/></svg><span class="route-pin" aria-hidden="true">${icon("pin")}</span><div class="road-sign" aria-hidden="true"><span>AUSTRALIA</span><i></i></div><img class="roadside-scrub" src="assets/plates/roadside-scrub.png" alt="" loading="lazy"></section>
@@ -775,6 +886,17 @@ function observeSelectionTray() {
 function updateResults() {
   const listEl = document.getElementById("job-list");
   if (!listEl) return;
+
+  if (view === "accommodation") {
+    const visibleStays = filterStays(stays, filters);
+    listEl.innerHTML = visibleStays.length
+      ? visibleStays.map(stayMarkup).join("")
+      : `<div class="empty-results"><h2>Nenhuma hospedagem encontrada</h2><p>Tente outra cidade ou limpe os filtros.</p><button id="clear-filters" type="button">Limpar filtros</button></div>`;
+    document.getElementById("result-count").textContent = `${visibleStays.length} ${visibleStays.length === 1 ? "hospedagem encontrada" : "hospedagens encontradas"}`;
+    const toggleBtn = document.getElementById("toggle-select-visible");
+    if (toggleBtn) toggleBtn.hidden = true;
+    return;
+  }
 
   if (view === "employers") {
     const visibleEmp = filterEmployers(employers, filters);
@@ -884,6 +1006,19 @@ function render() {
     document.querySelector(".jobs-area").innerHTML = applicationsViewMarkup();
     document.querySelector(".selection-tray").hidden = true;
     document.getElementById("mobile-batch-bar").hidden = true;
+  } else if (view === "accommodation") {
+    document.title = "Hospedagem WHV · HelpWHV";
+    document.getElementById("page-title").textContent = "HOSPEDAGEM WHV";
+    document.querySelector(".intro p").textContent = "Working hostels, backpacker hostels, caravan parks e farm stays na Austrália.";
+    document.querySelector(".main-layout").classList.add("applications-view");
+    document.querySelector(".selection-tray").hidden = true;
+    document.getElementById("mobile-batch-bar").hidden = true;
+    const salarySelect = document.getElementById("salary")?.closest(".filter-select");
+    if (salarySelect) salarySelect.hidden = true;
+    const sortControl = document.querySelector(".sort-control");
+    if (sortControl) sortControl.hidden = true;
+    document.getElementById("query").value = filters.query;
+    updateResults();
   } else if (view === "employers") {
     document.title = "Empregadores 88d · HelpWHV";
     document.getElementById("page-title").textContent = "EMPREGADORES 88 DIAS";
@@ -953,14 +1088,16 @@ async function loadContractJobs() {
   loadingState = "loading";
   render();
   try {
-    const [jobsPayload, empPayload] = await Promise.all([
+    const [jobsPayload, empPayload, accPayload] = await Promise.all([
       fetchWithLocalFallback(JOBS_URL, LOCAL_JOBS_URL),
-      fetchWithLocalFallback(EMPLOYERS_URL, LOCAL_EMPLOYERS_URL).catch(() => ({ employers: [] }))
+      fetchWithLocalFallback(EMPLOYERS_URL, LOCAL_EMPLOYERS_URL).catch(() => ({ employers: [] })),
+      fetchWithLocalFallback(ACCOMMODATION_URL, LOCAL_ACCOMMODATION_URL).catch(() => ({ stays: [] }))
     ]);
     generatedAt = jobsPayload.generatedAt || null;
     jobs = Array.isArray(jobsPayload.jobs) ? jobsPayload.jobs.map(toViewJob) : [];
     syncSavedStatusesToJobs();
     employers = Array.isArray(empPayload.employers) ? empPayload.employers.map(toViewEmployer) : [];
+    stays = Array.isArray(accPayload.stays) ? accPayload.stays.map(toViewStay) : [];
     loadingState = "ready";
     render();
   } catch {
@@ -1100,6 +1237,17 @@ if (typeof document !== "undefined") {
       updateResults();
       return;
     }
+    if (button.dataset.stayType) {
+      const st = button.dataset.stayType;
+      if (filters.stayTypes.includes(st)) {
+        filters.stayTypes = filters.stayTypes.filter(x => x !== st);
+      } else {
+        filters.stayTypes = [...filters.stayTypes, st];
+      }
+      render();
+      document.querySelector(`[data-stay-type="${st}"]`)?.focus();
+      return;
+    }
     if (button.dataset.category) {
       const cat = button.dataset.category;
       if (filters.categories.includes(cat)) {
@@ -1156,7 +1304,7 @@ if (typeof document !== "undefined") {
       return;
     }
     if (button.id === "clear-filters") {
-      filters = { ...filters, query: "", location: "", salary: 0, categories: [], onlyRegional88: false, sort: "recent" };
+      filters = { ...filters, query: "", location: "", salary: 0, categories: [], stayTypes: [], onlyRegional88: false, sort: "recent" };
       render();
     }
     if (button.dataset.apply) {
@@ -1180,14 +1328,23 @@ if (typeof document !== "undefined") {
       executeProfileEvaluationForIds([targetId]);
     }
     if (button.dataset.toggleAuto) {
-      automatic.has(button.dataset.toggleAuto) ? automatic.delete(button.dataset.toggleAuto) : automatic.add(button.dataset.toggleAuto);
+      const id = button.dataset.toggleAuto;
+      const enabling = !automatic.has(id);
+      enabling ? automatic.add(id) : automatic.delete(id);
       openJobId = "";
+      if (enabling && userProfile.rulesApproved && !paused) {
+        executeProfileEvaluationForIds([id]);
+        return;
+      }
       updateResults();
-      notice("Preferência automática alterada nesta vaga.");
+      notice(enabling ? "Modo automático ativado nesta vaga." : "Modo automático desativado nesta vaga.");
     }
     if (button.id === "bulk-apply") {
       const actionableJobs = eligibleForBatch(jobs, selected);
       if (!actionableJobs.length) return;
+      if (mode === "auto") {
+        for (const j of actionableJobs) automatic.add(j.id);
+      }
       if (!userProfile.rulesApproved) {
         pendingApplyJobIds = actionableJobs.map(j => j.id);
         profileModalOpen = true;
@@ -1199,7 +1356,8 @@ if (typeof document !== "undefined") {
     }
     if (button.dataset.view) {
       view = button.dataset.view;
-      const availableCities = distinctCities(view === "employers" ? employers : jobs);
+      const activeList = view === "employers" ? employers : view === "accommodation" ? stays : jobs;
+      const availableCities = distinctCities(activeList);
       if (filters.location && !availableCities.includes(filters.location)) {
         filters.location = "";
       }
@@ -1215,21 +1373,27 @@ if (typeof module !== "undefined") {
   module.exports = {
     filterJobs,
     filterEmployers,
+    filterStays,
     eligibleForBatch,
     toViewJob,
     toViewEmployer,
+    toViewStay,
     formatPay,
     formatBatchSalary,
     formatScopeNote,
     jobMarkup,
     employerMarkup,
+    stayMarkup,
     evaluateJobForProfile,
     buildApplicationPitch,
+    buildMailtoHref,
     applyProfileRulesToJobs,
     DEFAULT_PROFILE,
+    STAY_TYPES,
     escapeHtml,
     jobs,
     employers,
+    stays,
     CATEGORIES
   };
 }

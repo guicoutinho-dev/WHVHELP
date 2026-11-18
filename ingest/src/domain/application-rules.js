@@ -98,8 +98,16 @@ function evaluateJobForProfile(job, profile = DEFAULT_PROFILE) {
   };
 }
 
+function buildMailtoHref({ title, employer, pitch, email = "" } = {}) {
+  const safeRecipient = typeof email === "string" ? email.trim() : "";
+  const subject = `WHV Application — ${title || "Job Opening"}${employer ? ` (${employer})` : ""}`;
+  const body = pitch || "";
+  return `mailto:${encodeURIComponent(safeRecipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 module.exports = {
   DEFAULT_PROFILE,
   evaluateJobForProfile,
-  buildApplicationPitch
+  buildApplicationPitch,
+  buildMailtoHref
 };

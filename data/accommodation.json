@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-18T02:09:15.993Z",
+  "sources": [
+    {
+      "id": "gmaps-accommodation",
+      "ok": true,
+      "fetched": 9,
+      "kept": 9,
+      "error": null
+    }
+  ],
+  "stays": [
+    {
+      "id": "stay:acc-mildura-working-hostel",
+      "name": "Sunraysia Working Hostel & Harvest Lodge",
+      "stayType": "Working Hostel",
+      "address": "105 Deakin Ave, Mildura VIC 3500, Australia",
+      "location": {
+        "city": "Mildura",
+        "state": "VIC",
+        "postcode": "3500"
+      },
+      "phone": "+61 3 5021 1100",
+      "website": "https://sunraysiaworkinghostel.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunraysia%20Working%20Hostel%20%26%20Harvest%20Lodge%20105%20Deakin%20Ave%2C%20Mildura%20VIC%203500%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 195,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-bundaberg-bunkhouse",
+      "name": "Bundaberg Harvest Working Hostel",
+      "stayType": "Working Hostel",
+      "address": "42 Targo St, Bundaberg Central QLD 4670, Australia",
+      "location": {
+        "city": "Bundaberg Central",
+        "state": "QLD",
+        "postcode": "4670"
+      },
+      "phone": "+61 7 4153 2200",
+      "website": "https://bundabergbunkhouse.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bundaberg%20Harvest%20Working%20Hostel%2042%20Targo%20St%2C%20Bundaberg%20Central%20QLD%204670%2C%20Australia",
+      "rating": 4.2,
+      "reviewCount": 240,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-coffs-surf-hostel",
+      "name": "Coffs Coast Berry & Surf Working Hostel",
+      "stayType": "Working Hostel",
+      "address": "18 Ocean Parade, Coffs Harbour NSW 2450, Australia",
+      "location": {
+        "city": "Coffs Harbour",
+        "state": "NSW",
+        "postcode": "2450"
+      },
+      "phone": "+61 2 6652 3300",
+      "website": "https://coffssurfhostel.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Coffs%20Coast%20Berry%20%26%20Surf%20Working%20Hostel%2018%20Ocean%20Parade%2C%20Coffs%20Harbour%20NSW%202450%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 162,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-cairns-reef-backpackers",
+      "name": "Reef & Rainforest Backpackers Cairns",
+      "stayType": "Backpacker Hostel",
+      "address": "74 Grafton St, Cairns City QLD 4870, Australia",
+      "location": {
+        "city": "Cairns City",
+        "state": "QLD",
+        "postcode": "4870"
+      },
+      "phone": "+61 7 4041 4400",
+      "website": "https://reefbackpackers.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Reef%20%26%20Rainforest%20Backpackers%20Cairns%2074%20Grafton%20St%2C%20Cairns%20City%20QLD%204870%2C%20Australia",
+      "rating": 4.6,
+      "reviewCount": 510,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-darwin-mitchell-hostel",
+      "name": "Top End Backpackers & Pool Hostel",
+      "stayType": "Backpacker Hostel",
+      "address": "59 Mitchell St, Darwin City NT 0800, Australia",
+      "location": {
+        "city": "Darwin City",
+        "state": "NT",
+        "postcode": "0800"
+      },
+      "phone": "+61 8 8981 5500",
+      "website": "https://topendbackpackers.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Top%20End%20Backpackers%20%26%20Pool%20Hostel%2059%20Mitchell%20St%2C%20Darwin%20City%20NT%200800%2C%20Australia",
+      "rating": 4.3,
+      "reviewCount": 280,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-shepparton-caravan-park",
+      "name": "Goulburn River Holiday & Cabin Park",
+      "stayType": "Caravan & Cabin Park",
+      "address": "310 Wyndham St, Shepparton VIC 3630, Australia",
+      "location": {
+        "city": "Shepparton",
+        "state": "VIC",
+        "postcode": "3630"
+      },
+      "phone": "+61 3 5821 6600",
+      "website": "https://goulburnriverpark.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Goulburn%20River%20Holiday%20%26%20Cabin%20Park%20310%20Wyndham%20St%2C%20Shepparton%20VIC%203630%2C%20Australia",
+      "rating": 4.5,
+      "reviewCount": 145,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-margaret-farm-stay",
+      "name": "Karri Forest Vineyard Farm Stay",
+      "stayType": "Farm Stay",
+      "address": "188 Bussell Hwy, Margaret River WA 6285, Australia",
+      "location": {
+        "city": "Margaret River",
+        "state": "WA",
+        "postcode": "6285"
+      },
+      "phone": "+61 8 9757 7700",
+      "website": "https://karrifarmstay.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Karri%20Forest%20Vineyard%20Farm%20Stay%20188%20Bussell%20Hwy%2C%20Margaret%20River%20WA%206285%2C%20Australia",
+      "rating": 4.7,
+      "reviewCount": 98,
+      "inRegionalZone": true
+    },
+    {
+      "id": "stay:acc-sydney-central-backpackers",
+      "name": "Central Station Backpackers Sydney",
+      "stayType": "Backpacker Hostel",
+      "address": "412 Pitt St, Sydney NSW 2000, Australia",
+      "location": {
+        "city": "Sydney",
+        "state": "NSW",
+        "postcode": "2000"
+      },
+      "phone": "+61 2 9211 8800",
+      "website": "https://centralbackpackerssyd.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Central%20Station%20Backpackers%20Sydney%20412%20Pitt%20St%2C%20Sydney%20NSW%202000%2C%20Australia",
+      "rating": 4.1,
+      "reviewCount": 620,
+      "inRegionalZone": false
+    },
+    {
+      "id": "stay:acc-melbourne-flinders-hostel",
+      "name": "Flinders Lane Backpackers Melbourne",
+      "stayType": "Backpacker Hostel",
+      "address": "250 Flinders St, Melbourne VIC 3000, Australia",
+      "location": {
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000"
+      },
+      "phone": "+61 3 9650 9900",
+      "website": "https://flindersbackpackers.example.au/",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Flinders%20Lane%20Backpackers%20Melbourne%20250%20Flinders%20St%2C%20Melbourne%20VIC%203000%2C%20Australia",
+      "rating": 4.4,
+      "reviewCount": 540,
+      "inRegionalZone": false
+    }
+  ]
+}

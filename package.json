@@ -2,12 +2,13 @@
   "name": "helpwhv",
   "version": "1.0.0",
   "private": true,
-  "description": "HelpWHV — Working Holiday Visa jobs in Australia",
+  "description": "HelpWHV — Working Holiday Visa jobs & accommodation in Australia",
   "scripts": {
     "test": "node --test app.test.js ingest/test/*.test.js",
     "ingest": "node ingest/src/cli.js",
     "ingest:seed": "node ingest/src/cli.js --seed",
     "ingest:employers": "node ingest/src/cli.js --employers --seed",
+    "ingest:accommodation": "node ingest/src/cli.js --accommodation --seed",
     "sync:dist": "node ingest/src/cli.js --sync-dist"
   }
 }

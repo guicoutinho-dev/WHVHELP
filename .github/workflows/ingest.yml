@@ -59,6 +59,7 @@ jobs:
             npm run ingest:seed
           fi
           npm run ingest:employers
+          npm run ingest:accommodation
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

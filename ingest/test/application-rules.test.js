@@ -3,7 +3,8 @@ const assert = require("node:assert/strict");
 const {
   DEFAULT_PROFILE,
   evaluateJobForProfile,
-  buildApplicationPitch
+  buildApplicationPitch,
+  buildMailtoHref
 } = require("../src/domain/application-rules");
 
 test("evaluateJobForProfile aprova vaga compatível e gera pitch com dados do perfil", () => {
@@ -84,4 +85,15 @@ test("evaluateJobForProfile distingue bloqueio por regra de bloqueio por dado in
   const unknown88Res = evaluateJobForProfile(unknown88Job, strictProfile);
   assert.equal(unknown88Res.allowed, false);
   assert.equal(unknown88Res.status, "Não enviada · dado insuficiente");
+});
+
+test("buildMailtoHref monta link mailto: codificado com cargo e pitch", () => {
+  const href = buildMailtoHref({
+    title: "Citrus Fruit Picker",
+    employer: "Murray Valley Orchards",
+    pitch: "Olá! Tenho visto 462 e disponibilidade imediata."
+  });
+  assert.ok(href.startsWith("mailto:?subject="));
+  assert.ok(href.includes(encodeURIComponent("Citrus Fruit Picker")));
+  assert.ok(href.includes(encodeURIComponent("Olá! Tenho visto 462")));
 });

@@ -1,0 +1,101 @@
+[
+  {
+    "place_id": "acc-mildura-working-hostel",
+    "title": "Sunraysia Working Hostel & Harvest Lodge",
+    "category": "Hostel",
+    "categories": ["Working hostel", "Backpackers accommodation"],
+    "address": "105 Deakin Ave, Mildura VIC 3500, Australia",
+    "phone": "+61 3 5021 1100",
+    "web_site": "https://sunraysiaworkinghostel.example.au",
+    "review_rating": 4.4,
+    "review_count": 195
+  },
+  {
+    "place_id": "acc-bundaberg-bunkhouse",
+    "title": "Bundaberg Harvest Working Hostel",
+    "category": "Hostel",
+    "categories": ["Working hostel", "Hostel"],
+    "address": "42 Targo St, Bundaberg Central QLD 4670, Australia",
+    "phone": "+61 7 4153 2200",
+    "web_site": "https://bundabergbunkhouse.example.au",
+    "review_rating": 4.2,
+    "review_count": 240
+  },
+  {
+    "place_id": "acc-coffs-surf-hostel",
+    "title": "Coffs Coast Berry & Surf Working Hostel",
+    "category": "Hostel",
+    "categories": ["Working hostel", "Backpackers hostel"],
+    "address": "18 Ocean Parade, Coffs Harbour NSW 2450, Australia",
+    "phone": "+61 2 6652 3300",
+    "web_site": "https://coffssurfhostel.example.au",
+    "review_rating": 4.5,
+    "review_count": 162
+  },
+  {
+    "place_id": "acc-cairns-reef-backpackers",
+    "title": "Reef & Rainforest Backpackers Cairns",
+    "category": "Backpacker hostel",
+    "categories": ["Hostel", "Backpackers accommodation"],
+    "address": "74 Grafton St, Cairns City QLD 4870, Australia",
+    "phone": "+61 7 4041 4400",
+    "web_site": "https://reefbackpackers.example.au",
+    "review_rating": 4.6,
+    "review_count": 510
+  },
+  {
+    "place_id": "acc-darwin-mitchell-hostel",
+    "title": "Top End Backpackers & Pool Hostel",
+    "category": "Hostel",
+    "categories": ["Hostel", "Youth hostel"],
+    "address": "59 Mitchell St, Darwin City NT 0800, Australia",
+    "phone": "+61 8 8981 5500",
+    "web_site": "https://topendbackpackers.example.au",
+    "review_rating": 4.3,
+    "review_count": 280
+  },
+  {
+    "place_id": "acc-shepparton-caravan-park",
+    "title": "Goulburn River Holiday & Cabin Park",
+    "category": "RV park",
+    "categories": ["Caravan park", "Cabin accommodation", "Campground"],
+    "address": "310 Wyndham St, Shepparton VIC 3630, Australia",
+    "phone": "+61 3 5821 6600",
+    "web_site": "https://goulburnriverpark.example.au",
+    "review_rating": 4.5,
+    "review_count": 145
+  },
+  {
+    "place_id": "acc-margaret-farm-stay",
+    "title": "Karri Forest Vineyard Farm Stay",
+    "category": "Farmstay",
+    "categories": ["Farm stay", "Cottage"],
+    "address": "188 Bussell Hwy, Margaret River WA 6285, Australia",
+    "phone": "+61 8 9757 7700",
+    "web_site": "https://karrifarmstay.example.au",
+    "review_rating": 4.7,
+    "review_count": 98
+  },
+  {
+    "place_id": "acc-sydney-central-backpackers",
+    "title": "Central Station Backpackers Sydney",
+    "category": "Hostel",
+    "categories": ["Hostel", "Backpackers accommodation"],
+    "address": "412 Pitt St, Sydney NSW 2000, Australia",
+    "phone": "+61 2 9211 8800",
+    "web_site": "https://centralbackpackerssyd.example.au",
+    "review_rating": 4.1,
+    "review_count": 620
+  },
+  {
+    "place_id": "acc-melbourne-flinders-hostel",
+    "title": "Flinders Lane Backpackers Melbourne",
+    "category": "Hostel",
+    "categories": ["Hostel", "Backpackers accommodation"],
+    "address": "250 Flinders St, Melbourne VIC 3000, Australia",
+    "phone": "+61 3 9650 9900",
+    "web_site": "https://flindersbackpackers.example.au",
+    "review_rating": 4.4,
+    "review_count": 540
+  }
+]

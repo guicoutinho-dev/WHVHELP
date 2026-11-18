@@ -170,6 +170,21 @@ Google Maps (fazendas/empregadores) compõe a **Fase 1.5**, gerando a saída sep
   - `localStorage["helpwhv_applications_v1"]`: histórico de candidaturas avaliadas/preparadas/confirmadas como enviadas.
 - **Verdade do produto:** o status só passa de `Preparada` para `Enviada` quando o usuário confirma o envio realizado no anúncio externo.
 
+### Fase 3 — Modo Automático de Candidaturas e Envio Assistido (`application-rules.js` + `app.js`)
+
+- **Modo Automático (`runAutoModeEvaluation`):** quando o usuário ativa o modo automático em vagas específicas (`automatic` set) ou executa o lote em modo `auto` (`mode === "auto"`), e a IA não está pausada (`!paused`) com regras aprovadas (`rulesApproved === true`), novas vagas ou alterações de regras avaliam automaticamente essas vagas.
+- **Disparo Assistido (`buildMailtoHref`):** gera link `mailto:` com assunto e corpo pré-preenchidos a partir do `pitch` gerado para envio rápido, além de abertura direta do anúncio externo.
+
+### Fase 4 — Hospedagem WHV (`data/accommodation.json` — schemaVersion 1)
+
+- **Novos arquivos:**
+  - `ingest/config/accommodation-hubs.json`: polos de hospedagem WHV na Austrália (hostels em capitais e *working hostels* / *caravan parks* em polos regionais).
+  - `ingest/src/domain/accommodation.js`: normalização de hospedagens (`Working Hostel`, `Backpacker Hostel`, `Caravan & Cabin Park`, `Farm Stay`), extração de `city`, `state` e `postcode`, indicação `inRegionalZone` (se o postcode fica em área regional elegível aos 88 dias), deduplicação e validação.
+  - `ingest/src/sources/gmaps-accommodation.js`: adaptador para dados do Google Maps Scraper.
+  - `data/accommodation.json`: contrato lido pela aba **"Hospedagem"** (`data-view="accommodation"`) em `app.js`.
+- **Estrutura de cada item em `stays`:**
+  `{ id, name, stayType, address, location: { city, state, postcode }, phone, website, googleMapsUrl, rating, reviewCount, inRegionalZone }`.
+
 ## 8. Decisões
 
 | # | Decisão | Status |

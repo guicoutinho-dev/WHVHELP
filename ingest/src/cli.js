@@ -10,7 +10,13 @@ const { createAdzunaSource } = require("./sources/adzuna");
 const { createJoobleSource } = require("./sources/jooble");
 const { createPublicPagesSource } = require("./sources/public-pages");
 const { createGmapsEmployersSource } = require("./sources/gmaps-employers");
-const { runPipeline, runEmployersPipeline, shouldAbortRegression } = require("./pipeline");
+const { createGmapsAccommodationSource } = require("./sources/gmaps-accommodation");
+const {
+  runPipeline,
+  runEmployersPipeline,
+  runAccommodationPipeline,
+  shouldAbortRegression
+} = require("./pipeline");
 
 function buildSeedSources() {
   const adzunaFixture = require("../test/fixtures/adzuna-sample.json");
@@ -123,6 +129,12 @@ function syncDistDirectory(cwd) {
     fs.mkdirSync(distDataDir, { recursive: true });
     fs.copyFileSync(empSrc, path.join(distDataDir, "employers.json"));
   }
+  const accSrc = path.join(cwd, "data", "accommodation.json");
+  if (fs.existsSync(accSrc)) {
+    const distDataDir = path.join(distDir, "data");
+    fs.mkdirSync(distDataDir, { recursive: true });
+    fs.copyFileSync(accSrc, path.join(distDataDir, "accommodation.json"));
+  }
   return { synced: true, distDir };
 }
 
@@ -139,6 +151,22 @@ async function runCli({
 
   const isSeed = argv.includes("--seed");
   const isEmployers = argv.includes("--employers");
+  const isAccommodation = argv.includes("--accommodation");
+
+  if (isAccommodation) {
+    const outputPath = path.join(cwd, "data", "accommodation.json");
+    const accFixture = require("../test/fixtures/gmaps-accommodation-sample.json");
+    const accSource = createGmapsAccommodationSource({
+      runScraper: async () => accFixture
+    });
+    const payload = await runAccommodationPipeline({
+      sources: [accSource],
+      now,
+      postcodesConfig
+    });
+    writeJsonAtomic(outputPath, payload);
+    return { wrote: true, outputPath, payload };
+  }
 
   if (isEmployers) {
     const outputPath = path.join(cwd, "data", "employers.json");
