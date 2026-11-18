@@ -50,7 +50,7 @@
   - `ingest/src/domain/normalize.js`: `normalizeRawJob(raw, nowIso) -> Job`
   - `ingest/src/domain/classify.js`: `classifyJob(job) -> string` (one of `CATEGORIES`)
 
-- [ ] **Step 1: Create `package.json` and write the failing test in `ingest/test/domain-core.test.js`**
+- [x] **Step 1: Create `package.json` and write the failing test in `ingest/test/domain-core.test.js`**
 
 Create `package.json` with `"scripts": { "test": "node --test app.test.js ingest/test/*.test.js", "ingest": "node ingest/src/cli.js", "ingest:seed": "node ingest/src/cli.js --seed", "sync:dist": "node ingest/src/cli.js --sync-dist" }`.
 
@@ -142,19 +142,19 @@ test("validateJob exige title e source.url http(s); isExpired respeita 30 dias",
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `node --test ingest/test/domain-core.test.js`
 Expected: FAIL with `Cannot find module '../src/domain/categories'`
 
-- [ ] **Step 3: Implement `categories.js`, `job.js`, `normalize.js`, and `classify.js`**
+- [x] **Step 3: Implement `categories.js`, `job.js`, `normalize.js`, and `classify.js`**
 
 - In `ingest/src/domain/categories.js`: export `CATEGORIES`, `CATEGORY_KEYWORDS` (ordered so specific categories like `"Fruit Picking"` are checked before `"Farm"`), `EMPLOYMENT_TYPES`, and `PAY_PERIODS`.
 - In `ingest/src/domain/normalize.js`: implement `normalizeRawJob(raw, nowIso)` producing `{ id, title, category: "Other", employmentType, employer, location: { city, state, postcode }, pay, postedAt, firstSeenAt: nowIso, regionalWork: { "417": "unknown", "462": "unknown" }, summary, source: { id, name, url } }`. Ensure postcode is preserved as a 4-digit string when present (`/^\d{4}$/`), `pay` is `null` if neither `payMin` nor `payMax` is a positive number, and if `payPeriod` is missing: infer `"year"` only when `min >= 10000`, `"hour"` only when `min >= 15 && min <= 200`, otherwise `null` (if period remains `null`, set `pay: null` to avoid guessing).
 - In `ingest/src/domain/classify.js`: implement `classifyJob(job)` matching `job.sourceCategory` or `job.title` first, then `job.summary`, against `CATEGORY_KEYWORDS`.
 - In `ingest/src/domain/job.js`: implement `validateJob(job)` and `isExpired(job, nowIso, maxAgeDays = 30)`.
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `node --test ingest/test/domain-core.test.js`
 Expected: PASS (4 tests passing)
@@ -176,7 +176,7 @@ Expected: PASS (4 tests passing)
   - `ingest/src/domain/regional88.js`: `assessRegionalWork(job, rulesConfig, postcodesConfig) -> { "417": "likely" | "unlikely" | "unknown", "462": "likely" | "unlikely" | "unknown", officialUrl: string }`
   - `ingest/src/domain/dedupe.js`: `dedupeJobs(jobs, previousJobs = []) -> Job[]`
 
-- [ ] **Step 1: Write the failing test in `ingest/test/regional-dedupe.test.js`**
+- [x] **Step 1: Write the failing test in `ingest/test/regional-dedupe.test.js`**
 
 ```js
 const test = require("node:test");
@@ -239,19 +239,19 @@ test("dedupeJobs mescla duplicatas mantendo o registro mais completo e preserva 
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `node --test ingest/test/regional-dedupe.test.js`
 Expected: FAIL with `Cannot find module '../config/postcodes-88.json'`
 
-- [ ] **Step 3: Create `postcodes-88.json`, `regional88-rules.json`, `regional88.js`, and `dedupe.js`**
+- [x] **Step 3: Create `postcodes-88.json`, `regional88-rules.json`, `regional88.js`, and `dedupe.js`**
 
 - In `ingest/config/postcodes-88.json`: store `officialUrl` (`"https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/specified-work"` and `"https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/specified-462-work"`), `checkedAt`, and postcode range lists `[start, end]` as 4-digit strings for `regionalAustralia` (NSW regional ranges excluding Sydney/Newcastle/Wollongong, VIC regional excluding Melbourne, QLD regional excluding Brisbane/Gold Coast, WA regional excluding Perth, all SA/TAS/NT/Norfolk Island) and `northernOrRemoteAustralia` (all NT `"0800"`–`"0899"`, QLD north of Tropic of Capricorn, WA north/remote postcodes).
 - In `ingest/config/regional88-rules.json`: map `Farm`, `Fruit Picking`, `Construction` to `regionalAustralia` for both `417` and `462`; map `Hospitality` to `northernOrRemoteAustralia` for both `417` and `462`; map `Childcare`, `Cleaning`, `Driving`, `Sales`, `Trades`, `Warehouse`, `Other` to `unlikely` (with `Trades` on construction sites already classified under `Construction` when construction keywords match).
 - In `ingest/src/domain/regional88.js`: implement `assessRegionalWork(job, rulesConfig, postcodesConfig)`.
 - In `ingest/src/domain/dedupe.js`: implement `dedupeJobs(jobs, previousJobs = [])` using normalized key `${norm(title)}|${norm(employer)}|${norm(location.city)}`, scoring completeness by non-null fields (`pay`, `location.postcode`, `employer`, `postedAt`, `summary`), and preserving `firstSeenAt` from `previousJobs` (matched by `id` or dedupe key).
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `node --test ingest/test/regional-dedupe.test.js`
 Expected: PASS (2 tests passing)
@@ -277,7 +277,7 @@ Expected: PASS (2 tests passing)
   - `ingest/src/sources/jooble.js`: `createJoobleSource({ apiKey, fetchImpl, queries }) -> { id: "jooble", name: "Jooble", fetchJobs() -> Promise<RawJob[]> }`
   - `ingest/src/sources/public-pages.js`: `createPublicPagesSource({ apiKey, fetchImpl, allowlist }) -> { id: "public-pages", name: "Public Job Boards", fetchJobs() -> Promise<RawJob[]> }`
 
-- [ ] **Step 1: Write fixtures, `sources.json`, and the failing test in `ingest/test/sources.test.js`**
+- [x] **Step 1: Write fixtures, `sources.json`, and the failing test in `ingest/test/sources.test.js`**
 
 Create sanitized fixtures (`ingest/test/fixtures/adzuna-sample.json`, `jooble-sample.json`, `public-page-sample.json`) containing realistic Australian WHV job listings across the 11 categories (no personal data).
 Create `ingest/config/sources.json` with default `queries` and `publicPages` allowlist (each entry having `id`, `name`, `url`, `robotsAllowed: true`, `termsCheckedAt`).
@@ -286,16 +286,16 @@ Write `ingest/test/sources.test.js` verifying that:
 2. `createJoobleSource` POSTs to Jooble API and maps `jobs` to `RawJob[]`.
 3. `createPublicPagesSource` refuses any URL not in `allowlist`, refuses forbidden domains (`facebook.com`, `gumtree.com.au`, `seek.com.au`, `indeed.com`, `linkedin.com`) or entries without `robotsAllowed: true` and `termsCheckedAt`, and maps extracted items to `RawJob[]`.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `node --test ingest/test/sources.test.js`
 Expected: FAIL with `Cannot find module '../src/sources/adzuna'`
 
-- [ ] **Step 3: Implement `adzuna.js`, `jooble.js`, and `public-pages.js`**
+- [x] **Step 3: Implement `adzuna.js`, `jooble.js`, and `public-pages.js`**
 
 Implement the three adapter factories in `ingest/src/sources/` using injected `fetchImpl` (defaulting to global `fetch`). Ensure `public-pages.js` enforces the forbidden-host check and requires `robotsAllowed === true && Boolean(termsCheckedAt)` before calling Firecrawl (`https://api.firecrawl.dev/v1/scrape`).
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `node --test ingest/test/sources.test.js`
 Expected: PASS
@@ -316,19 +316,19 @@ Expected: PASS
   - `ingest/src/pipeline.js`: `runPipeline({ sources, now, previous, rulesConfig, postcodesConfig }) -> Promise<{ schemaVersion: 1, generatedAt: string, sources: SourceReport[], jobs: Job[] }>`, `shouldAbortRegression(previousCount, nextCount) -> boolean`
   - `ingest/src/cli.js`: `runCli({ argv, env, cwd, fetchImpl }) -> Promise<{ wrote: boolean, outputPath: string, payload: object }>`
 
-- [ ] **Step 1: Write the failing test in `ingest/test/pipeline-cli.test.js`**
+- [x] **Step 1: Write the failing test in `ingest/test/pipeline-cli.test.js`**
 
 Test cases in `ingest/test/pipeline-cli.test.js`:
 1. `runPipeline` isolates a failing source (`ok: false, error: "HTTP 503"`) while keeping jobs from healthy sources, classifies into the 11 categories, attaches `regionalWork`, deduplicates, drops invalid/expired jobs, and outputs `schemaVersion: 1`.
 2. `shouldAbortRegression` returns `true` when `previousCount >= 10` and `nextCount < previousCount * 0.5`, and `false` otherwise.
 3. `runCli` with `["--seed"]` writes `data/jobs.json` atomically in a temp directory using recorded fixtures, and when run again against a `previous` file with 20 jobs while sources return 2 jobs, aborts with a regression error without overwriting the file.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `node --test ingest/test/pipeline-cli.test.js`
 Expected: FAIL with `Cannot find module '../src/pipeline'`
 
-- [ ] **Step 3: Implement `pipeline.js` and `cli.js`, then generate `data/jobs.json`**
+- [x] **Step 3: Implement `pipeline.js` and `cli.js`, then generate `data/jobs.json`**
 
 - Implement `runPipeline` and `shouldAbortRegression` in `ingest/src/pipeline.js`.
 - Implement `runCli` in `ingest/src/cli.js` supporting:
@@ -338,7 +338,7 @@ Expected: FAIL with `Cannot find module '../src/pipeline'`
   - Atomic write: writes to `data/jobs.json.tmp` and renames to `data/jobs.json`.
 - Run `node ingest/src/cli.js --seed` to create `data/jobs.json`.
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `node --test ingest/test/pipeline-cli.test.js`
 Expected: PASS
@@ -359,7 +359,7 @@ Expected: PASS
   - `app.js` exports: `{ filterJobs, eligibleForBatch, toViewJob, formatPay, jobs, CATEGORIES }`
   - `.github/workflows/ingest.yml`: 6-hourly cron (`0 */6 * * *`) + `workflow_dispatch` that runs `npm test`, downloads previous `jobs.json` from GitHub Pages if available, runs `npm run ingest`, and deploys `data/jobs.json` to GitHub Pages.
 
-- [ ] **Step 1: Update `app.test.js` with failing tests for the new contract and WHV filters**
+- [x] **Step 1: Update `app.test.js` with failing tests for the new contract and WHV filters**
 
 ```js
 const test = require("node:test");
@@ -417,12 +417,12 @@ test("lote não reenvia uma vaga já em andamento", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test`
 Expected: FAIL on `app.test.js` (`toViewJob is not a function`)
 
-- [ ] **Step 3: Update `app.js`, `styles.css`, and create `.github/workflows/ingest.yml`**
+- [x] **Step 3: Update `app.js`, `styles.css`, and create `.github/workflows/ingest.yml`**
 
 - In `app.js`:
   - Define `JOBS_URL = (typeof window !== "undefined" && window.HELPWHV_JOBS_URL) || "data/jobs.json"`.
@@ -434,7 +434,7 @@ Expected: FAIL on `app.test.js` (`toViewJob is not a function`)
 - Create `.github/workflows/ingest.yml` implementing Decision D1.
 - Run `npm run sync:dist` so `sites/helpwhv/dist/` stays synchronized.
 
-- [ ] **Step 4: Run full test suite to verify everything passes**
+- [x] **Step 4: Run full test suite to verify everything passes**
 
 Run: `npm test`
 Expected: PASS (all tests in `app.test.js` and `ingest/test/*.test.js` passing)
