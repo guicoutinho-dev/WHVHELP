@@ -35,7 +35,7 @@ jobs:
       - name: Download previous jobs.json from GitHub Pages (if deployed)
         continue-on-error: true
         env:
-          PREVIOUS_JOBS_URL: ${{ vars.JOBS_JSON_URL || 'https://guicoutinho-dev.github.io/WHVHELP/jobs.json' }}
+          PREVIOUS_JOBS_URL: ${{ vars.JOBS_JSON_URL || 'https://guicoutinho-dev.github.io/WHVHELP/data/jobs.json' }}
         run: |
           if [ -n "$PREVIOUS_JOBS_URL" ]; then
             mkdir -p data
@@ -77,11 +77,20 @@ jobs:
         continue-on-error: true
         uses: actions/configure-pages@v5
 
-      - name: Upload data artifact for GitHub Pages
+      - name: Assemble site for GitHub Pages
+        if: steps.pages_config.outcome == 'success'
+        run: |
+          mkdir -p _site/data _site/assets _site/fonts
+          cp index.html app.js styles.css _site/
+          cp -r data/* _site/data/
+          cp -r assets/* _site/assets/
+          cp -r fonts/* _site/fonts/
+
+      - name: Upload site artifact for GitHub Pages
         if: steps.pages_config.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "data"
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         if: steps.pages_config.outcome == 'success'

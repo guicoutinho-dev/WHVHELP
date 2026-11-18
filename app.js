@@ -25,11 +25,11 @@ const OFFICIAL_88_URLS = Object.freeze({
   "462": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/specified-462-work"
 });
 
-const PAGES_JOBS_URL = "https://guicoutinho-dev.github.io/WHVHELP/jobs.json";
+const PAGES_JOBS_URL = "data/jobs.json";
 const LOCAL_JOBS_URL = "data/jobs.json";
-const PAGES_EMPLOYERS_URL = "https://guicoutinho-dev.github.io/WHVHELP/employers.json";
+const PAGES_EMPLOYERS_URL = "data/employers.json";
 const LOCAL_EMPLOYERS_URL = "data/employers.json";
-const PAGES_ACCOMMODATION_URL = "https://guicoutinho-dev.github.io/WHVHELP/accommodation.json";
+const PAGES_ACCOMMODATION_URL = "data/accommodation.json";
 const LOCAL_ACCOMMODATION_URL = "data/accommodation.json";
 
 const STAY_TYPES = Object.freeze([
