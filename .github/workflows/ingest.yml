@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -20,9 +20,6 @@ concurrency:
 jobs:
   ingest-and-publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -65,16 +62,28 @@ jobs:
             npm run ingest:accommodation
           fi
 
-      - name: Configure Pages
+      - name: Commit updated data/jobs.json to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/jobs.json data/employers.json data/accommodation.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(data): update WHV jobs.json [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: Configure Pages (when enabled on repository)
+        id: pages_config
+        continue-on-error: true
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload data artifact for GitHub Pages
+        if: steps.pages_config.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
           path: "data"
 
       - name: Deploy to GitHub Pages
+        if: steps.pages_config.outcome == 'success'
         id: deployment
         uses: actions/deploy-pages@v4
