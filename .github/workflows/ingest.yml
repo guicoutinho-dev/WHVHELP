@@ -54,12 +54,16 @@ jobs:
         run: |
           if [ -n "$ADZUNA_APP_ID" ] || [ -n "$JOOBLE_API_KEY" ] || [ -n "$FIRECRAWL_API_KEY" ]; then
             npm run ingest
-          else
+          elif [ ! -f data/jobs.json ]; then
             echo "No API secrets configured yet; generating initial seed jobs.json"
             npm run ingest:seed
           fi
-          npm run ingest:employers
-          npm run ingest:accommodation
+          if [ ! -f data/employers.json ]; then
+            npm run ingest:employers
+          fi
+          if [ ! -f data/accommodation.json ]; then
+            npm run ingest:accommodation
+          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
